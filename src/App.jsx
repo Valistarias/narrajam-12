@@ -1,14 +1,11 @@
-import React, { Component} from "react";
-import "./app.scss";
+import React from "react";
 
-class App extends Component{
-  render(){
-    return(
-      <div className="App">
-        <h1> Narrative Game Jam 12 ! </h1>
-      </div>
-    );
-  }
-}
+import Home from './react/Index';
 
+const App = () => (
+    <div className="main">
+        <Home />
+    </div>
+);
+  
 export default App;

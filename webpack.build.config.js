@@ -1,4 +1,5 @@
 const path = require("path");
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
@@ -7,7 +8,7 @@ module.exports = {
   mode: "production",
   output: {
     path: path.resolve(__dirname, "dist/"),
-    publicPath: "/dist/",
+    publicPath: "./",
     filename: 'bundle.js'
   },
   module: {
@@ -18,12 +19,10 @@ module.exports = {
         loader: 'babel-loader',
       },
       {
-        test: /\.s[ac]ss$/i,
+        test: /.s?css$/,
         use: [
           // Minifying CSS
-          MiniCssExtractPlugin.loader, 
-          // Creates `style` nodes from JS strings
-          "style-loader",
+          MiniCssExtractPlugin.loader,
           // Translates CSS into CommonJS
           "css-loader",
           // Compiles Sass to CSS
@@ -39,5 +38,19 @@ module.exports = {
       new CssMinimizerPlugin(),
     ],
   },
-  plugins: [new MiniCssExtractPlugin()],
+  plugins: [
+    new HtmlWebpackPlugin({
+      meta: {
+        'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no',
+      },
+      template: './public/template.html',
+      title: 'Narrajam 12', 
+    }),
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: "[name].css",
+      chunkFilename: "[id].css",
+    }),
+  ],
 };
