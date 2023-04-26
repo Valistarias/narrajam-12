@@ -1,15 +1,16 @@
-const path = require("path");
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+/* eslint-disable import/no-extraneous-dependencies */
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 module.exports = {
-  entry: "./src/index.js",
-  mode: "production",
+  entry: './src/index.js',
+  mode: 'production',
   output: {
-    path: path.resolve(__dirname, "dist/"),
-    publicPath: "./",
-    filename: 'bundle.js'
+    path: path.resolve(__dirname, 'dist/'),
+    publicPath: './',
+    filename: 'bundle.js',
   },
   module: {
     rules: [
@@ -24,33 +25,37 @@ module.exports = {
           // Minifying CSS
           MiniCssExtractPlugin.loader,
           // Translates CSS into CommonJS
-          "css-loader",
+          'css-loader',
           // Compiles Sass to CSS
-          "sass-loader",
+          'sass-loader',
         ],
       },
-    ]
+      {
+        test: /\.(jpe?g|png|gif|ico|eot|ttf|woff2?)(\?v=\d+\.\d+\.\d+)?$/i,
+        type: 'asset/resource',
+      },
+    ],
   },
-  resolve: { extensions: ["*", ".js", ".jsx"] },
+  resolve: { extensions: ['*', '.js', '.jsx'] },
   optimization: {
     minimizer: [
-      `...`,
+      '...',
       new CssMinimizerPlugin(),
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       meta: {
-        'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no',
+        viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
       },
       template: './public/template.html',
-      title: 'Narrajam 12', 
+      title: 'Narrajam 12',
     }),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
-      filename: "[name].css",
-      chunkFilename: "[id].css",
+      filename: '[name].css',
+      chunkFilename: '[id].css',
     }),
   ],
 };

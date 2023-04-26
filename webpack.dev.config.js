@@ -1,12 +1,11 @@
-const path = require("path");
+/* eslint-disable import/no-extraneous-dependencies */
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 module.exports = {
-  entry: "./src/index.js",
-  mode: "development",
-  plugins: [
-    new ReactRefreshWebpackPlugin(),
-  ],
+  entry: './src/index.js',
+  mode: 'development',
   module: {
     rules: [
       {
@@ -19,39 +18,50 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
-      }
-      ,
+        use: ['style-loader', 'css-loader'],
+      },
       {
         test: /\.s[ac]ss$/i,
         use: [
           // Creates `style` nodes from JS strings
-          "style-loader",
+          'style-loader',
           // Translates CSS into CommonJS
-          "css-loader",
+          'css-loader',
           // Compiles Sass to CSS
-          "sass-loader",
+          'sass-loader',
         ],
       },
-    ]
+      {
+        test: /\.(jpe?g|png|gif|ico|eot|ttf|woff2?)(\?v=\d+\.\d+\.\d+)?$/i,
+        type: 'asset/resource',
+      },
+    ],
   },
-  resolve: { extensions: ["*", ".js", ".jsx"] },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
   output: {
-    path: path.resolve(__dirname, "dist/"),
-    publicPath: "/dist/",
-    filename: "bundle.js"
+    path: path.resolve(__dirname, 'dist/'),
+    filename: 'bundle.js',
   },
   devServer: {
-    static : {
-      directory : path.join(__dirname, "public/")
+    static: {
+      directory: path.join(__dirname, 'public/'),
     },
     port: 3000,
-    devMiddleware:{
-      publicPath: "https://localhost:3000/dist/",
+    devMiddleware: {
+      publicPath: 'https://localhost:3000/dist/',
     },
-    hot: "only",
+    hot: 'only',
   },
   plugins: [
     new ReactRefreshWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      meta: {
+        viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
+      },
+      template: './public/template.html',
+      title: 'Narrajam 12',
+    }),
   ],
 };

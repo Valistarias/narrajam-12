@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
-import Home from './react/Index';
+import Home from './react/home';
 
 const App = () => (
-    <div className="main">
-        <Home />
-    </div>
+  <div className="main">
+    <Home />
+  </div>
 );
-  
+
 export default App;

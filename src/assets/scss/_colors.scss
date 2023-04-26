@@ -1,0 +1,26 @@
+$black: #000;
+$red-deep: #260c0f;
+$red-medium: #360d11;
+$red-blood: #a3221c;
+$red-light: #fc8091;
+$blue-neon: #3affff;
+$white: #fff;
+
+:root {
+  --black:#{$black};
+  --black-opaque:#{$black}000f7;
+  --black-transparent:#{$black}0;
+  --white:#{$white};
+  --white-opaque:#{$white}7;
+  --red-deep:#{$red-deep};
+  --red-deep-opaque:#{$red-deep}ee;
+  --red-medium:#{$red-medium};
+  --red-blood:#{$red-blood};
+  --red-blood-opaque:#{$red-blood}44;
+  --red-blood-transparent:#{$red-blood}00;
+  --red-light-opaque:#{$red-light}22;
+  --red-light:#{$red-light};
+  --red-light-transparent:#{$red-light}00;
+  --blue-neon:#{$blue-neon};
+  --blue-neon-transparent:#{$blue-neon}00;
+}
