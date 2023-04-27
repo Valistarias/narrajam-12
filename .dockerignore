@@ -1,0 +1,8 @@
+*
+!.babelrc
+!package-lock.json
+!package.json
+!webpack.build.config.js
+!webpack.dev.config.js
+!public/
+!src/

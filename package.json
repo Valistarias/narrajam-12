@@ -20,6 +20,20 @@
   },
   "homepage": "https://github.com/Valistarias/narrajam-12#readme",
   "devDependencies": {
+    "eslint": "^8.27.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-react": "^7.31.10",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "react-refresh": "^0.14.0",
+    "stylelint": "^15.6.0",
+    "stylelint-config-sass-guidelines": "^10.0.0",
+    "stylelint-order": "^6.0.3",
+    "webpack-dev-server": "^4.11.1"
+  },
+  "dependencies": {
+    "@pixi/react": "^7.0.3",
     "@babel/cli": "^7.19.3",
     "@babel/core": "^7.20.2",
     "@babel/preset-env": "^7.20.2",
@@ -28,29 +42,15 @@
     "babel-loader": "^9.1.0",
     "css-loader": "^6.7.1",
     "css-minimizer-webpack-plugin": "^5.0.0",
-    "eslint": "^8.27.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jsx-a11y": "^6.6.1",
-    "eslint-plugin-react": "^7.31.10",
-    "eslint-plugin-react-hooks": "^4.6.0",
     "html-webpack-plugin": "^5.5.1",
     "mini-css-extract-plugin": "^2.7.5",
-    "react-refresh": "^0.14.0",
+    "pixi.js": "^7.2.4",
     "sass": "^1.62.1",
     "sass-loader": "^13.2.0",
     "style-loader": "^3.3.1",
-    "stylelint": "^15.6.0",
-    "stylelint-config-sass-guidelines": "^10.0.0",
-    "stylelint-order": "^6.0.3",
-    "webpack": "^5.75.0",
-    "webpack-cli": "^5.0.2",
-    "webpack-dev-server": "^4.11.1"
-  },
-  "dependencies": {
-    "@pixi/react": "^7.0.3",
-    "pixi.js": "^7.2.4",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.2"
   }
 }
