@@ -22,7 +22,7 @@ const DialogueWindow = () => {
         type="button"
         onClick={() => {
           Event.dispatchEvent(new CustomEvent('test', {
-            detail: 'coucou',
+            detail: { text: 'coucou' },
           }));
           setOpen(false);
         }}

@@ -3,10 +3,22 @@ class PixiProp {
     app,
     texture,
     evt,
+    vars,
   }) {
     this.app = app;
     this.texture = texture;
     this._eventSystem = evt;
+    this.vars = vars;
+  }
+
+  setGlobal({ name, value }) {
+    if (name && value) {
+      this.app.globalVars[name] = value;
+    } else {
+      console.error('No name AND value on payload');
+      console.info('Prop: ', this);
+      console.info('Prop: ', this);
+    }
   }
 
   sentEvent({ type, payload }) {

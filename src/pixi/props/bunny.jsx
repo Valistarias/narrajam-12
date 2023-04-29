@@ -19,17 +19,19 @@ class Bunny extends PixiProp {
 
     this.sprite.onclick = () => {
       this.sentEvent({ type: 'openDialogue', payload: { id: 1 } });
+      this.vars.setGlobal({ name: 'speed', value: 0 });
     };
 
     this.app.ticker.add(() => {
       // each frame we spin the this.sprite around a bit
-      this.sprite.rotation += 0.01;
+      this.sprite.rotation += 0.01 * (this.vars.getGlobal('speed') ?? 1);
     });
   }
 
   onEvent(type) {
     if (type === 'test') {
       this.sprite.tint = 0xFF0000;
+      this.vars.setGlobal({ name: 'speed', value: 1 });
     }
   }
 }

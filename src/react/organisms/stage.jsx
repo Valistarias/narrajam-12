@@ -3,6 +3,7 @@ import { Application } from 'pixi.js';
 import Loader from '../../pixi/loader';
 import Bunny from '../../pixi/props/bunny';
 import { useEvent } from '../../providers/Event';
+import GlobalVars from '../../pixi/globalVars';
 
 const StageDom = () => {
   const ref = useRef(null);
@@ -18,10 +19,17 @@ const StageDom = () => {
     ref.current.appendChild(app.view);
     app.start();
 
+    const vars = new GlobalVars();
+
     async function assetLoad() {
-      // You can await here
       const textures = await Loader();
-      const bunny = new Bunny({ app, texture: textures.bunnyBundle.bunny, evt: Event });
+      const bunny = new Bunny({
+        app,
+        texture:
+        textures.bunnyBundle.bunny,
+        evt: Event,
+        vars,
+      });
     }
     assetLoad();
 
