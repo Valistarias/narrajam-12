@@ -1,9 +1,14 @@
 import React, { useEffect, useRef } from 'react';
-import { Application } from 'pixi.js';
+import { Application, autoDetectRenderer } from 'pixi.js';
 import Loader from '../../pixi/loader';
-import Bunny from '../../pixi/props/bunny';
-import { useEvent } from '../../providers/Event';
+
 import GlobalVars from '../../pixi/globalVars';
+
+import Bunny from '../../pixi/props/bunny';
+
+import { useEvent } from '../../providers/Event';
+
+import './stage.scss';
 
 const StageDom = () => {
   const ref = useRef(null);
@@ -12,9 +17,8 @@ const StageDom = () => {
 
   useEffect(() => {
     const app = new Application({
-      width: 800,
-      height: 600,
-      backgroundColor: 0x5BBA6F,
+      resizeTo: window,
+      backgroundColor: 0x000000,
     });
     ref.current.appendChild(app.view);
     app.start();
@@ -38,7 +42,7 @@ const StageDom = () => {
     };
   }, [Event]);
 
-  return <div ref={ref} />;
+  return <div className="stage" ref={ref} />;
 };
 
 export default StageDom;

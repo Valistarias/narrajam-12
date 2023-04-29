@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Providers from './providers';
-
 import Home from './react/pages/home';
 
 const App = () => (

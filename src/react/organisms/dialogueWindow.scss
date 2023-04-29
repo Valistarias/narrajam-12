@@ -1,5 +1,14 @@
 .dialogue {
+  background: var(--black-opaque);
+  border-left: 1px solid var(--white-opaque);
   display: none;
+  height: 100%;
+  padding: 40px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 600px;
+  z-index: 1;
 
   &--open {
     display: block;

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
-import './dialogueWindow.scss';
 import { useEvent } from '../../providers/Event';
+
+import './dialogueWindow.scss';
+import Button from '../molecules/button';
 
 const DialogueWindow = () => {
   const [isOpen, setOpen] = useState(false);
@@ -18,8 +20,7 @@ const DialogueWindow = () => {
   return (
     <div className={`dialogue ${isOpen ? ' dialogue--open' : ''}`}>
       <h1> Dialogue </h1>
-      <button
-        type="button"
+      <Button
         onClick={() => {
           Event.dispatchEvent(new CustomEvent('test', {
             detail: { text: 'coucou' },
@@ -28,7 +29,7 @@ const DialogueWindow = () => {
         }}
       >
         Close me
-      </button>
+      </Button>
     </div>
   );
 };

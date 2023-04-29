@@ -1,4 +1,6 @@
+@import './reset';
 @import './colors';
+@import './fonts';
 
 /* stylelint-disable-next-line selector-max-id */
 html, body, #root {
@@ -6,3 +8,26 @@ html, body, #root {
   overflow: hidden;
   width: 100%;
 }
+
+html {
+  background-color: var(--black);
+  font-size: 62.5%;
+}
+
+* {
+  color: var(--white);
+  font-size: 1.4rem;
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+h2 {
+  font-size: 3rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
