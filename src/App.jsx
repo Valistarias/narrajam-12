@@ -1,11 +1,15 @@
 import React from 'react';
 
-import Home from './react/home';
+import Providers from './providers';
+
+import Home from './react/pages/home';
 
 const App = () => (
-  <div className="main">
-    <Home />
-  </div>
+  <Providers>
+    <div className="main main-theme">
+      <Home />
+    </div>
+  </Providers>
 );
 
 export default App;
