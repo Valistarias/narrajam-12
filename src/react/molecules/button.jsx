@@ -9,6 +9,8 @@ const Button = ({
   children,
   className,
   onClick,
+  onMouseLeave,
+  onMouseEnter,
   preventDefault,
   disabled,
   invisible,
@@ -27,6 +29,14 @@ const Button = ({
       if (preventDefault) { e.preventDefault(); }
       onClick(e);
     }}
+    onMouseLeave={(e) => {
+      if (preventDefault) { e.preventDefault(); }
+      onMouseLeave(e);
+    }}
+    onMouseEnter={(e) => {
+      if (preventDefault) { e.preventDefault(); }
+      onMouseEnter(e);
+    }}
   >
     {children}
   </button>
@@ -38,6 +48,8 @@ Button.propTypes = {
   className: PropTypes.string,
   theme: PropTypes.oneOf(['basic']),
   onClick: PropTypes.func.isRequired,
+  onMouseLeave: PropTypes.func,
+  onMouseEnter: PropTypes.func,
   preventDefault: PropTypes.bool,
   disabled: PropTypes.bool,
   invisible: PropTypes.bool,
@@ -50,6 +62,8 @@ Button.defaultProps = {
   className: '',
   disabled: false,
   invisible: false,
+  onMouseLeave: () => {},
+  onMouseEnter: () => {},
 };
 
 export default Button;

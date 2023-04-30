@@ -19,7 +19,7 @@ class Bunny extends PixiProp {
 
     this.sprite.onclick = () => {
       if (!this.vars.getGlobal('pause')) {
-        this.sentEvent({ type: 'openDialogue', payload: { id: 'begining' } });
+        this.sentEvent({ type: 'openMiniDialogue', payload: { id: 'sickHelpless' } });
         this.vars.setGlobal({ name: 'pause', value: true });
       }
     };

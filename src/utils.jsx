@@ -108,9 +108,16 @@ export const curateAndDomifyText = (basicString, speaker) => {
         case 'italic': { typeSpan = 'italic'; break; }
         default: { typeSpan = 'regular'; }
       }
+      const arraytext = [];
+      actualText.split('<br/>').forEach((splitedText, index) => {
+        if (index !== 0) {
+          arraytext.push(<br key={splitedText} />);
+        }
+        arraytext.push(splitedText);
+      });
       regroupedText.push(
         <span key={actualText} className={typeSpan}>
-          {actualText}
+          {arraytext}
         </span>,
       );
       actualGroup = typeGroup;
@@ -131,9 +138,16 @@ export const curateAndDomifyText = (basicString, speaker) => {
     case 'italic': { typeSpan = 'italic'; break; }
     default: { typeSpan = 'regular'; }
   }
+  const arraytext = [];
+  actualText.split('<br/>').forEach((splitedText, index) => {
+    if (index !== 0) {
+      arraytext.push(<br key={splitedText} />);
+    }
+    arraytext.push(splitedText);
+  });
   regroupedText.push(
     <span key="last" className={typeSpan}>
-      {actualText}
+      {arraytext}
     </span>,
   );
   return regroupedText;

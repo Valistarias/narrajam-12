@@ -1,0 +1,77 @@
+.mini-dialogue {
+  background: var(--black-opaque);
+  border: .1rem solid var(--white-opaque);
+  display: flex;
+  flex-direction: column;
+  height: 50rem;
+  justify-content: space-between;
+  left: 50%;
+  opacity: 0;
+  padding: 4rem;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  transition: opacity .5s ease;
+  width: 50rem;
+  z-index: 1;
+
+  &--open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &__title {
+    padding-bottom: 3rem;
+  }
+
+  &__content {
+    height: 100%;
+    overflow-y: hidden;
+
+    &__text {
+      width: calc(100% - 1rem);
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 2rem;
+  }
+
+  .hint {
+    border: .1rem solid var(--white-opaque);
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    left: calc(100% + 1rem);
+    opacity: 0;
+    padding: 2rem;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    width: 20rem;
+
+    &__entry {
+      &--positive,
+      &--negative {
+        font-weight: 700;
+      }
+
+      &--positive{
+        color: var(--green-neon);
+      }
+
+      &--negative{
+        color: var(--red-neon);
+      }
+    }
+
+    &--open {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}

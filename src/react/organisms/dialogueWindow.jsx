@@ -18,6 +18,7 @@ const DialogueWindow = () => {
   const [isOpen, setOpen] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const [textBlocks, setTextBlocks] = useState([]);
+  const [title, setTitle] = useState('');
   const [answers, setAnswers] = useState([]);
 
   const scrollRef = useRef();
@@ -33,7 +34,10 @@ const DialogueWindow = () => {
       events.forEach((evt) => {
         const slicedEvt = evt.split(':');
         Event.dispatchEvent(new CustomEvent(slicedEvt[0], {
-          detail: { id: slicedEvt[1] },
+          detail: {
+            id: slicedEvt[1],
+            ...(slicedEvt[2] ? { value: slicedEvt[2] } : null),
+          },
         }));
       });
     }
@@ -59,6 +63,9 @@ const DialogueWindow = () => {
         ];
         return next;
       });
+      if (dialog.title) {
+        setTitle(dialog.title);
+      }
       setAnswers(dialog.answers?.length > 0
         ? dialog.answers.map((answer, index) => ({
           ...answer,
@@ -75,6 +82,7 @@ const DialogueWindow = () => {
     Event.addEventListener('openDialogue', ({ detail }) => {
       setTextBlocks([]);
       setAnswers([]);
+      setTitle('');
       setTimeout(() => {
         setOpen(true);
         const dialog = DryadDialog[detail.id];
@@ -86,6 +94,9 @@ const DialogueWindow = () => {
           next.push(dialog);
           return next;
         });
+        if (dialog.title) {
+          setTitle(dialog.title);
+        }
         setAnswers(dialog.answers.length > 0
           ? dialog.answers.map((answer, index) => ({
             ...answer,
@@ -97,7 +108,7 @@ const DialogueWindow = () => {
   }, [Event]);
   return (
     <div className={`dialogue ${isOpen ? ' dialogue--open' : ''}`}>
-      <h1 className="dialogue__title"> Dialogue </h1>
+      <h1 className="dialogue__title">{title}</h1>
       <Scrollbar
         className="dialogue__content"
         noDefaultStyles

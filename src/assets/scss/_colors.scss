@@ -1,6 +1,7 @@
 $black: #000;
 $grey: #555;
 $green-neon: #9bffa9;
+$red-neon: #ff7373;
 $white: #fff;
 
 :root {
@@ -11,5 +12,6 @@ $white: #fff;
   --grey:#{$grey};
   --white-opaque:#{$white}7;
   --white-transparent:#{$white}fff06;
-  --green-neon: #{$green-neon}
+  --green-neon: #{$green-neon};
+  --red-neon: #{$red-neon};
 }
