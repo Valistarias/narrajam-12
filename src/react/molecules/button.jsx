@@ -46,7 +46,7 @@ Button.propTypes = {
   submit: PropTypes.bool,
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  theme: PropTypes.oneOf(['basic']),
+  theme: PropTypes.oneOf(['basic', 'title']),
   onClick: PropTypes.func.isRequired,
   onMouseLeave: PropTypes.func,
   onMouseEnter: PropTypes.func,

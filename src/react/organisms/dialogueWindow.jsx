@@ -35,7 +35,7 @@ const DialogueWindow = () => {
         const slicedEvt = evt.split(':');
         Event.dispatchEvent(new CustomEvent(slicedEvt[0], {
           detail: {
-            id: slicedEvt[1],
+            name: slicedEvt[1],
             ...(slicedEvt[2] ? { value: slicedEvt[2] } : null),
           },
         }));
@@ -69,7 +69,7 @@ const DialogueWindow = () => {
       setAnswers(dialog.answers?.length > 0
         ? dialog.answers.map((answer, index) => ({
           ...answer,
-          id: index,
+          name: index,
         }))
         : []);
     } else {
@@ -85,7 +85,7 @@ const DialogueWindow = () => {
       setTitle('');
       setTimeout(() => {
         setOpen(true);
-        const dialog = DryadDialog[detail.id];
+        const dialog = DryadDialog[detail.name];
         setTextBlocks((prev) => {
           if (!prev) {
             return [dialog];
@@ -100,7 +100,7 @@ const DialogueWindow = () => {
         setAnswers(dialog.answers.length > 0
           ? dialog.answers.map((answer, index) => ({
             ...answer,
-            id: index,
+            name: index,
           }))
           : []);
       }, 0);
@@ -108,7 +108,7 @@ const DialogueWindow = () => {
   }, [Event]);
   return (
     <div className={`dialogue ${isOpen ? ' dialogue--open' : ''}`}>
-      <h1 className="dialogue__title">{title}</h1>
+      <h2 className="dialogue__title">{title}</h2>
       <Scrollbar
         className="dialogue__content"
         noDefaultStyles
@@ -122,7 +122,7 @@ const DialogueWindow = () => {
           textBlocks={textBlocks}
           setButtonDisabled={setButtonDisabled}
           scrollBottom={scrollBottom}
-          toSkip
+          // toSkip
         />
       </Scrollbar>
       <div className="dialogue__buttons">
@@ -131,7 +131,7 @@ const DialogueWindow = () => {
           ? answers.map((answer) => (
             <Button
               invisible={buttonDisabled}
-              key={answer.id}
+              key={answer.name}
               onClick={() => {
                 addDialogue(answer.text, answer.goto);
                 activateEvents(answer.actions);

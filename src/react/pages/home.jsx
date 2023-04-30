@@ -2,15 +2,15 @@ import React from 'react';
 
 import './home.scss';
 
-import StageDom from '../organisms/stage';
 import DialogueWindow from '../organisms/dialogueWindow';
 import MiniDialogueWindow from '../organisms/miniDialogueWindow';
+import TitleWindow from '../organisms/titleWindow';
 
 const Home = () => (
   <div className="home">
-    <StageDom />
     <DialogueWindow />
     <MiniDialogueWindow />
+    <TitleWindow />
   </div>
 );
 

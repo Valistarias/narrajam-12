@@ -12,6 +12,14 @@
     color: var(--green-neon);
   }
 
+  &--theme-title {
+    font-family: var(--main-title-font);
+    font-size: 2rem;
+    letter-spacing: 1rem;
+    padding: 1rem;
+    text-transform: uppercase;
+  }
+
   &--disabled {
     opacity: .3;
     pointer-events: none;

@@ -1,0 +1,44 @@
+.titleWindow {
+  background-color: var(--black);
+  background-image: url('../../assets/imgs/backgroundtemp.jpg');
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+
+  &__menu {
+    background: var(--black-opaque);
+    border-right: .1rem solid var(--white-transparent);
+    display: flex;
+    flex-direction: column;
+    gap: 10rem;
+    height: 100%;
+    justify-content: space-evenly;
+    max-width: 80rem;
+    padding: 10rem;
+    width: 50%;
+
+    &__title {
+      border-bottom: .1rem solid var(--white-opaque);
+      margin: 0 auto;
+      padding-bottom: 2rem;
+      text-align: center;
+      width: 30rem;
+    }
+
+    &__text {
+      line-height: 2.5rem;
+    }
+
+    &__buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+    }
+
+    &__footer {
+      display: flex;
+      flex-direction: row;
+      gap: 4rem;
+    }
+  }
+}

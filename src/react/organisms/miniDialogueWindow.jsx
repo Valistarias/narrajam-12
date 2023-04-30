@@ -22,6 +22,8 @@ const MiniDialogueWindow = () => {
   const [title, setTitle] = useState('');
   const [answers, setAnswers] = useState([]);
 
+  const [, setvars] = useState({});
+
   const [hintVisible, setHintVisible] = useState(false);
   const [hintContent, setHintContent] = useState(null);
 
@@ -35,7 +37,7 @@ const MiniDialogueWindow = () => {
         const slicedEvt = evt.split(':');
         Event.dispatchEvent(new CustomEvent(slicedEvt[0], {
           detail: {
-            id: slicedEvt[1],
+            name: slicedEvt[1],
             ...(slicedEvt[2] ? { value: slicedEvt[2] } : null),
           },
         }));
@@ -85,17 +87,22 @@ const MiniDialogueWindow = () => {
       setAnswers([]);
       setTimeout(() => {
         setOpen(true);
-        const dialog = NarrativeEvents[detail.id];
+        const dialog = NarrativeEvents[detail.name];
         setText(curateAndDomifyText(dialog.text));
         setTitle(dialog.title);
         setAnswers(dialog.answers.length > 0
           ? dialog.answers.map((answer, index) => ({
             ...answer,
-            id: index,
+            name: index,
           }))
           : []);
       }, 0);
     });
+    Event.addEventListener('sendGlobalvars', ({ detail }) => {
+      console.log('detail', detail);
+      setvars(detail);
+    });
+    Event.dispatchEvent(new CustomEvent('sendGlobalvars'));
   }, [Event]);
   return (
     <div className={`mini-dialogue ${isOpen ? ' mini-dialogue--open' : ''}`}>
@@ -121,7 +128,7 @@ const MiniDialogueWindow = () => {
         answers.length > 0
           ? answers.map((answer) => (
             <Button
-              key={answer.id}
+              key={answer.name}
               onClick={() => {
                 activateEvents(answer.actions);
               }}
