@@ -2,11 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { EventProvider } from './Event';
+import { GlobalVarsProvider } from './GlobalVars';
 
 const Providers = ({ children }) => (
-  <EventProvider>
-    {children}
-  </EventProvider>
+  <GlobalVarsProvider>
+    <EventProvider>
+      {children}
+    </EventProvider>
+  </GlobalVarsProvider>
 );
 
 Providers.propTypes = {

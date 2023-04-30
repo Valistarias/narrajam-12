@@ -19,6 +19,8 @@ export const GlobalVarsProvider = ({ children }) => {
     });
   }, []);
 
+  console.log('vars', vars);
+
   const providerValues = useMemo(() => ({
     vars,
     updateVar,
