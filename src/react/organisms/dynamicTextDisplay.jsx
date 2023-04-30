@@ -4,8 +4,9 @@ import React, {
 import { PropTypes } from 'prop-types';
 import { curateText } from '../../utils';
 
-import './dynamicTextDisplay.scss';
 import { dryadDialogType } from '../types/dialogs';
+
+import './dynamicTextDisplay.scss';
 
 const DynamicTextDisplay = ({
   textBlocks, toSkip, setButtonDisabled, scrollBottom,

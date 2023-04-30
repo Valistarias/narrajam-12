@@ -49,6 +49,61 @@ h3 {
   display: inline-block;
 }
 
+.ScrollbarsCustom {
+  .ScrollbarsCustom-Wrapper {
+    inset: 0 10px 0 0;
+  }
+
+  .ScrollbarsCustom-Scroller {
+    inset: 0;
+    margin-right: -10px;
+    overflow: hidden scroll;
+    position: absolute;
+  }
+
+  .ScrollbarsCustom-Content {
+    box-sizing: border-box;
+    min-height: 100%;
+    min-width: 100%;
+    padding: 0.05px;
+  }
+
+  .ScrollbarsCustom-TrackY {
+    background: rgb(0 0 0 / 10%);
+    height: calc(100% - 20px);
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 10px;
+    user-select: none;
+    width: 10px;
+
+    .ScrollbarsCustom-Thumb {
+      background: var(--grey);
+      cursor: pointer;
+      width: 100%;
+    }
+  }
+
+  .ScrollbarsCustom-TrackX {
+    background: rgb(0 0 0 / 10%);
+    bottom: 0;
+    display: none;
+    height: 10px;
+    left: 10px;
+    overflow: hidden;
+    position: absolute;
+    user-select: none;
+    width: calc(100% - 20px);
+
+    .ScrollbarsCustom-Thumb  {
+      background: var(--grey);
+      cursor: pointer;
+      height: 100%;
+    }
+  }
+}
+
 @keyframes horizontal-shaking {
   0% { transform: translateY(0) }
   25% { transform: translateY(.1rem) }

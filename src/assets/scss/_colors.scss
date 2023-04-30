@@ -1,4 +1,5 @@
 $black: #000;
+$grey: #555;
 $green-neon: #9bffa9;
 $white: #fff;
 
@@ -7,6 +8,8 @@ $white: #fff;
   --black-opaque:#{$black}000f7;
   --black-transparent:#{$black}0;
   --white:#{$white};
+  --grey:#{$grey};
   --white-opaque:#{$white}7;
+  --white-transparent:#{$white}fff06;
   --green-neon: #{$green-neon}
 }

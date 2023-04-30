@@ -5,6 +5,7 @@ import React, {
   useState,
 } from 'react';
 import Button from '../molecules/button';
+import { Scrollbar } from 'react-scrollbars-custom';
 import { useEvent } from '../../providers/Event';
 
 import DryadDialog from '../../assets/texts/dryadDialogue';
@@ -78,14 +79,30 @@ const DialogueWindow = () => {
   return (
     <div className={`dialogue ${isOpen ? ' dialogue--open' : ''}`}>
       <h1 className="dialogue__title"> Dialogue </h1>
-      <div className="dialogue__content" ref={scrollRef}>
+      <Scrollbar
+          className="dialogue__content"
+          noDefaultStyles
+          style={{
+            width: '100%',
+            height: '100%',
+          }}
+          ref={scrollRef}
+        >
+          <DynamicTextDisplay
+            textBlocks={textBlocks}
+            setButtonDisabled={setButtonDisabled}
+            scrollBottom={scrollBottom}
+            toSkip
+          />
+        </Scrollbar>
+      {/* <div className="dialogue__content" ref={scrollRef}>
         <DynamicTextDisplay
           textBlocks={textBlocks}
           setButtonDisabled={setButtonDisabled}
           scrollBottom={scrollBottom}
           toSkip
         />
-      </div>
+      </div> */}
       <div className="dialogue__buttons">
         {
         answers.length > 0
