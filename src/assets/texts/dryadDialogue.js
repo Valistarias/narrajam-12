@@ -1,10 +1,12 @@
-// CODES
-// Inside the text:
+// PUNCTUATION -------------
 // <br/>: new line
-// ** ... **: bold
-// * ... **: italic
-// *** ... ***: bold italic
-// **** ... ****: angry text
+// ** ... ** -> bold
+// * ... ** -> italic
+// *** ... *** -> bold italic
+// **** ... **** -> angry text
+
+// ACTIONS -------------
+// story:xxx -> new story event triggered, with is as xxx
 
 const beginningTest = {
   begining: {
@@ -20,7 +22,7 @@ const beginningTest = {
       },
       {
         text: '911, it,s an *emergency*',
-        actions: [],
+        actions: ['story:1'],
       },
       {
         text: 'Deus Vult ?',
@@ -30,9 +32,15 @@ const beginningTest = {
     ],
   },
   _beginning__fuck: {
-    text: 'Pellentesque accumsan auctor bibendum. Suspendisse porta suscipit nisl, ut tincidunt enim feugiat nec. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse ornare lacus sit amet metus luctus tempus non non ante. Vestibulum scelerisque non enim at faucibus. Curabitur fermentum quam eu dignissim iaculis.<l/>Integer congue, lectus in blandit commodo, risus lorem auctor felis, et auctor ex erat eu nisi. Proin augue leo, fringilla nec velit sit amet, suscipit porta magna. Nunc sit amet arcu bibendum, aliquet libero id, semper velit.',
+    text: 'Pellentesque accumsan auctor bibendum.',
     speaker: 'regulardude',
     speakerName: 'A Guy',
+    answers: [
+      {
+        text: '...',
+        actions: ['story:1'],
+      },
+    ],
   },
   _beginning__deus: {
     text: 'Pellentesque accumsan auctor bibendum. Suspendisse porta suscipit nisl, ut tincidunt enim feugiat nec. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse ornare lacus sit amet metus luctus tempus non non ante. Vestibulum scelerisque non enim at faucibus. Curabitur fermentum quam eu dignissim iaculis.<l/>Integer congue, lectus in blandit commodo, risus lorem auctor felis, et auctor ex erat eu nisi. Proin augue leo, fringilla nec velit sit amet, suscipit porta magna. Nunc sit amet arcu bibendum, aliquet libero id, semper velit.',
@@ -41,7 +49,7 @@ const beginningTest = {
     answers: [
       {
         text: '*Slowly back off*',
-        actions: [],
+        actions: ['story:1'],
       },
       {
         text: 'Yeah, right... Can you repeat the question ?',

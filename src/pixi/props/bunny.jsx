@@ -15,7 +15,7 @@ class Bunny extends PixiProp {
 
     this.app.stage.addChild(this.sprite);
 
-    this.subscribeToEvents({ types: ['test'] });
+    this.subscribeToEvents({ types: ['story'] });
 
     this.sprite.onclick = () => {
       if (!this.vars.getGlobal('pause')) {
@@ -31,9 +31,9 @@ class Bunny extends PixiProp {
   }
 
   onEvent(type) {
-    if (type === 'test') {
+    if (type === 'story') {
       this.sprite.tint = 0xFF0000;
-      this.vars.setGlobal({ name: 'speed', value: 1 });
+      this.vars.setGlobal({ name: 'pause', value: false });
     }
   }
 }

@@ -4,8 +4,8 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import Button from '../molecules/button';
 import { Scrollbar } from 'react-scrollbars-custom';
+import Button from '../molecules/button';
 import { useEvent } from '../../providers/Event';
 
 import DryadDialog from '../../assets/texts/dryadDialogue';
@@ -28,81 +28,92 @@ const DialogueWindow = () => {
     scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
   }, []);
 
-  const addDialogue = useCallback((text, goto) => {
-    const dialogs = [];
-    dialogs.push({
-      text,
-      speaker: 'player',
-      speakerName: 'You',
-    });
-    const dialog = DryadDialog[goto];
-    dialogs.push(dialog);
-    setTextBlocks((prev) => {
-      if (!prev) {
-        return [dialogs];
-      }
-      const next = [
-        ...prev,
-        ...dialogs,
-      ];
-      return next;
-    });
-    setAnswers(dialog.answers?.length > 0
-      ? dialog.answers.map((answer, index) => ({
-        ...answer,
-        id: index,
-      }))
-      : []);
-  }, []);
+  const activateEvents = useCallback((events) => {
+    if (events && events.length > 0) {
+      events.forEach((evt) => {
+        const slicedEvt = evt.split(':');
+        Event.dispatchEvent(new CustomEvent(slicedEvt[0], {
+          detail: { id: slicedEvt[1] },
+        }));
+      });
+    }
+  }, [Event]);
 
-  useEffect(() => {
-    if (!Event) { return; }
-    Event.addEventListener('openDialogue', ({ detail }) => {
-      setOpen(true);
-      const dialog = DryadDialog[detail.id];
+  const addDialogue = useCallback((text, goto) => {
+    if (goto) {
+      const dialogs = [];
+      dialogs.push({
+        text,
+        speaker: 'player',
+        speakerName: 'You',
+      });
+      const dialog = DryadDialog[goto];
+      dialogs.push(dialog);
       setTextBlocks((prev) => {
         if (!prev) {
-          return [dialog];
+          return [dialogs];
         }
-        const next = [...prev];
-        next.push(dialog);
+        const next = [
+          ...prev,
+          ...dialogs,
+        ];
         return next;
       });
-      setAnswers(dialog.answers.length > 0
+      setAnswers(dialog.answers?.length > 0
         ? dialog.answers.map((answer, index) => ({
           ...answer,
           id: index,
         }))
         : []);
+    } else {
+      setOpen(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!Event) { return; }
+    Event.addEventListener('openDialogue', ({ detail }) => {
+      setTextBlocks([]);
+      setAnswers([]);
+      setTimeout(() => {
+        setOpen(true);
+        const dialog = DryadDialog[detail.id];
+        setTextBlocks((prev) => {
+          if (!prev) {
+            return [dialog];
+          }
+          const next = [...prev];
+          next.push(dialog);
+          return next;
+        });
+        setAnswers(dialog.answers.length > 0
+          ? dialog.answers.map((answer, index) => ({
+            ...answer,
+            id: index,
+          }))
+          : []);
+      }, 0);
     });
   }, [Event]);
   return (
     <div className={`dialogue ${isOpen ? ' dialogue--open' : ''}`}>
       <h1 className="dialogue__title"> Dialogue </h1>
       <Scrollbar
-          className="dialogue__content"
-          noDefaultStyles
-          style={{
-            width: '100%',
-            height: '100%',
-          }}
-          ref={scrollRef}
-        >
-          <DynamicTextDisplay
-            textBlocks={textBlocks}
-            setButtonDisabled={setButtonDisabled}
-            scrollBottom={scrollBottom}
-            toSkip
-          />
-        </Scrollbar>
-      {/* <div className="dialogue__content" ref={scrollRef}>
+        className="dialogue__content"
+        noDefaultStyles
+        style={{
+          width: '100%',
+          height: '100%',
+        }}
+        ref={scrollRef}
+      >
         <DynamicTextDisplay
           textBlocks={textBlocks}
           setButtonDisabled={setButtonDisabled}
           scrollBottom={scrollBottom}
           toSkip
         />
-      </div> */}
+      </Scrollbar>
       <div className="dialogue__buttons">
         {
         answers.length > 0
@@ -112,6 +123,7 @@ const DialogueWindow = () => {
               key={answer.id}
               onClick={() => {
                 addDialogue(answer.text, answer.goto);
+                activateEvents(answer.actions);
               }}
             >
               {curateAndDomifyText(answer.text)}
@@ -121,9 +133,6 @@ const DialogueWindow = () => {
             <Button
               invisible={buttonDisabled}
               onClick={() => {
-                Event.dispatchEvent(new CustomEvent('test', {
-                  detail: { text: 'coucou' },
-                }));
                 setOpen(false);
               }}
             >

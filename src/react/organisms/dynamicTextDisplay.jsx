@@ -69,6 +69,7 @@ const DynamicTextDisplay = ({
   useEffect(() => {
     if (textBlocks.length === 0 && curatedTextBlocks.length !== 0) {
       setCuratedTextBlocks([]);
+      dynamicDisplayDom.current.innerHTML = '';
     } else if (textBlocks.length !== curatedTextBlocks.length) {
       const textDifference = textBlocks.length - curatedTextBlocks.length;
       let wordsToAdd = [];
