@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Application, autoDetectRenderer } from 'pixi.js';
+import { Application } from 'pixi.js';
 import Loader from '../../pixi/loader';
 
 import GlobalVars from '../../pixi/globalVars';

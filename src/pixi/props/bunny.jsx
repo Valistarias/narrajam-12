@@ -18,13 +18,15 @@ class Bunny extends PixiProp {
     this.subscribeToEvents({ types: ['test'] });
 
     this.sprite.onclick = () => {
-      this.sentEvent({ type: 'openDialogue', payload: { id: 1 } });
-      this.vars.setGlobal({ name: 'speed', value: 0 });
+      if (!this.vars.getGlobal('pause')) {
+        this.sentEvent({ type: 'openDialogue', payload: { id: 'begining' } });
+        this.vars.setGlobal({ name: 'pause', value: true });
+      }
     };
 
     this.app.ticker.add(() => {
       // each frame we spin the this.sprite around a bit
-      this.sprite.rotation += 0.01 * (this.vars.getGlobal('speed') ?? 1);
+      this.sprite.rotation += 0.01 * (this.vars.getGlobal('pause') ? 0 : 1);
     });
   }
 

@@ -1,0 +1,17 @@
+.dynamic-display {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+
+  &__text-block {
+    &__title {
+      letter-spacing: .2rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+
+    &--player {
+      text-align: right;
+    }
+  }
+}

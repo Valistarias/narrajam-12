@@ -11,6 +11,7 @@ const Button = ({
   onClick,
   preventDefault,
   disabled,
+  invisible,
   theme,
 }) => (
   <button
@@ -19,6 +20,7 @@ const Button = ({
     ${className ?? ''}
     button--theme-${theme}
     ${disabled ? ' button--disabled' : ''}
+    ${invisible ? ' button--invisible' : ''}
   `)}
     type={submit ? 'submit' : 'button'}
     onClick={(e) => {
@@ -38,6 +40,7 @@ Button.propTypes = {
   onClick: PropTypes.func.isRequired,
   preventDefault: PropTypes.bool,
   disabled: PropTypes.bool,
+  invisible: PropTypes.bool,
 };
 
 Button.defaultProps = {
@@ -46,6 +49,7 @@ Button.defaultProps = {
   theme: 'basic',
   className: '',
   disabled: false,
+  invisible: false,
 };
 
 export default Button;
