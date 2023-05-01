@@ -1,5 +1,5 @@
 import React, {
-  useCallback, useEffect, useMemo, useState,
+  useEffect, useMemo, useState,
 } from 'react';
 
 import { useGlobalVars } from '../../providers/GlobalVars';
@@ -11,10 +11,13 @@ import { useEvent } from '../../providers/Event';
 const DryadWindow = () => {
   const [visible, setVisible] = useState(false);
 
-  const { vars, displayedScreen, isActualStep } = useGlobalVars();
+  const {
+    vars, displayedScreen, isActualStep, goToNextDay,
+  } = useGlobalVars();
   const { Event } = useEvent();
 
   const dialogByDay = useMemo(() => {
+    if (!isActualStep('dryad')) { return null; }
     switch (vars.day) {
       case 0: {
         return 'begining';
@@ -24,7 +27,7 @@ const DryadWindow = () => {
         return null;
       }
     }
-  }, [vars?.day]);
+  }, [vars?.day, isActualStep]);
 
   useEffect(() => {
     setVisible(displayedScreen === 'game' && isActualStep('dryad'));
@@ -35,16 +38,24 @@ const DryadWindow = () => {
         },
       }));
     }
-  }, [vars?.stepCycle, displayedScreen, isActualStep, dialogByDay, Event]);
+    Event.addEventListener('closeDialogue', () => {
+      goToNextDay();
+    });
+  }, [
+    vars?.stepCycle,
+    displayedScreen,
+    isActualStep,
+    dialogByDay,
+    Event,
+    goToNextDay,
+  ]);
 
   return (
     <div className={classTrim(`
       dryadWindow
       ${visible ? ' dryadWindow--visible' : ''}
     `)}
-    >
-      <p>Coucou</p>
-    </div>
+    />
   );
 };
 

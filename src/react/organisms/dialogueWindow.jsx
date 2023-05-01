@@ -76,8 +76,9 @@ const DialogueWindow = () => {
         : []);
     } else {
       setOpen(false);
+      Event.dispatchEvent(new CustomEvent('closeDialogue'));
     }
-  }, []);
+  }, [Event]);
 
   useEffect(() => {
     if (!Event) { return; }
@@ -124,7 +125,7 @@ const DialogueWindow = () => {
           textBlocks={textBlocks}
           setButtonDisabled={setButtonDisabled}
           scrollBottom={scrollBottom}
-          // toSkip
+          toSkip
         />
       </Scrollbar>
       <div className="dialogue__buttons">

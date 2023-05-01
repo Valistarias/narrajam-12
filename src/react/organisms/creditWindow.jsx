@@ -27,6 +27,18 @@ const CreditWindow = () => {
           <span className="creditWindow__list__main__title">Game Design</span>
           <span className="creditWindow__list__main__name">Thomas de Mot</span>
         </li>
+        <li className="creditWindow__list__main">
+          <span className="creditWindow__list__main__title">Game Art</span>
+          <span className="creditWindow__list__main__name">Viviane Bicaba</span>
+        </li>
+        <li className="creditWindow__list__main">
+          <span className="creditWindow__list__main__title">Development</span>
+          <span className="creditWindow__list__main__name">Victor Mallet</span>
+        </li>
+        <li className="creditWindow__list__main">
+          <span className="creditWindow__list__main__title">Sound Design / Music</span>
+          <span className="creditWindow__list__main__name">Francois Guyon</span>
+        </li>
       </ul>
       <h3 className="creditWindow__participants">Special Thanks To</h3>
       <ul className="creditWindow__list">

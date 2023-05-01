@@ -7,6 +7,7 @@ import MiniDialogueWindow from '../organisms/miniDialogueWindow';
 import TitleWindow from '../organisms/titleWindow';
 import CreditWindow from '../organisms/creditWindow';
 import DryadWindow from '../organisms/dryadWindow';
+import RecapWindow from '../organisms/recapWindow';
 
 const Home = () => (
   <div className="home">
@@ -14,6 +15,7 @@ const Home = () => (
     <MiniDialogueWindow />
     <TitleWindow />
     <DryadWindow />
+    <RecapWindow />
     <CreditWindow />
   </div>
 );

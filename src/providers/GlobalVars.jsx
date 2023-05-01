@@ -9,6 +9,8 @@ const GlobalVarsContext = React.createContext();
 
 export const GlobalVarsProvider = ({ children }) => {
   const [vars, setVars] = useState({
+    nectar: 0,
+    flower: 0,
     day: 0,
     stepCycle: 3,
   });

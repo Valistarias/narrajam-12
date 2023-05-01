@@ -32,7 +32,7 @@ const beginningTest = {
       },
       {
         text: '911, it,s an *emergency*',
-        actions: ['story:1'],
+        actions: [],
       },
       {
         text: 'Deus Vult ?',
@@ -54,7 +54,7 @@ const beginningTest = {
     answers: [
       {
         text: '...',
-        actions: ['story:1'],
+        actions: [],
       },
     ],
   },
@@ -65,7 +65,7 @@ const beginningTest = {
     answers: [
       {
         text: '*Slowly back off*',
-        actions: ['story:1'],
+        actions: [],
       },
       {
         text: 'Yeah, right... Can you repeat the question ?',
