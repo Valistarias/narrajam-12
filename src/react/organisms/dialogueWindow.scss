@@ -1,6 +1,5 @@
 .dialogue {
   background: var(--black-opaque);
-  border-left: .1rem solid var(--white-opaque);
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -14,6 +13,17 @@
   transition: transform .6s ease;
   width: 60rem;
   z-index: 1;
+
+  &::after {
+    border: .1rem solid var(--white-opaque);
+    content: '';
+    height: calc(100% - 4rem);
+    left: 2rem;
+    pointer-events: none;
+    position: absolute;
+    top: 2rem;
+    width: calc(100% - 4rem);
+  }
 
   &--open {
     pointer-events: all;

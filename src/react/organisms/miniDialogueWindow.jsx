@@ -8,8 +8,8 @@ import { Scrollbar } from 'react-scrollbars-custom';
 import Button from '../molecules/button';
 import { useEvent } from '../../providers/Event';
 
-import NarrativeEvents from '../../assets/texts/narrativeEvents';
-import VarNames from '../../assets/texts/varNames';
+import NarrativeEvents from '../../assets/data/narrativeEvents';
+import VarNames from '../../assets/data/varNames';
 
 import { curateAndDomifyText } from '../../utils';
 
@@ -99,7 +99,6 @@ const MiniDialogueWindow = () => {
       }, 0);
     });
     Event.addEventListener('sendGlobalvars', ({ detail }) => {
-      console.log('detail', detail);
       setvars(detail);
     });
     Event.dispatchEvent(new CustomEvent('sendGlobalvars'));

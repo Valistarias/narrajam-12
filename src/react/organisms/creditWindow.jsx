@@ -22,14 +22,13 @@ const CreditWindow = () => {
     >
       <h2 className="creditWindow__title">Credits</h2>
       <p className="creditWindow__sub">Proudly made with React</p>
-      <h3 className="creditWindow__paricipants">Participants</h3>
       <ul className="creditWindow__list">
         <li className="creditWindow__list__main">
           <span className="creditWindow__list__main__title">Game Design</span>
           <span className="creditWindow__list__main__name">Thomas de Mot</span>
         </li>
       </ul>
-      <h3 className="creditWindow__paricipants">Special Thanks To</h3>
+      <h3 className="creditWindow__participants">Special Thanks To</h3>
       <ul className="creditWindow__list">
         <li className="creditWindow__list__sub">Philippe Vandemoere</li>
         <li className="creditWindow__list__sub">Helly Demekin</li>

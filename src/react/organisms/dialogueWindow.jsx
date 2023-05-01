@@ -8,7 +8,7 @@ import { Scrollbar } from 'react-scrollbars-custom';
 import Button from '../molecules/button';
 import { useEvent } from '../../providers/Event';
 
-import DryadDialog from '../../assets/texts/dryadDialogue';
+import DryadDialog from '../../assets/data/dryadDialogue';
 
 import './dialogueWindow.scss';
 import DynamicTextDisplay from './dynamicTextDisplay';
@@ -43,14 +43,16 @@ const DialogueWindow = () => {
     }
   }, [Event]);
 
-  const addDialogue = useCallback((text, goto) => {
+  const addDialogue = useCallback((text, goto, continueButton) => {
     if (goto) {
       const dialogs = [];
-      dialogs.push({
-        text,
-        speaker: 'player',
-        speakerName: 'You',
-      });
+      if (!continueButton) {
+        dialogs.push({
+          text,
+          speaker: 'player',
+          speakerName: 'You',
+        });
+      }
       const dialog = DryadDialog[goto];
       dialogs.push(dialog);
       setTextBlocks((prev) => {
@@ -133,11 +135,11 @@ const DialogueWindow = () => {
               invisible={buttonDisabled}
               key={answer.name}
               onClick={() => {
-                addDialogue(answer.text, answer.goto);
+                addDialogue(answer.text, answer.goto, answer.continueButton);
                 activateEvents(answer.actions);
               }}
             >
-              {curateAndDomifyText(answer.text)}
+              {curateAndDomifyText({ text: answer.text })}
             </Button>
           ))
           : (

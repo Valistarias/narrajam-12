@@ -1,11 +1,14 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import './titleWindow.scss';
 import Button from '../molecules/button';
 import { useGlobalVars } from '../../providers/GlobalVars';
+import { classTrim } from '../../utils';
 
 const TitleWindow = () => {
-  const { vars, updateVar } = useGlobalVars();
+  const { displayedScreen, setDisplayedScreen, updateVar } = useGlobalVars();
+
+  const [visible, setVisible] = useState(true);
 
   const onCreditClick = useCallback(() => {
     updateVar({
@@ -14,19 +17,30 @@ const TitleWindow = () => {
     });
   }, [updateVar]);
 
+  useEffect(() => {
+    setVisible(displayedScreen === 'title');
+  }, [displayedScreen]);
+
   return (
-    <div className="titleWindow">
+    <div className={classTrim(`
+      titleWindow
+      ${visible ? ' titleWindow--visible' : ''}
+    `)}
+    >
       <div className="titleWindow__menu">
         <div className="titleWindow__menu__title">
           <h1 className="titleWindow__menu__title__main">Title</h1>
           <p className="titleWindow__menu__title__sub">The very best subtitle there is</p>
         </div>
-        <div className='titleWindow__menu__text'>
-          <p className='titleWindow__menu__text__content'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae enim lacus. Integer blandit tellus vel ornare consectetur. Fusce sed ex nunc. Cras eget odio urna. Duis ullamcorper nunc vel commodo lacinia. Nullam finibus fringilla quam, sed maximus leo consequat vitae. Sed id est gravida, vehicula nisl interdum, viverra urna. Etiam posuere tortor a nibh pulvinar, eget convallis massa interdum. Integer sed finibus lectus. Fusce consectetur tincidunt erat vel vehicula.</p>
+        <div className="titleWindow__menu__text">
+          <p className="titleWindow__menu__text__content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae enim lacus. Integer blandit tellus vel ornare consectetur. Fusce sed ex nunc. Cras eget odio urna. Duis ullamcorper nunc vel commodo lacinia. Nullam finibus fringilla quam, sed maximus leo consequat vitae. Sed id est gravida, vehicula nisl interdum, viverra urna. Etiam posuere tortor a nibh pulvinar, eget convallis massa interdum. Integer sed finibus lectus. Fusce consectetur tincidunt erat vel vehicula.</p>
         </div>
-        <div className='titleWindow__menu__buttons'>
+        <div className="titleWindow__menu__buttons">
           <Button
             theme="title"
+            onClick={() => {
+              setDisplayedScreen('game');
+            }}
           >
             Play
           </Button>
@@ -42,9 +56,9 @@ const TitleWindow = () => {
             Credits
           </Button>
         </div>
-        <div className='titleWindow__menu__footer'>
-          <p className='titleWindow__menu__footer__text'>A Narrative Driven Game Jam Experience</p>
-          <p className='titleWindow__menu__footer__text'>04|2023</p>
+        <div className="titleWindow__menu__footer">
+          <p className="titleWindow__menu__footer__text">A Narrative Driven Game Jam Experience</p>
+          <p className="titleWindow__menu__footer__text">04|2023</p>
         </div>
       </div>
     </div>

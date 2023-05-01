@@ -2,7 +2,9 @@
 /* eslint-disable import/prefer-default-export */
 import React from 'react';
 
-export const classTrim = (elt) => elt.replace(/\n {2,}/g, ' ').replace(/\s+/g, ' ').trim();
+export const fullTrim = (elt) => elt.replace(/\s+/g, ' ').trim();
+
+export const classTrim = (elt) => fullTrim(elt.replace(/\n {2,}/g, ' '));
 
 export const isArrayEqual = (arr1, arr2) => {
   if (arr1.length !== arr2.length) { return false; }
@@ -34,8 +36,57 @@ export const testNumber = (number) => {
   return regex.test(Number(number));
 };
 
-export const curateText = (basicString, speaker, speakerName) => {
+const checkCondition = ({
+  conditions,
+  // vars,
+  income,
+  hybridationIds,
+}) => {
+  let conditionBool = true;
+  const advantageHybridations = income._tribe >= income._dryad ? 'tribe' : 'dryad';
+  conditions.forEach((condition) => {
+    const slicedCondition = condition.split(':');
+    if (slicedCondition[0] === 'hybridCount') {
+      conditionBool &&= slicedCondition[1] === advantageHybridations;
+    }
+    if (slicedCondition[0] === 'hybridation') {
+      conditionBool &&= hybridationIds.includes(slicedCondition[1]);
+    }
+  });
+  return conditionBool;
+};
+
+export const curateText = ({
+  text,
+  speaker,
+  speakerName,
+  vars,
+  income,
+  hybridationIds,
+}) => {
+  // Need to stringify with the right fields
+  let basicString = '';
+  if (Array.isArray(text)) {
+    text.forEach((singleText) => {
+      if (
+        (singleText.condition && checkCondition({
+          conditions: singleText.conditions,
+          vars,
+          income,
+          hybridationIds,
+        }))
+        || !singleText.condition
+        || singleText.condition.length === 0
+      ) {
+        basicString += ` ${singleText.text ?? singleText} `;
+      }
+    });
+    basicString = fullTrim(basicString);
+  } else {
+    basicString = text;
+  }
   const curatedText = [];
+
   // Curate Basic Markdown
   const croppedBasic = basicString.split(/((?:\*{1})+)/);
   let bold = false;
@@ -72,8 +123,8 @@ export const curateText = (basicString, speaker, speakerName) => {
   return curatedText;
 };
 
-export const curateAndDomifyText = (basicString, speaker) => {
-  const curatedText = curateText(basicString, speaker);
+export const curateAndDomifyText = (props) => {
+  const curatedText = curateText(props);
   const regroupedText = [];
   let noSpace = true;
   let actualGroup = null;

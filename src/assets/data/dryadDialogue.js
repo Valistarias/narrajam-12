@@ -6,12 +6,22 @@
 // **** ... **** -> angry text
 
 // ACTIONS -------------
-// story:xxx -> new story event triggered, with is as xxx
+// story:xxx (CHANGE) -> new story event triggered, with is as xxx
+// var:xxx:yyy (CHANGE) -> change global variable xxx with value yyy
+// hybridCount:xxx (IF) -> xxx is equal to 'tribe' or 'dryad', and display the most advanced path
+// hybridation:xxx ( IF) -> xxx is equal to an hybridation id
 
 const beginningTest = {
   begining: {
     title: 'A peculiar meeting',
-    text: '***Lorem ipsum dolor sit amet***, consectetur adipiscing elit. Praesent interdum ultrices enim, vel hendrerit odio rhoncus at. Donec sagittis bibendum ex vitae blandit.<br/>Vivamus et risus nunc.<br/><br/>****Fuck !****<br/><br/>In consequat scelerisque molestie. Ut sit amet erat lacus. **Ut cursus** velit fermentum libero pellentesque, vitae feugiat justo viverra. *Duis vel lectus nisl !* Donec nec accumsan odio. Duis ac quam eu tellus congue tempor.',
+    text: [
+      '***Lorem ipsum dolor sit amet***, consectetur adipiscing elit. Praesent interdum ultrices enim, vel hendrerit odio rhoncus at.',
+      {
+        text: ' Il fait bo.',
+        conditions: ['hybridCount:tribe', 'hybridation:xxx'],
+      },
+      'Donec sagittis bibendum ex vitae blandit.<br/>Vivamus et risus nunc.<br/><br/>****Fuck !****<br/><br/>In consequat scelerisque molestie. Ut sit amet erat lacus. **Ut cursus** velit fermentum libero pellentesque, vitae feugiat justo viverra. *Duis vel lectus nisl !* Donec nec accumsan odio. Duis ac quam eu tellus congue tempor.',
+    ],
     speaker: 'regulardude',
     speakerName: 'A Guy',
     answers: [
@@ -27,6 +37,12 @@ const beginningTest = {
       {
         text: 'Deus Vult ?',
         goto: '_beginning__deus',
+        actions: [],
+      },
+      {
+        text: 'Continue',
+        goto: '_beginning__deus',
+        continueButton: true,
         actions: [],
       },
     ],

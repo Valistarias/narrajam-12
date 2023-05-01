@@ -7,10 +7,13 @@ import { curateText } from '../../utils';
 import { dryadDialogType } from '../types/dialogs';
 
 import './dynamicTextDisplay.scss';
+import { useGlobalVars } from '../../providers/GlobalVars';
 
 const DynamicTextDisplay = ({
   textBlocks, toSkip, setButtonDisabled, scrollBottom,
 }) => {
+  const { vars, income, hybridationIds } = useGlobalVars();
+
   const [curatedTextBlocks, setCuratedTextBlocks] = useState([]);
 
   const actualBlock = useRef(false);
@@ -40,11 +43,11 @@ const DynamicTextDisplay = ({
       actualBlock.current = newBlock;
       actualSpeaker.current = actualWord.speaker;
 
-      const newTitle = document.createElement('h2');
-      newTitle.innerText = actualWord.speakerName;
-      newTitle.className = 'dynamic-display__text-block__title';
+      // const newTitle = document.createElement('h2');
+      // newTitle.innerText = actualWord.speakerName;
+      // newTitle.className = 'dynamic-display__text-block__title';
 
-      newBlock.appendChild(newTitle);
+      // newBlock.appendChild(newTitle);
       dynamicDisplayDom.current.appendChild(newBlock);
       delayNewMessage = true;
     }
@@ -77,11 +80,12 @@ const DynamicTextDisplay = ({
         const curatedTextBlocksToAdd = textBlocks[i];
         wordsToAdd = [
           ...wordsToAdd,
-          ...(curateText(
-            curatedTextBlocksToAdd.text,
-            curatedTextBlocksToAdd.speaker,
-            curatedTextBlocksToAdd.speakerName,
-          )),
+          ...(curateText({
+            ...curatedTextBlocksToAdd,
+            vars,
+            income,
+            hybridationIds,
+          })),
         ];
       }
       let needToRelaunchLoop = false;
@@ -100,7 +104,15 @@ const DynamicTextDisplay = ({
       }
       setCuratedTextBlocks(textBlocks);
     }
-  }, [curatedTextBlocks, textBlocks, displayLoopWords, setButtonDisabled]);
+  }, [
+    curatedTextBlocks,
+    textBlocks,
+    displayLoopWords,
+    setButtonDisabled,
+    vars,
+    income,
+    hybridationIds,
+  ]);
 
   return (
     <div className="dynamic-display" ref={dynamicDisplayDom} />

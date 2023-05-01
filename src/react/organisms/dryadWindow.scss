@@ -1,0 +1,19 @@
+.dryadWindow {
+  background-color: var(--black);
+  background-image: url('../../assets/imgs/backgroundtemp.jpg');
+  background-size: cover;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  transition: opacity 1s ease;
+  width: 100%;
+
+  &--visible {
+    opacity: 1;
+    pointer-events: all;
+    transition: opacity 1s ease 1.1s;
+  }
+}
