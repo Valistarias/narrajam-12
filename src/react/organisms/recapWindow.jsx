@@ -62,7 +62,6 @@ const RecapWindow = () => {
         return 'The Plague has killed so many tonight. We shall never survive this.';
       }
       default: {
-        console.error('NOT AN OFFICIAL DAY', vars?.day);
         return 'What a strange day it is...';
       }
     }

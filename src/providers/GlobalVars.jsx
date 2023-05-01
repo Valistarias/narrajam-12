@@ -11,6 +11,7 @@ export const GlobalVarsProvider = ({ children }) => {
   const [vars, setVars] = useState({
     nectar: 0,
     flower: 0,
+    timeBlock: 0,
     day: 0,
     stepCycle: 3,
   });
@@ -112,6 +113,7 @@ export const GlobalVarsProvider = ({ children }) => {
       next.day += 1;
       nextDay = next.day;
       next.stepCycle = 0;
+      next.timeBlock = 0;
       return next;
     });
     setTribes((prev) => {
@@ -148,6 +150,18 @@ export const GlobalVarsProvider = ({ children }) => {
     });
   }, []);
 
+  const goToNextBlock = useCallback(() => {
+    if (vars.timeBlock === 2) {
+      goToNextCycle();
+    } else {
+      setVars((prev) => {
+        const next = { ...prev };
+        next.timeBlock += 1;
+        return next;
+      });
+    }
+  }, [vars?.timeBlock, goToNextCycle]);
+
   const providerValues = useMemo(() => ({
     vars,
     income,
@@ -160,6 +174,7 @@ export const GlobalVarsProvider = ({ children }) => {
     isActualStep,
     goToNextDay,
     goToNextCycle,
+    goToNextBlock,
   }), [
     vars,
     income,
@@ -171,6 +186,7 @@ export const GlobalVarsProvider = ({ children }) => {
     isActualStep,
     goToNextDay,
     goToNextCycle,
+    goToNextBlock,
   ]);
 
   return (
@@ -197,6 +213,7 @@ export const useGlobalVars = () => {
     isActualStep,
     goToNextDay,
     goToNextCycle,
+    goToNextBlock,
   } = useContext(GlobalVarsContext);
 
   return {
@@ -211,5 +228,6 @@ export const useGlobalVars = () => {
     isActualStep,
     goToNextDay,
     goToNextCycle,
+    goToNextBlock,
   };
 };
