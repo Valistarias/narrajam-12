@@ -38,9 +38,6 @@ const DryadWindow = () => {
         },
       }));
     }
-    Event.addEventListener('closeDialogue', () => {
-      goToNextDay();
-    });
   }, [
     vars?.stepCycle,
     displayedScreen,
@@ -49,6 +46,12 @@ const DryadWindow = () => {
     Event,
     goToNextDay,
   ]);
+
+  useEffect(() => {
+    Event.addEventListener('closeDialogue', () => {
+      goToNextDay();
+    });
+  }, [Event, goToNextDay]);
 
   return (
     <div className={classTrim(`

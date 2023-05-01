@@ -109,6 +109,7 @@ const DialogueWindow = () => {
       }, 0);
     });
   }, [Event]);
+
   return (
     <div className={`dialogue ${isOpen ? ' dialogue--open' : ''}`}>
       <h2 className="dialogue__title">{title}</h2>

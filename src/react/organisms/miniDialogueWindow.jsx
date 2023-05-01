@@ -103,6 +103,7 @@ const MiniDialogueWindow = () => {
     });
     Event.dispatchEvent(new CustomEvent('sendGlobalvars'));
   }, [Event]);
+
   return (
     <div className={`mini-dialogue ${isOpen ? ' mini-dialogue--open' : ''}`}>
       <h1 className="mini-dialogue__title">{title}</h1>
