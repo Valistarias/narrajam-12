@@ -2,8 +2,8 @@ import React from 'react';
 
 import './home.scss';
 
-import DialogueWindow from '../organisms/dialogueWindow';
-import MiniDialogueWindow from '../organisms/miniDialogueWindow';
+import DialogueWindow from '../organisms/components/dialogueWindow';
+import MiniDialogueWindow from '../organisms/components/miniDialogueWindow';
 import TitleWindow from '../organisms/titleWindow';
 import CreditWindow from '../organisms/creditWindow';
 import DryadWindow from '../organisms/dryadWindow';

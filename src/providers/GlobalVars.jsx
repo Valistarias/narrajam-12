@@ -70,6 +70,14 @@ export const GlobalVarsProvider = ({ children }) => {
     'dryad',
   ], []);
 
+  const totalPop = useMemo(() => {
+    let pop = 0;
+    Object.keys(tribes).forEach((tribeId) => {
+      pop += tribes[tribeId]?.people || 0;
+    });
+    return pop;
+  }, [tribes]);
+
   const isActualStep = useCallback((targetedCycle) => {
     const index = screenCycle.findIndex((cycle) => cycle === targetedCycle);
     return index === vars.stepCycle;
@@ -166,6 +174,7 @@ export const GlobalVarsProvider = ({ children }) => {
     vars,
     income,
     tribes,
+    totalPop,
     hybridationIds,
     displayedScreen,
     updateVar,
@@ -179,6 +188,7 @@ export const GlobalVarsProvider = ({ children }) => {
     vars,
     income,
     tribes,
+    totalPop,
     hybridationIds,
     displayedScreen,
     updateVar,
@@ -205,6 +215,7 @@ export const useGlobalVars = () => {
     vars,
     income,
     tribes,
+    totalPop,
     hybridationIds,
     displayedScreen,
     updateVar,
@@ -220,6 +231,7 @@ export const useGlobalVars = () => {
     vars,
     income,
     tribes,
+    totalPop,
     hybridationIds,
     displayedScreen,
     updateVar,

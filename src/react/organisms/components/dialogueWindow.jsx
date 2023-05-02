@@ -5,14 +5,14 @@ import React, {
   useState,
 } from 'react';
 import { Scrollbar } from 'react-scrollbars-custom';
-import Button from '../molecules/button';
-import { useEvent } from '../../providers/Event';
+import Button from '../../molecules/button';
+import { useEvent } from '../../../providers/Event';
 
-import DryadDialog from '../../assets/data/dryadDialogue';
+import DryadDialog from '../../../assets/data/dryadDialogue';
 
 import './dialogueWindow.scss';
 import DynamicTextDisplay from './dynamicTextDisplay';
-import { curateAndDomifyText } from '../../utils';
+import { curateAndDomifyText } from '../../../utils';
 
 const DialogueWindow = () => {
   const [isOpen, setOpen] = useState(false);

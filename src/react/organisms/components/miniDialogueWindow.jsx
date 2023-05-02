@@ -5,13 +5,13 @@ import React, {
   useState,
 } from 'react';
 import { Scrollbar } from 'react-scrollbars-custom';
-import Button from '../molecules/button';
-import { useEvent } from '../../providers/Event';
+import Button from '../../molecules/button';
+import { useEvent } from '../../../providers/Event';
 
-import NarrativeEvents from '../../assets/data/narrativeEvents';
-import VarNames from '../../assets/data/varNames';
+import NarrativeEvents from '../../../assets/data/narrativeEvents';
+import VarNames from '../../../assets/data/varNames';
 
-import { curateAndDomifyText } from '../../utils';
+import { curateAndDomifyText } from '../../../utils';
 
 import './miniDialogueWindow.scss';
 

@@ -6,15 +6,21 @@ import { useGlobalVars } from '../../providers/GlobalVars';
 import { capitalize, classTrim } from '../../utils';
 
 import './gui.scss';
+import Icon from '../atoms/icon';
+import RessourceBlock from './components/ressourceBlock';
 
 const Gui = () => {
   const [timebarVisible, setTimebarVisible] = useState(false);
+  const [ressourcesVisible, setRessourcesVisible] = useState(false);
 
   const {
     vars,
     displayedScreen,
     isActualStep,
+    totalPop,
   } = useGlobalVars();
+
+  console.log('vars', vars);
 
   const blockToPeriod = useMemo(() => {
     switch (vars?.timeBlock) {
@@ -32,6 +38,7 @@ const Gui = () => {
 
   useEffect(() => {
     setTimebarVisible(displayedScreen === 'game' && isActualStep('main'));
+    setRessourcesVisible(displayedScreen === 'game' && isActualStep('main'));
   }, [
     displayedScreen,
     isActualStep,
@@ -43,16 +50,35 @@ const Gui = () => {
       gui--${blockToPeriod}
     `)}
     >
+      <div
+        className={classTrim(`
+          gui__ressource-block
+          ${ressourcesVisible ? ' gui__ressource-block--visible' : ''}
+        `)}
+      >
+        <RessourceBlock
+          text="Population"
+          logo="people"
+          value={totalPop}
+        />
+        <RessourceBlock
+          text="Flowers"
+          logo="flower"
+          value={vars.flower}
+        />
+        <RessourceBlock
+          text="Nectar"
+          logo="nectar"
+          value={vars.nectar}
+        />
+      </div>
       <div className={classTrim(`
             gui__timebar-block
             ${timebarVisible ? ' gui__timebar-block--visible' : ''}
           `)}
       >
         <div
-          className={classTrim(`
-            gui__timebar
-            ${timebarVisible ? ' gui__timebar--visible' : ''}
-          `)}
+          className="gui__timebar"
         >
           <div className="gui__timebar__fg">
             <div className="gui__timebar__fg__morning" />

@@ -2,12 +2,12 @@ import React, {
   useCallback, useEffect, useRef, useState,
 } from 'react';
 import { PropTypes } from 'prop-types';
-import { curateText } from '../../utils';
+import { curateText } from '../../../utils';
 
-import { dryadDialogType } from '../types/dialogs';
+import { dryadDialogType } from '../../types/dialogs';
 
 import './dynamicTextDisplay.scss';
-import { useGlobalVars } from '../../providers/GlobalVars';
+import { useGlobalVars } from '../../../providers/GlobalVars';
 
 const DynamicTextDisplay = ({
   textBlocks, toSkip, setButtonDisabled, scrollBottom,

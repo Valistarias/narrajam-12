@@ -1,4 +1,5 @@
 $black: #000;
+$vanta: #111;
 $grey: #555;
 $green-neon: #9bffa9;
 $red-neon: #ff7373;
@@ -6,8 +7,9 @@ $white: #fff;
 
 :root {
   --black:#{$black};
+  --vanta:#{$vanta};
+  --vanta-opaque:#{$vanta}111f7;
   --black-opaque:#{$black}000f7;
-  --black-opaquer:#{$black}000dd;
   --black-transparent:#{$black}0;
   --white:#{$white};
   --grey:#{$grey};

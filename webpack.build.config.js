@@ -20,6 +20,10 @@ module.exports = {
         loader: 'babel-loader',
       },
       {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+      },
+      {
         test: /.s?css$/,
         use: [
           // Minifying CSS
