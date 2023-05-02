@@ -12,9 +12,9 @@ const DryadWindow = () => {
   const [visible, setVisible] = useState(false);
 
   const {
-    vars, displayedScreen, isActualStep, goToNextDay, income,
+    vars, displayedScreen, isActualStep, goToNextDay,
   } = useGlobalVars();
-  console.log(income);
+
   const { Event } = useEvent();
 
   const dialogByDay = useMemo(() => {

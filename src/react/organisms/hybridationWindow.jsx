@@ -32,8 +32,6 @@ const HybridationWindow = () => {
     hybridationResearch,
   } = useGlobalVars();
 
-  console.log('vars', vars);
-
   const selectTalent = useCallback((id) => {
     if (!Hybridations[id]) {
       console.error('Hybridation Id not found', id);

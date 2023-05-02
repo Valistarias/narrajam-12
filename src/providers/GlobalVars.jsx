@@ -107,7 +107,6 @@ export const GlobalVarsProvider = ({ children }) => {
   }, []);
 
   const addHybridation = useCallback((id) => {
-    console.log('addHybridation', id);
     if (Hybridations[id]) {
       setHybridationIds((prev) => {
         const next = [...prev];
