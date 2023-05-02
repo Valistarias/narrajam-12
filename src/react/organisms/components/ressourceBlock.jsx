@@ -6,7 +6,7 @@ import React, {
 import { PropTypes } from 'prop-types';
 
 import './ressourceBlock.scss';
-import Icon from '../../atoms/icon';
+import { Icon, possibleIcons } from '../../atoms/icon';
 
 const RessourceBlock = ({ text, value, logo }) => {
   const textDom = useRef();
@@ -44,7 +44,7 @@ const RessourceBlock = ({ text, value, logo }) => {
 RessourceBlock.propTypes = {
   text: PropTypes.string.isRequired,
   value: PropTypes.number.isRequired,
-  logo: PropTypes.oneOf(['flower', 'nectar', 'people']),
+  logo: possibleIcons,
 };
 
 RessourceBlock.defaultProps = {

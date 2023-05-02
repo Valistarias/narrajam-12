@@ -6,21 +6,24 @@ import { useGlobalVars } from '../../providers/GlobalVars';
 import { capitalize, classTrim } from '../../utils';
 
 import './gui.scss';
-import Icon from '../atoms/icon';
 import RessourceBlock from './components/ressourceBlock';
+import Button from '../molecules/button';
 
 const Gui = () => {
   const [timebarVisible, setTimebarVisible] = useState(false);
   const [ressourcesVisible, setRessourcesVisible] = useState(false);
+  const [nextperiodVisible, setNextPeriodVisible] = useState(false);
+
+  const [canModifyHybridation, setCanModifyHybridation] = useState(false);
+  const [canGoNextPeriod, setCanGoNextPeriod] = useState(true);
 
   const {
     vars,
     displayedScreen,
     isActualStep,
     totalPop,
+    goToNextBlock,
   } = useGlobalVars();
-
-  console.log('vars', vars);
 
   const blockToPeriod = useMemo(() => {
     switch (vars?.timeBlock) {
@@ -36,9 +39,24 @@ const Gui = () => {
     }
   }, [vars?.timeBlock]);
 
+  const nextPeriod = useMemo(() => {
+    switch (vars?.timeBlock) {
+      case 1: {
+        return 'next period (Evening)';
+      }
+      case 2: {
+        return 'Tribe Concil';
+      }
+      default: {
+        return 'next period (Day)';
+      }
+    }
+  }, [vars?.timeBlock]);
+
   useEffect(() => {
     setTimebarVisible(displayedScreen === 'game' && isActualStep('main'));
     setRessourcesVisible(displayedScreen === 'game' && isActualStep('main'));
+    setNextPeriodVisible(displayedScreen === 'game' && isActualStep('main'));
   }, [
     displayedScreen,
     isActualStep,
@@ -56,6 +74,17 @@ const Gui = () => {
           ${ressourcesVisible ? ' gui__ressource-block--visible' : ''}
         `)}
       >
+        <Button
+          icon="leaf"
+          theme="icon"
+          className="gui__ressource-block__tree-button"
+          onClick={() => {
+            console.log('goto tree');
+          }}
+          disabled={!canModifyHybridation}
+        >
+          Tree
+        </Button>
         <RessourceBlock
           text="Population"
           logo="people"
@@ -102,6 +131,21 @@ const Gui = () => {
           </p>
         </div>
       </div>
+      <Button
+        theme="icon"
+        className={classTrim(`
+          gui__next-period
+          ${nextperiodVisible ? ' gui__next-period--visible' : ''}
+        `)}
+        onClick={() => {
+          goToNextBlock();
+        }}
+        disabled={!canGoNextPeriod}
+      >
+        Go to
+        {' '}
+        {nextPeriod}
+      </Button>
     </div>
   );
 };

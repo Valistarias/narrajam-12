@@ -3,12 +3,14 @@ import { PropTypes } from 'prop-types';
 import { classTrim } from '../../utils';
 
 import './button.scss';
+import { Icon, possibleIcons } from '../atoms/icon';
 
 const Button = ({
   submit,
   children,
   className,
   onClick,
+  icon,
   onMouseLeave,
   onMouseEnter,
   preventDefault,
@@ -39,6 +41,13 @@ const Button = ({
     }}
   >
     {children}
+    {
+      icon ? (
+        <Icon
+          type={icon}
+        />
+      ) : null
+    }
   </button>
 );
 
@@ -46,7 +55,8 @@ Button.propTypes = {
   submit: PropTypes.bool,
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  theme: PropTypes.oneOf(['basic', 'title']),
+  icon: possibleIcons,
+  theme: PropTypes.oneOf(['basic', 'title', 'icon']),
   onClick: PropTypes.func.isRequired,
   onMouseLeave: PropTypes.func,
   onMouseEnter: PropTypes.func,
@@ -57,6 +67,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
   submit: false,
+  icon: null,
   preventDefault: false,
   theme: 'basic',
   className: '',

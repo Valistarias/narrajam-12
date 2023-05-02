@@ -22,6 +22,10 @@
       pointer-events: all;
       transform: translateX(0);
     }
+
+    .button {
+      width: 20rem;
+    }
   }
 
   &__timebar-block {
@@ -163,6 +167,21 @@
       width: 50%;
     }
 
+  }
+
+  .gui__next-period {
+    bottom: 6rem;
+    position: absolute;
+    right: 0;
+    transform: translateX(100%);
+    transition: left .4s ease, transform .4s ease;
+    width: 30rem;
+
+    &--visible {
+      pointer-events: all;
+      right: 1rem;
+      transform: translateX(0);
+    }
   }
 
   &--morning {
