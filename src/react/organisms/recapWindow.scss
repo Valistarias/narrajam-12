@@ -112,6 +112,12 @@
         &__value {
           font-size: 3rem;
         }
+
+        &__value__total {
+          color: var(--bone);
+          font-size: 1.8rem;
+          margin-left: 0.5rem;
+        }
       }
     }
 

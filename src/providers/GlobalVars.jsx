@@ -25,11 +25,11 @@ export const GlobalVarsProvider = ({ children }) => {
 
   const infectedDayRatio = useMemo(() => [
     { maxRand: 0, flatBonus: 0 },
-    { maxRand: 5, flatBonus: 1 },
     { maxRand: 10, flatBonus: 5 },
-    { maxRand: 15, flatBonus: 7 },
     { maxRand: 20, flatBonus: 10 },
-    { maxRand: 30, flatBonus: 15 },
+    { maxRand: 40, flatBonus: 15 },
+    { maxRand: 50, flatBonus: 20 },
+    { maxRand: 60, flatBonus: 25 },
   ], []);
 
   const [tribes, setTribes] = useState({
@@ -58,6 +58,8 @@ export const GlobalVarsProvider = ({ children }) => {
       people: 70,
     },
   });
+
+  console.log('tribes', tribes);
 
   const [hybridationIds, setHybridationIds] = useState([]);
 
@@ -114,6 +116,12 @@ export const GlobalVarsProvider = ({ children }) => {
     }
   }, []);
 
+  const deathRatio = useCallback((mortalityRate) => {
+    // From 0 to 1, 0 is the full random, and 1 the certainty of death
+    const rand = Math.floor(Math.random()) - mortalityRate;
+    return (rand < 0 ? 0 : rand) + mortalityRate;
+  }, []);
+
   const goToNextDay = useCallback(() => {
     let nextDay;
     setVars((prev) => {
@@ -128,7 +136,7 @@ export const GlobalVarsProvider = ({ children }) => {
       const next = { ...prev };
 
       Object.keys(next).forEach((tribeName) => {
-        let deathToll = Math.floor(Math.random() * next[tribeName].infected);
+        let deathToll = Math.floor(deathRatio(0.7) * next[tribeName].infected);
         if (next[tribeName].people === 1) {
           deathToll = 0;
         }
@@ -138,17 +146,23 @@ export const GlobalVarsProvider = ({ children }) => {
           newInfected = 0;
         }
         next[tribeName].deaths += deathToll;
-        next[tribeName].infected = next[tribeName].infected - deathToll + newInfected;
+        const tempInfectedCount = next[tribeName].infected + newInfected;
+        if (tempInfectedCount > next[tribeName].people) {
+          next[tribeName].infected = next[tribeName].people;
+          next[tribeName].newInfected = next[tribeName].people - next[tribeName].infected;
+        } else {
+          next[tribeName].infected = tempInfectedCount - deathToll;
+          next[tribeName].newInfected = newInfected;
+        }
         next[tribeName].people -= deathToll;
         if (next[tribeName].people <= 0) {
           next[tribeName].people = 1;
         }
-        next[tribeName].newInfected = newInfected;
         next[tribeName].newDeaths = deathToll;
       });
       return next;
     });
-  }, [infectedDayRatio]);
+  }, [infectedDayRatio, deathRatio]);
 
   const goToNextCycle = useCallback(() => {
     setVars((prev) => {

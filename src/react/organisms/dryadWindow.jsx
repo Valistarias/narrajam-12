@@ -22,6 +22,21 @@ const DryadWindow = () => {
       case 0: {
         return 'begining';
       }
+      case 1: {
+        return 'begining';
+      }
+      case 2: {
+        return 'begining';
+      }
+      case 3: {
+        return 'begining';
+      }
+      case 4: {
+        return 'begining';
+      }
+      case 5: {
+        return 'begining';
+      }
       default: {
         console.error('NO DIALOG FOUND ON DAY', vars?.day);
         return null;

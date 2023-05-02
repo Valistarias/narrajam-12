@@ -21,6 +21,8 @@ const RecapWindow = () => {
     Object.keys(tribes).forEach((tribeId) => {
       const {
         name,
+        deaths,
+        infected,
         newInfected,
         newDeaths,
       } = tribes[tribeId];
@@ -30,12 +32,28 @@ const RecapWindow = () => {
           <p className="recapWindow__tribe__name">{name}</p>
           <div className="recapWindow__tribe__data">
             <p className="recapWindow__tribe__data__elt">
-              <span className="recapWindow__tribe__data__elt__value">{newInfected}</span>
-              <span className="recapWindow__tribe__data__elt__text">got infected</span>
+              <span className="recapWindow__tribe__data__elt__value">
+                +
+                {newInfected}
+                <span className="recapWindow__tribe__data__elt__value__total">
+                  (
+                  {infected}
+                  )
+                </span>
+              </span>
+              <span className="recapWindow__tribe__data__elt__text">Infected</span>
             </p>
             <p className="recapWindow__tribe__data__elt">
-              <span className="recapWindow__tribe__data__elt__value">{newDeaths}</span>
-              <span className="recapWindow__tribe__data__elt__text">deaths</span>
+              <span className="recapWindow__tribe__data__elt__value">
+                +
+                {newDeaths}
+                <span className="recapWindow__tribe__data__elt__value__total">
+                  (
+                  {deaths}
+                  )
+                </span>
+              </span>
+              <span className="recapWindow__tribe__data__elt__text">Deaths</span>
             </p>
           </div>
         </div>,

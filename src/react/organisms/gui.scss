@@ -65,21 +65,53 @@
 
       &__morning,
       &__day,
-      &__evening {
+      &__evening,
+      &__night {
         height: 100%;
-        width: calc(100% / 3);
+        // transform: skew(15deg);
+        width: calc(100% / 4);
       }
     }
 
     &__bg {
       &__morning,
       &__day,
-      &__evening {
+      &__evening,
+      &__night {
         position: relative;
       }
 
-      &__day,
+      &__morning {
+        background-image: url('../../assets/imgs/morningtemp.jpg');
+        background-position: center;
+        background-size: cover;
+        opacity: .1;
+      }
+
+      &__day {
+        background-image: url('../../assets/imgs/daytemp.jpg');
+        background-position: center;
+        background-size: cover;
+        opacity: .1;
+      }
+
       &__evening {
+        background-image: url('../../assets/imgs/eveningtemp.jpg');
+        background-position: center;
+        background-size: cover;
+        opacity: .1;
+      }
+
+      &__night {
+        background-image: url('../../assets/imgs/nighttemp.jpg');
+        background-position: center;
+        background-size: cover;
+        opacity: .1;
+      }
+
+      &__day,
+      &__evening,
+      &__night {
         border-left: .1rem solid var(--black);
 
         &::after {
@@ -101,7 +133,8 @@
 
       &__morning,
       &__day,
-      &__evening {
+      &__evening,
+      &__night  {
         overflow: hidden;
         position: relative;
 
@@ -129,6 +162,12 @@
 
       &__evening::after {
         background-image: url('../../assets/imgs/eveningtemp.jpg');
+        background-position: center;
+        background-size: cover;
+      }
+
+      &__night::after {
+        background-image: url('../../assets/imgs/nighttemp.jpg');
         background-position: center;
         background-size: cover;
       }
@@ -198,6 +237,10 @@
         &__evening::after {
           left: -200%;
         }
+
+        &__night::after {
+          left: -300%;
+        }
       }
     }
   }
@@ -216,6 +259,10 @@
         &__evening::after {
           left: -100%;
         }
+
+        &__night::after {
+          left: -200%;
+        }
       }
     }
   }
@@ -233,6 +280,32 @@
 
         &__evening::after {
           left: 0;
+        }
+
+        &__night::after {
+          left: -100%;
+        }
+      }
+    }
+  }
+
+  &--night {
+    .gui__timebar {
+      &__fg {
+        &__morning::after {
+          left: 300%;
+        }
+
+        &__day::after {
+          left: 200%;
+        }
+
+        &__evening::after {
+          left: 100%;
+        }
+
+        &__night::after {
+          left: 0%;
         }
       }
     }

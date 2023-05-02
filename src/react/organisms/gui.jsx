@@ -26,6 +26,9 @@ const Gui = () => {
   } = useGlobalVars();
 
   const blockToPeriod = useMemo(() => {
+    if (isActualStep('tribe')) {
+      return 'night';
+    }
     switch (vars?.timeBlock) {
       case 1: {
         return 'day';
@@ -37,9 +40,12 @@ const Gui = () => {
         return 'morning';
       }
     }
-  }, [vars?.timeBlock]);
+  }, [vars?.timeBlock, isActualStep]);
 
   const nextPeriod = useMemo(() => {
+    if (isActualStep('tribe')) {
+      return 'The Dryad';
+    }
     switch (vars?.timeBlock) {
       case 1: {
         return 'next period (Evening)';
@@ -51,12 +57,16 @@ const Gui = () => {
         return 'next period (Day)';
       }
     }
-  }, [vars?.timeBlock]);
+  }, [vars?.timeBlock, isActualStep]);
 
   useEffect(() => {
-    setTimebarVisible(displayedScreen === 'game' && isActualStep('main'));
-    setRessourcesVisible(displayedScreen === 'game' && isActualStep('main'));
-    setNextPeriodVisible(displayedScreen === 'game' && isActualStep('main'));
+    const displayMainGui = displayedScreen === 'game' && (
+      isActualStep('main')
+      || isActualStep('tribe')
+    );
+    setTimebarVisible(displayMainGui);
+    setRessourcesVisible(displayMainGui);
+    setNextPeriodVisible(displayMainGui);
   }, [
     displayedScreen,
     isActualStep,
@@ -113,11 +123,13 @@ const Gui = () => {
             <div className="gui__timebar__fg__morning" />
             <div className="gui__timebar__fg__day" />
             <div className="gui__timebar__fg__evening" />
+            <div className="gui__timebar__fg__night" />
           </div>
           <div className="gui__timebar__bg">
             <div className="gui__timebar__bg__morning" />
             <div className="gui__timebar__bg__day" />
             <div className="gui__timebar__bg__evening" />
+            <div className="gui__timebar__bg__night" />
           </div>
         </div>
         <div className="gui__timeInfo">
