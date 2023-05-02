@@ -2,13 +2,13 @@
   align-items: center;
   background: none;
   border: 0;
-  border-bottom: 1px solid var(--white-opaque);
-  border-top: 1px solid var(--white-opaque);
+  border-bottom: .1rem solid var(--white-opaque);
+  border-top: .1rem solid var(--white-opaque);
   cursor: pointer;
   display: flex;
   justify-content: center;
   padding: .5rem;
-  transition: opacity .4s ease, color .2s ease;
+  transition: opacity .4s ease, color .2s ease, border .1s ease;
   width: 100%;
 
   .icon {
@@ -16,10 +16,11 @@
   }
 
   &:hover {
-    color: var(--green-neon);
+    border-color: var(--secondary);
+    color: var(--secondary);
 
     .icon {
-      fill: var(--green-neon);
+      fill: var(--secondary);
     }
   }
 
@@ -55,12 +56,12 @@
     }
   }
 
-  &--disabled {
+  &.button--disabled {
     opacity: .3;
     pointer-events: none;
   }
 
-  &--invisible {
+  &.button--invisible {
     opacity: 0;
     pointer-events: none;
     transition: color .2s ease;

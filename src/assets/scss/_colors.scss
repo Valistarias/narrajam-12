@@ -3,8 +3,11 @@ $vanta: #111;
 $grey: #555;
 $bone: #808080;
 $green-neon: #9bffa9;
+$red-deep: #af1b00;
 $red-neon: #ff7373;
 $white: #fff;
+
+$secondary: #d984ac;
 
 :root {
   --black:#{$black};
@@ -17,6 +20,9 @@ $white: #fff;
   --bone:#{$bone};
   --white-opaque:#{$white}4;
   --white-transparent:#{$white}fff06;
-  --green-neon: #{$green-neon};
+  --secondary: #{$green-neon};
   --red-neon: #{$red-neon};
+  --red-deep: #{$red-deep};
+
+  --secondary: #{$secondary};
 }

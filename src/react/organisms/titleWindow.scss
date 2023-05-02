@@ -56,6 +56,16 @@
       display: flex;
       flex-direction: column;
       gap: 4rem;
+
+      .button {
+        text-shadow: 0;
+        transition: opacity .4s ease, color .2s ease, text-shadow .2s ease;
+      }
+
+      .button:hover {
+        color: var(--white);
+        text-shadow: 0 0 .2rem #fff, 0 0 .4rem #fff, 0 0 .6rem #df4a8f33, 0 0 .8rem #df4a8f33, 0 0 1rem #df4a8f33, 0 0 1.2rem #df4a8f33, 0 0 1.4rem #df4a8f33;
+      }
     }
 
     &__footer {

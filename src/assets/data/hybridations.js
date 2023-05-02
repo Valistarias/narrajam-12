@@ -1,6 +1,6 @@
 const dryad = {
   crocus: {
-    Name: 'Crocus',
+    name: 'Crocus',
     meaning: 'Cheerfullness/Youthfull Gladness',
     side: 'dryad',
     nectarUpg: 2,
@@ -13,7 +13,7 @@ const dryad = {
 
 const tribe = {
   belladonna: {
-    Name: 'Belladonna',
+    name: 'Belladonna',
     meaning: 'Silence',
     side: 'tribe',
     nectarUpg: 2,
@@ -26,9 +26,9 @@ const tribe = {
 
 const neutral = {
   valerian: {
-    Name: 'Valerian',
+    name: 'Valerian',
     meaning: 'Readiness',
-    side: 'nautral',
+    side: 'neutral',
     nectarUpg: 1,
     flowerUpg: 1,
     flowerCost: 0,

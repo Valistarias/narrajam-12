@@ -10,6 +10,7 @@ import DryadWindow from '../organisms/dryadWindow';
 import RecapWindow from '../organisms/recapWindow';
 import DaytimeWindow from '../organisms/daytimeWindow';
 import Gui from '../organisms/gui';
+import HybridationWindow from '../organisms/hybridationWindow';
 
 const Home = () => (
   <div className="home">
@@ -19,6 +20,7 @@ const Home = () => (
     <DryadWindow />
     <RecapWindow />
     <DaytimeWindow />
+    <HybridationWindow />
     <CreditWindow />
     <Gui />
   </div>

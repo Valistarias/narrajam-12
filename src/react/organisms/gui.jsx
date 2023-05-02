@@ -1,4 +1,5 @@
 import React, {
+  useCallback,
   useEffect, useMemo, useState,
 } from 'react';
 
@@ -14,26 +15,42 @@ const Gui = () => {
   const [ressourcesVisible, setRessourcesVisible] = useState(false);
   const [nextperiodVisible, setNextPeriodVisible] = useState(false);
 
-  const [canModifyHybridation, setCanModifyHybridation] = useState(false);
+  const [hybridationVisible, setHybridationVisible] = useState(false);
+
+  const [canModifyHybridation, setCanModifyHybridation] = useState(true);
   const [canGoNextPeriod, setCanGoNextPeriod] = useState(true);
+
+  const [hybridDone, setHybridDone] = useState(true);
 
   const {
     vars,
+    income,
+    totalInfected,
+    updateVar,
     displayedScreen,
     isActualStep,
     totalPop,
     goToNextBlock,
+    hybridationIds,
   } = useGlobalVars();
+
+  const onTreeClick = useCallback(() => {
+    setHybridDone(false);
+    updateVar({
+      name: 'DISPLAY_HYBRIDATION',
+      value: !hybridationVisible,
+    });
+  }, [updateVar, hybridationVisible]);
 
   const blockToPeriod = useMemo(() => {
     if (isActualStep('tribe')) {
       return 'night';
     }
     switch (vars?.timeBlock) {
-      case 1: {
+      case 2: {
         return 'day';
       }
-      case 2: {
+      case 1: {
         return 'evening';
       }
       default: {
@@ -47,10 +64,10 @@ const Gui = () => {
       return 'The Dryad';
     }
     switch (vars?.timeBlock) {
-      case 1: {
+      case 2: {
         return 'next period (Evening)';
       }
-      case 2: {
+      case 1: {
         return 'Tribe Concil';
       }
       default: {
@@ -72,49 +89,82 @@ const Gui = () => {
     isActualStep,
   ]);
 
+  useEffect(() => {
+    setHybridDone(true);
+  }, [hybridationIds]);
+
+  useEffect(() => {
+    setHybridationVisible(!!vars.DISPLAY_HYBRIDATION);
+  }, [vars?.DISPLAY_HYBRIDATION]);
+
   return (
-    <div className={classTrim(`
-      gui
-      gui--${blockToPeriod}
-    `)}
+    <div
+      className={classTrim(`
+        gui
+        gui--${blockToPeriod}
+      `)}
     >
+      <div
+        className={classTrim(`
+          gui__title-hybridation
+          ${hybridationVisible ? ' gui__title-hybridation--visible' : ''}
+        `)}
+      >
+        <div className="gui__title-hybridation__block">
+          <h2 className="gui__title-hybridation__content">Hybridation tree</h2>
+        </div>
+        <p className="gui__title-hybridation__text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Sed tempor consectetur nibh, quis lacinia quam ornare nec.
+          Vestibulum interdum vitae erat eget bibendum.
+          Praesent cursus convallis lectus sit amet euismod.
+          Cras ipsum lectus, dapibus a tincidunt sit amet, blandit sit amet sem.
+        </p>
+      </div>
       <div
         className={classTrim(`
           gui__ressource-block
           ${ressourcesVisible ? ' gui__ressource-block--visible' : ''}
+          ${hybridDone && ressourcesVisible ? ' gui__ressource-block--hybridDone' : ''}
         `)}
       >
         <Button
           icon="leaf"
           theme="icon"
           className="gui__ressource-block__tree-button"
-          onClick={() => {
-            console.log('goto tree');
-          }}
+          onClick={onTreeClick}
           disabled={!canModifyHybridation}
         >
-          Tree
+          {
+            hybridationVisible
+              ? 'Go back'
+              : 'Tree'
+          }
         </Button>
         <RessourceBlock
           text="Population"
           logo="people"
           value={totalPop}
+          parenthesis={`-${totalInfected}`}
         />
         <RessourceBlock
           text="Flowers"
           logo="flower"
           value={vars.flower}
+          parenthesis={`+${income.flower}`}
         />
         <RessourceBlock
           text="Nectar"
           logo="nectar"
           value={vars.nectar}
+          parenthesis={`+${income.nectar}`}
         />
       </div>
-      <div className={classTrim(`
-            gui__timebar-block
-            ${timebarVisible ? ' gui__timebar-block--visible' : ''}
-          `)}
+      <div
+        className={classTrim(`
+          gui__timebar-block
+          ${timebarVisible ? ' gui__timebar-block--visible' : ''}
+        `)}
       >
         <div
           className="gui__timebar"
@@ -147,12 +197,12 @@ const Gui = () => {
         theme="icon"
         className={classTrim(`
           gui__next-period
-          ${nextperiodVisible ? ' gui__next-period--visible' : ''}
+          ${nextperiodVisible && !hybridationVisible ? ' gui__next-period--visible' : ''}
         `)}
         onClick={() => {
           goToNextBlock();
         }}
-        disabled={!canGoNextPeriod}
+        disabled={!canGoNextPeriod || hybridationVisible}
       >
         Go to
         {' '}

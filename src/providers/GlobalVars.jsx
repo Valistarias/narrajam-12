@@ -9,11 +9,13 @@ const GlobalVarsContext = React.createContext();
 
 export const GlobalVarsProvider = ({ children }) => {
   const [vars, setVars] = useState({
-    nectar: 0,
-    flower: 0,
-    timeBlock: 0,
+    nectar: 2,
+    flower: 2,
+    timeBlock: 3,
     day: 0,
     stepCycle: 3,
+    dryadTier: 0,
+    tribeTier: 0,
   });
 
   const [income, setIncome] = useState({
@@ -22,6 +24,8 @@ export const GlobalVarsProvider = ({ children }) => {
     _tribe: 0,
     _dryad: 0,
   });
+
+  const [hybridationResearch, setHybridationResearch] = useState(null);
 
   const infectedDayRatio = useMemo(() => [
     { maxRand: 0, flatBonus: 0 },
@@ -59,8 +63,6 @@ export const GlobalVarsProvider = ({ children }) => {
     },
   });
 
-  console.log('tribes', tribes);
-
   const [hybridationIds, setHybridationIds] = useState([]);
 
   const [displayedScreen, setDisplayedScreen] = useState('title');
@@ -80,6 +82,14 @@ export const GlobalVarsProvider = ({ children }) => {
     return pop;
   }, [tribes]);
 
+  const totalInfected = useMemo(() => {
+    let inf = 0;
+    Object.keys(tribes).forEach((tribeId) => {
+      inf += tribes[tribeId]?.infected || 0;
+    });
+    return inf;
+  }, [tribes]);
+
   const isActualStep = useCallback((targetedCycle) => {
     const index = screenCycle.findIndex((cycle) => cycle === targetedCycle);
     return index === vars.stepCycle;
@@ -97,9 +107,10 @@ export const GlobalVarsProvider = ({ children }) => {
   }, []);
 
   const addHybridation = useCallback((id) => {
+    console.log('addHybridation', id);
     if (Hybridations[id]) {
       setHybridationIds((prev) => {
-        const next = { ...prev };
+        const next = [...prev];
         next.push(id);
         return next;
       });
@@ -111,10 +122,44 @@ export const GlobalVarsProvider = ({ children }) => {
         next._tribe += Hybridations[id].side === 'tribe' ? 1 : 0;
         return next;
       });
+      setVars((prev) => {
+        const next = { ...prev };
+        if (Hybridations[id].side === 'neutral') {
+          next.dryadTier = 1;
+          next.tribeTier = 1;
+        }
+        if (Hybridations[id].side === 'tribe') {
+          next.tribeTier = Hybridations[id].tier + 1;
+        }
+        if (JSON.stringify(prev) === JSON.stringify(next)) {
+          return prev;
+        }
+        return next;
+      });
     } else {
-      console.error('Hybridation unknowm :', id);
+      console.error('Hybridation unknown :', id);
     }
   }, []);
+
+  const researchHybridation = useCallback((id) => {
+    if (Hybridations[id]) {
+      setVars((prev) => {
+        const next = { ...prev };
+        next.flower -= Hybridations[id].flowerCost;
+        return next;
+      });
+      if (Hybridations[id].duration === 0) {
+        addHybridation(id);
+      } else {
+        setHybridationResearch({
+          id,
+          time: Hybridations[id].duration,
+        });
+      }
+    } else {
+      console.error('Hybridation unknown :', id);
+    }
+  }, [addHybridation]);
 
   const deathRatio = useCallback((mortalityRate) => {
     // From 0 to 1, 0 is the full random, and 1 the certainty of death
@@ -129,7 +174,7 @@ export const GlobalVarsProvider = ({ children }) => {
       next.day += 1;
       nextDay = next.day;
       next.stepCycle = 0;
-      next.timeBlock = 0;
+      next.timeBlock = 3;
       return next;
     });
     setTribes((prev) => {
@@ -173,26 +218,40 @@ export const GlobalVarsProvider = ({ children }) => {
   }, []);
 
   const goToNextBlock = useCallback(() => {
-    if (vars.timeBlock === 2) {
+    if (hybridationResearch) {
+      if (hybridationResearch.time === 1) {
+        addHybridation(hybridationResearch.id);
+        setHybridationResearch(null);
+      } else {
+        setHybridationResearch((prev) => {
+          const next = { ...prev };
+          next.time -= 1;
+          return next;
+        });
+      }
+    }
+    if (vars.timeBlock === 1) {
       goToNextCycle();
     } else {
       setVars((prev) => {
         const next = { ...prev };
-        next.timeBlock += 1;
+        next.timeBlock -= 1;
         return next;
       });
     }
-  }, [vars?.timeBlock, goToNextCycle]);
+  }, [vars?.timeBlock, goToNextCycle, addHybridation, hybridationResearch]);
 
   const providerValues = useMemo(() => ({
     vars,
     income,
     tribes,
     totalPop,
+    totalInfected,
+    hybridationResearch,
     hybridationIds,
     displayedScreen,
     updateVar,
-    addHybridation,
+    researchHybridation,
     setDisplayedScreen,
     isActualStep,
     goToNextDay,
@@ -203,10 +262,12 @@ export const GlobalVarsProvider = ({ children }) => {
     income,
     tribes,
     totalPop,
+    totalInfected,
+    hybridationResearch,
     hybridationIds,
     displayedScreen,
     updateVar,
-    addHybridation,
+    researchHybridation,
     isActualStep,
     goToNextDay,
     goToNextCycle,
@@ -230,10 +291,12 @@ export const useGlobalVars = () => {
     income,
     tribes,
     totalPop,
+    totalInfected,
+    hybridationResearch,
     hybridationIds,
     displayedScreen,
     updateVar,
-    addHybridation,
+    researchHybridation,
     setDisplayedScreen,
     isActualStep,
     goToNextDay,
@@ -246,10 +309,12 @@ export const useGlobalVars = () => {
     income,
     tribes,
     totalPop,
+    totalInfected,
+    hybridationResearch,
     hybridationIds,
     displayedScreen,
     updateVar,
-    addHybridation,
+    researchHybridation,
     setDisplayedScreen,
     isActualStep,
     goToNextDay,

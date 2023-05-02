@@ -14,8 +14,6 @@ const DaytimeWindow = () => {
     vars, displayedScreen, isActualStep, goToNextBlock,
   } = useGlobalVars();
 
-  console.log('vars', vars);
-
   useEffect(() => {
     setVisible(displayedScreen === 'game' && isActualStep('main'));
   }, [

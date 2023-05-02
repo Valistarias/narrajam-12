@@ -45,7 +45,7 @@ const checkCondition = ({
   hybridationIds,
 }) => {
   let conditionBool = true;
-  const advantageHybridations = income._tribe < income._dryad ? 'tribe' : 'dryad';
+  const advantageHybridations = income._tribe < income._dryad ? 'dryad' : 'tribe';
   conditions.forEach((condition) => {
     const slicedCondition = condition.split(':');
     if (slicedCondition[0] === 'hybridCount') {
