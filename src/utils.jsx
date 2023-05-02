@@ -36,6 +36,8 @@ export const testNumber = (number) => {
   return regex.test(Number(number));
 };
 
+export const capitalize = (string) => `${string.charAt(0).toUpperCase()}${string.slice(1)}`;
+
 const checkCondition = ({
   conditions,
   // vars,

@@ -6,15 +6,30 @@
   top: 0;
   width: 100%;
 
+  &__timebar-block {
+    border-top: .2rem solid var(--black-opaque);
+    bottom: -5rem;
+    display: flex;
+    height: 4rem;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    transition: bottom .4s ease .1s, opacity .4s ease;
+    width: 100%;
+
+    &--visible {
+      bottom: 0;
+      opacity: 1;
+      pointer-events: all;
+      transition: bottom .4s ease, opacity .4s ease;
+    }
+  }
+
   &__timebar {
     background: var(--black-opaquer);
-    border-top: .2rem solid var(--black-opaque);
-    bottom: 0;
     display: flex;
-    height: 5rem;
-    left: 0;
-    pointer-events: all;
-    position: absolute;
+    height: 100%;
+    position: relative;
     width: 100%;
 
     &__bg,
@@ -43,19 +58,7 @@
 
       &__day,
       &__evening {
-        border-left: .2rem solid var(--black-opaque);
-  
-        &::after {
-          background: var(--black-opaque);
-          border-radius: 100%;
-          content: '';
-          height: calc(100% - 2rem);
-          height: 1rem;
-          left: -0.6rem;
-          position: absolute;
-          top: calc(50% - .5rem);
-          width: 1rem;
-        }
+        border-left: .3rem solid var(--black-opaque);
       }
     }
 
@@ -68,7 +71,6 @@
 
         &::after {
           content: '';
-          display: block;
           height: 100%;
           position: absolute;
           top: 0;
@@ -89,6 +91,30 @@
         background: red;
       }
     }
+  }
+
+  &__timeInfo {
+    background: var(--black-opaque);
+    display: flex;
+    flex-shrink: 0;
+    position: relative;
+    width: 20%;
+
+    &__name {
+      border-right: .1rem solid var(--grey);
+    }
+
+    &__name,
+    &__day {
+      align-items: center;
+      display: flex;
+      font-size: 1.4rem;
+      font-weight: 700;
+      justify-content: center;
+      letter-spacing: .8rem;
+      width: 50%;
+    }
+
   }
 
   &--morning {
