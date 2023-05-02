@@ -12,30 +12,31 @@ const DryadWindow = () => {
   const [visible, setVisible] = useState(false);
 
   const {
-    vars, displayedScreen, isActualStep, goToNextDay,
+    vars, displayedScreen, isActualStep, goToNextDay, income,
   } = useGlobalVars();
+  console.log(income);
   const { Event } = useEvent();
 
   const dialogByDay = useMemo(() => {
     if (!isActualStep('dryad')) { return null; }
     switch (vars.day) {
       case 0: {
-        return 'begining';
+        return 'FirstNightDialog';
       }
       case 1: {
-        return 'begining';
+        return 'SecondNightDialog';
       }
       case 2: {
-        return 'begining';
+        return 'FirstNightDialog';
       }
       case 3: {
-        return 'begining';
+        return 'FirstNightDialog';
       }
       case 4: {
-        return 'begining';
+        return 'FirstNightDialog';
       }
       case 5: {
-        return 'begining';
+        return 'FirstNightDialog';
       }
       default: {
         console.error('NO DIALOG FOUND ON DAY', vars?.day);
