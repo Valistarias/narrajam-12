@@ -21,7 +21,7 @@ const DryadWindow = () => {
     if (!isActualStep('dryad')) { return null; }
     switch (vars.day) {
       case 0: {
-        return 'FirstNightDialog';
+        return 'begining';
       }
       case 1: {
         return 'SecondNightDialog';

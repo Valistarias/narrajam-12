@@ -45,7 +45,7 @@ const checkCondition = ({
   hybridationIds,
 }) => {
   let conditionBool = true;
-  const advantageHybridations = income._tribe < income._dryad ? 'dryad' : 'tribe';
+  const advantageHybridations = income._tribe <= income._dryad ? 'dryad' : 'tribe';
   conditions.forEach((condition) => {
     const slicedCondition = condition.split(':');
     if (slicedCondition[0] === 'hybridCount') {
@@ -71,14 +71,14 @@ export const curateText = ({
   if (Array.isArray(text)) {
     text.forEach((singleText) => {
       if (
-        (singleText.condition && checkCondition({
+        (singleText.conditions && checkCondition({
           conditions: singleText.conditions,
           vars,
           income,
           hybridationIds,
         }))
-        || !singleText.condition
-        || singleText.condition.length === 0
+        || !singleText.conditions
+        || singleText.conditions.length === 0
       ) {
         basicString += ` ${singleText.text ?? singleText} `;
       }

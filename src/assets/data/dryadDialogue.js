@@ -11,7 +11,6 @@
 // hybridCount:xxx (IF) -> xxx is equal to 'tribe' or 'dryad', and display the most advanced path
 // hybridation:xxx ( IF) -> xxx is equal to an hybridation id
 
-
 const beginningTest = {
   begining: {
     title: 'The First Night',
@@ -19,7 +18,11 @@ const beginningTest = {
       '***Lorem ipsum dolor sit amet***, consectetur adipiscing elit. Praesent interdum ultrices enim, vel hendrerit odio rhoncus at.',
       {
         text: ' Il fait bo.',
-        conditions: ['hybridCount:tribe', 'hybridation:xxx'],
+        conditions: ['hybridCount:tribe'],
+      },
+      {
+        text: ' Il fait pa bo.',
+        conditions: ['hybridCount:dryad'],
       },
       'Donec sagittis bibendum ex vitae blandit.<br/>Vivamus et risus nunc.<br/><br/>****Fuck !****<br/><br/>In consequat scelerisque molestie. Ut sit amet erat lacus. **Ut cursus** velit fermentum libero pellentesque, vitae feugiat justo viverra. *Duis vel lectus nisl !* Donec nec accumsan odio. Duis ac quam eu tellus congue tempor.',
     ],
@@ -110,7 +113,7 @@ const FirstNightDialog = {
     text: 'A trickle of whines brings you back from your reverie. Goddesses, you need a real night’s sleep.',
     speaker: 'Botanist',
     speakerName: 'Botanist',
-     answers: [
+    answers: [
       {
         text: 'Shake it off.',
         goto: 'Step4',
@@ -123,7 +126,7 @@ const FirstNightDialog = {
     text: '“Wild.” A frail, sobbing voice, with the accent of fresh wind and fallow fields. It’s so close you could touch it, but there are no children hidden between the bags, shovel and hoe, no pranksters in the hallway, no drunkard on the other side of the window. “... row… wild!” You drag your chin forward, to a face of wood and moss. The Dryad is awake. ',
     speaker: 'Botanist',
     speakerName: 'Botanist',
-     answers: [
+    answers: [
       {
         text: 'Shit!',
         goto: 'Step5',
@@ -141,7 +144,7 @@ const FirstNightDialog = {
     text: 'She can’t be. You made sure of it! You never fed her anything but water and compost void of… <br/><br/>Seeds.',
     speaker: 'Botanist',
     speakerName: 'Botanist',
-     answers: [
+    answers: [
       {
         text: 'Continue',
         goto: 'Step6',
@@ -154,7 +157,7 @@ const FirstNightDialog = {
     text: 'There is one, split open: a bent valerian groveling through the muck, swimming towards the artificial light of your lab. You missed it. You let the Dryad consume it, and now she talks. Quite loudly too. A strange green baby’s babbling, breathing in spent air in exchange for one heavy with the mixed scent of Coriander and grass, of Bluebell and Borage. It’s dizzying, but not as much as what you must do. What you can’t do. ',
     speaker: 'Botanist',
     speakerName: 'Botanist',
-     answers: [
+    answers: [
       {
         text: 'Continue',
         goto: 'Step7',
@@ -167,7 +170,7 @@ const FirstNightDialog = {
     text: 'The Dryad is barely half-made, covered in mulch and hay but the words of your teachers still ring, sharp and commanding: “If you should fail to keep your charge in check. You must get rid of it. Burn it, then use it to fertilize new soil.” Your teachers were not stuck in the worst of a plague when they shared this pearl of wisdom. “Let me…” the Dryad struggles to mouth the sounds, foreign to her sap and heartwood: “Grow.. wild!”',
     speaker: 'Botanist',
     speakerName: 'Botanist',
-     answers: [
+    answers: [
       {
         text: 'Grow wild?',
         goto: 'Step8',
@@ -184,7 +187,7 @@ const FirstNightDialog = {
     text: '“Grow free!” Her eyes twinkle with pride, a childish satisfaction that nearly wrenches a chuckle out of you. There is no way you can let her go. Without the fruits she bears, there is no Nectar. Without her, you’re no Botanist, you’re just dead weight in a village that has not much love for your kin.',
     speaker: 'Botanist',
     speakerName: 'Botanist',
-     answers: [
+    answers: [
       {
         text: 'Continue',
         goto: 'Step9',
@@ -197,7 +200,7 @@ const FirstNightDialog = {
     text: 'You look at the few drops of the precious liquid you have left. Then the jars of the stuff you collected earlier. More than usual. Maybe enough. Was that because of the valerian? <br/><br/>“Grow wild! Feed! Fassst!” The dryad is nothing but mischievous smiles.',
     speaker: 'Botanist',
     speakerName: 'Botanist',
-     answers: [
+    answers: [
       {
         text: 'Continue',
         actions: [],
@@ -237,7 +240,7 @@ const SecondNightDialog = {
     text: 'Then she fell silent. A succession of long stares and pinched earlobes. Every once in a while, she leans over a trowel or a pruner. Her branches brushing against the wooden handle. Does not take a genius to notice the questions racing through her head. ',
     speaker: 'Botanist',
     speakerName: 'Botanist',
-     answers: [
+    answers: [
       {
         text: 'A copper for your thoughts?',
         goto: 'SecondNightDialogStep4',
@@ -252,20 +255,20 @@ const SecondNightDialog = {
   },
   SecondNightDialogStep4: {
     text: [
-    '“Not like me, she concludes. Says nothing, not even here.” She points to her temple, drilling with unopened buds.',
-    {
-      text: '“Quiet. Peaceful?” She looks at you, crumbling certainty kept whole on your shoulders.',
-      conditions: ['hybridCount:tribe'],
-    },
-    {
-      text: '“No fun. Sad?” She looks at you, suddenly meek after a day of horsing around.',
-      conditions: ['hybridCount:dryad'],
-    },
-    'You nod along, hiding your discomfort. Teaching and growing at the same time, you’re not sure it’s right. She takes it in stride, though, one idea the root of another : “Wanna grow out! Out!”', 
+      '“Not like me, she concludes. Says nothing, not even here.” She points to her temple, drilling with unopened buds.',
+      {
+        text: '“Quiet. Peaceful?” She looks at you, crumbling certainty kept whole on your shoulders.',
+        conditions: ['hybridCount:tribe'],
+      },
+      {
+        text: '“No fun. Sad?” She looks at you, suddenly meek after a day of horsing around.',
+        conditions: ['hybridCount:dryad'],
+      },
+      'You nod along, hiding your discomfort. Teaching and growing at the same time, you’re not sure it’s right. She takes it in stride, though, one idea the root of another : “Wanna grow out! Out!”',
     ],
     speaker: 'Botanist',
     speakerName: 'Botanist',
-     answers: [
+    answers: [
       {
         text: 'Out? You want to explore?',
         goto: 'SecondNightDialogStep5',
@@ -282,7 +285,7 @@ const SecondNightDialog = {
     text: '“Too small” she twirls around, showing with all branches her box of man-made ground. How can you explain to her? That she’s not supposed to “be”, here? That she’ll get you exiled from Vedinor and the order? That there’s nowhere to go for her, no forest to take hold in, no stream to drink her fill. No wild fey to find her place with. You don’t know which one’s worst. “Can?”',
     speaker: 'Botanist',
     speakerName: 'Botanist',
-     answers: [
+    answers: [
       {
         text: 'Not yet, but maybe later?',
         goto: 'SecondNightDialogStep6',
@@ -299,7 +302,7 @@ const SecondNightDialog = {
     text: '“But I wanna! I wanna, I wanna, I wanna!” She’s a flurry of shrill screams and trembling leaves, locked on you like you owe her, big time. There is no soothing her this time, nor any wagging of the finger, promises or threats. You just wait, feeling like someone should have prepared you for this, as she tires herself out.',
     speaker: 'Botanist',
     speakerName: 'Botanist',
-     answers: [
+    answers: [
       {
         text: 'Continue',
         goto: 'SecondNightDialogStep7',
@@ -312,7 +315,7 @@ const SecondNightDialog = {
     text: 'Looking at the Dryad, deep slow breaths rocking back and forth a flower crown on her skin, you shiver. You got more Nectar for your trouble, but she’s growing so fast. Too fast. How long before she grows out of control, before she uproots herself and disappears. What if the flower you gave her robs her of something? What if you make it worse?',
     speaker: 'Botanist',
     speakerName: 'Botanist',
-     answers: [
+    answers: [
       {
         text: 'Continue',
         goto: 'SecondNightDialogStep8',
@@ -325,7 +328,7 @@ const SecondNightDialog = {
     text: '“Tonight, you toss and turn in your bed, remembering your classes in the Order’s Caravan. None of them made it look so hard.',
     speaker: 'Botanist',
     speakerName: 'Botanist',
-     answers: [
+    answers: [
       {
         text: 'Continue',
         actions: [],
