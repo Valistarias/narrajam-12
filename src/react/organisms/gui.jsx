@@ -156,7 +156,7 @@ const Gui = () => {
           text="Population"
           logo="people"
           value={totalPop}
-          parenthesis={`-${totalInfected}`}
+          parenthesis={`${totalInfected} sick`}
         />
         <RessourceBlock
           text="Flowers"

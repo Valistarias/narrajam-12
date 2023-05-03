@@ -65,7 +65,10 @@
   }
 
   &__tribe {
+    align-items: center;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
     height: 100%;
     position: relative;
     width: 25%;
@@ -130,6 +133,10 @@
       background-image: url('../../assets/imgs/leavestribeTemp.png');
       background-position: center;
       background-size: cover;
+    }
+
+    .nectarGiveway {
+      width: 80%;
     }
   }
 }

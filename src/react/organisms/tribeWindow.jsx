@@ -6,6 +6,7 @@ import { useGlobalVars } from '../../providers/GlobalVars';
 import { classTrim } from '../../utils';
 
 import './tribeWindow.scss';
+import NectarGiveway from '../molecules/nectarGiveway';
 
 const TribeWindow = () => {
   const [visible, setVisible] = useState(false);
@@ -33,6 +34,13 @@ const TribeWindow = () => {
           `)}
         >
           <h3 className="tribeWindow__tribe__name">{name}</h3>
+          <NectarGiveway
+            tribe={tribes[tribeId]}
+            nectarGiven={0}
+            onGive={() => {
+              console.log('test');
+            }}
+          />
         </div>,
       );
     });

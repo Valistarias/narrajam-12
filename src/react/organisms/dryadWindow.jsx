@@ -24,7 +24,7 @@ const DryadWindow = () => {
         return 'begining';
       }
       case 1: {
-        return 'SecondNightDialog';
+        return 'begining';
       }
       case 2: {
         return 'FirstNightDialog';

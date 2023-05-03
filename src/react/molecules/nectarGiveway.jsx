@@ -1,84 +1,125 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { PropTypes } from 'prop-types';
 import { classTrim } from '../../utils';
 import { Icon } from '../atoms/icon';
 
-import NeutralDone from '../../assets/imgs/neutralDone.jpg';
-import TribeDone from '../../assets/imgs/tribeDone.jpg';
-import DryadDone from '../../assets/imgs/dryadDone.png';
+import './nectarGiveway.scss';
+import Button from './button';
 
-import './hybridationNode.scss';
-
-const HybridationNode = ({
+const NectarGiveway = ({
   tribe,
   nectarGiven,
+  canGiveNectar,
   onGive,
-  onRemove,
 }) => {
-  const doneDom = useMemo(() => {
-    const classes = 'hybridationNode__img';
-    const alt = 'Completed';
-    switch (type) {
-      case 'tribe': {
-        return (
-          <img className={classes} src={TribeDone} alt={alt} />
-        );
-      }
-      case 'dryad': {
-        return (
-          <img className={classes} src={DryadDone} alt={alt} />
-        );
-      }
-      default: {
-        return (
-          <img className={classes} src={NeutralDone} alt={alt} />
-        );
-      }
+  const [localCanGiveNectar, setLocalCanGiveNectar] = useState(true);
+
+  const pools = useMemo(() => {
+    const maxHealth = 7;
+    const deathsPool = tribe.death >= 1 ? Math.round(tribe.death / 10) || 1 : 0;
+    const infectedPool = (
+      tribe.infected >= 1 ? Math.round(tribe.infected / 10) || 1 : 0
+    ) - nectarGiven;
+    const healthPool = maxHealth - infectedPool - deathsPool;
+    return {
+      max: maxHealth,
+      deathsPool,
+      infectedPool,
+      healthPool,
+      nectarPool: nectarGiven,
+    };
+  }, [nectarGiven, tribe?.death, tribe?.infected]);
+
+  console.log('pools', pools);
+
+  const healthIndicator = useMemo(() => {
+    const domBar = [];
+    for (let i = 0; i < pools.healthPool; i += 1) {
+      domBar.push(
+        <div
+          key={`healthPool-${i}`}
+          className={classTrim(`
+            nectarGiveway__healthBar__bar
+            nectarGiveway__healthBar__bar--healthy
+          `)}
+        />,
+      );
     }
-  }, [type]);
+    for (let i = 0; i < pools.infectedPool; i += 1) {
+      domBar.push(
+        <div
+          key={`infectedPool-${i}`}
+          className={classTrim(`
+            nectarGiveway__healthBar__bar
+            nectarGiveway__healthBar__bar--infected
+          `)}
+        />,
+      );
+    }
+    for (let i = 0; i < pools.nectarPool; i += 1) {
+      domBar.push(
+        <div
+          key={`nectarPool-${i}`}
+          className={classTrim(`
+            nectarGiveway__healthBar__bar
+            nectarGiveway__healthBar__bar--nectar
+          `)}
+        />,
+      );
+    }
+    for (let i = 0; i < pools.deathsPool; i += 1) {
+      domBar.push(
+        <div
+          key={`deathsPool-${i}`}
+          className={classTrim(`
+            nectarGiveway__healthBar__bar
+            nectarGiveway__healthBar__bar--deaths
+          `)}
+        />,
+      );
+    }
+    return (
+      <div className="nectarGiveway__healthBar">
+        {domBar}
+      </div>
+    );
+  }, [pools]);
+
+  useEffect(() => {
+    if (pools.deathsPool + pools.infectedPool + pools.healthPool + pools.nectarPool >= pools.max) {
+      setLocalCanGiveNectar(false);
+    } else {
+      setLocalCanGiveNectar(true);
+    }
+  }, [pools]);
 
   return (
     <div
       className={classTrim(`
-      nectarGiveway
-    `)}
-      onClick={onClick}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      onKeyDown={onClick}
-      role="button"
-      tabIndex={0}
+        nectarGiveway
+      `)}
     >
-      <Icon
-        className="hybridationNode__icon"
-        type={state === 'completed' ? 'singleHybridSelected' : 'singleHybrid'}
-      />
-      <Icon
-        className="hybridationNode__icon__backdrop"
-        type={state === 'completed' ? 'singleHybridSelected' : 'singleHybrid'}
-      />
-      {doneDom}
+      {healthIndicator}
+      <Button
+        onClick={onGive}
+        disabled={!canGiveNectar || !localCanGiveNectar}
+      >
+        Give Nectar
+      </Button>
     </div>
   );
 };
 
-HybridationNode.propTypes = {
-  id: PropTypes.string.isRequired,
-  selected: PropTypes.bool,
-  notUnlocked: PropTypes.bool,
-  type: PropTypes.oneOf(['tribe', 'dryad', 'neutral']).isRequired,
-  state: PropTypes.oneOf(['idle', 'launched', 'completed']),
-  onClick: PropTypes.func.isRequired,
-  onMouseEnter: PropTypes.func,
-  onMouseLeave: PropTypes.func,
+NectarGiveway.propTypes = {
+  tribe: PropTypes.string.isRequired,
+  nectarGiven: PropTypes.number,
+  canGiveNectar: PropTypes.bool,
+  onGive: PropTypes.func.isRequired,
 };
 
-HybridationNode.defaultProps = {
-  state: 'idle',
-  selected: false,
-  notUnlocked: false,
-  onMouseEnter: () => {},
-  onMouseLeave: () => {},
+NectarGiveway.defaultProps = {
+  nectarGiven: 0,
+  canGiveNectar: true,
 };
 
-export default HybridationNode;
+export default NectarGiveway;

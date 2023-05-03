@@ -1,54 +1,27 @@
-.hybridationNode {
-  cursor: pointer;
-  position: absolute;
+.nectarGiveway {
+  &__healthBar {
+    display: flex;
+    gap: 0.5rem;
 
-  &:hover {
-    .hybridationNode{
-      &__icon__backdrop {
-        filter: blur(.5rem);
+    &__bar {
+      background: var(--white);
+      border-radius: .2rem;
+      height: 1rem;
+      position: relative;
+      width: 3rem;
+
+      &--infected {
+        background: var(--yellow-infected);
+      }
+
+      &--nectar {
+        background: var(--green-neon);
+      }
+
+      &--deaths {
+        background: var(--vanta);
+        border: .1rem solid var(--white-opaque);
       }
     }
-  }
-
-  &__icon,
-  &__icon__backdrop {
-    filter: blur(0);
-    left: 50%;
-    position: absolute;
-    top: 50%;
-    transform: translate3d(-50%, -50%, 0);
-    transition: filter .1s ease;
-  }
-
-  &__img {
-    height: 5rem;
-    opacity: 0;
-    transition: opacity .2s ease;
-    width: 5rem;
-  }
-
-  &--launched {
-    .hybridationNode__img {
-      opacity: .3;
-    }
-  }
-
-  &--completed {
-    .hybridationNode__img {
-      opacity: 1;
-    }
-  }
-
-  &--selected {
-    .hybridationNode{
-      &__icon__backdrop {
-        filter: blur(1rem);
-      }
-    }
-  }
-
-  &--notUnlocked {
-    opacity: .3;
-    pointer-events: none;
   }
 }
