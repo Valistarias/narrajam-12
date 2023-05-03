@@ -1,4 +1,8 @@
 .nectarGiveway {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
   &__healthBar {
     display: flex;
     gap: 0.5rem;
@@ -24,4 +28,8 @@
       }
     }
   }
+
+  // &__button {
+  //   display: flex;
+  // }
 }

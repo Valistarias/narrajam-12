@@ -16,7 +16,7 @@ const NectarGiveway = ({
 
   const pools = useMemo(() => {
     const maxHealth = 7;
-    const deathsPool = tribe.death >= 1 ? Math.round(tribe.death / 10) || 1 : 0;
+    const deathsPool = tribe.deaths >= 1 ? Math.round(tribe.deaths / 10) || 1 : 0;
     const infectedPool = (
       tribe.infected >= 1 ? Math.round(tribe.infected / 10) || 1 : 0
     ) - nectarGiven;
@@ -28,7 +28,7 @@ const NectarGiveway = ({
       healthPool,
       nectarPool: nectarGiven,
     };
-  }, [nectarGiven, tribe?.death, tribe?.infected]);
+  }, [nectarGiven, tribe?.deaths, tribe?.infected]);
 
   console.log('pools', pools);
 
@@ -86,7 +86,13 @@ const NectarGiveway = ({
   }, [pools]);
 
   useEffect(() => {
-    if (pools.deathsPool + pools.infectedPool + pools.healthPool + pools.nectarPool >= pools.max) {
+    if (
+      pools.deathsPool
+      + pools.infectedPool
+      + pools.healthPool
+      + pools.nectarPool
+      + 1 >= pools.max
+    ) {
       setLocalCanGiveNectar(false);
     } else {
       setLocalCanGiveNectar(true);
@@ -102,6 +108,7 @@ const NectarGiveway = ({
       {healthIndicator}
       <Button
         onClick={onGive}
+        className="nectarGiveway__button"
         disabled={!canGiveNectar || !localCanGiveNectar}
       >
         Give Nectar

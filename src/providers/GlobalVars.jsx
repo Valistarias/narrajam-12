@@ -30,7 +30,8 @@ export const GlobalVarsProvider = ({ children }) => {
   // Infected ratio handling
   const infectedDayRatio = useMemo(() => [
     { maxRand: 0, flatBonus: 0 },
-    { maxRand: 10, flatBonus: 5 },
+    // { maxRand: 10, flatBonus: 5 },
+    { maxRand: 70, flatBonus: 20 },
     { maxRand: 20, flatBonus: 10 },
     { maxRand: 40, flatBonus: 15 },
     { maxRand: 50, flatBonus: 20 },
@@ -41,7 +42,7 @@ export const GlobalVarsProvider = ({ children }) => {
   const [tribes, setTribes] = useState({
     trunk: {
       name: 'Trunk',
-      infected: 5,
+      infected: 30,
       newInfected: 0,
       deaths: 0,
       newDeaths: 0,
@@ -49,7 +50,7 @@ export const GlobalVarsProvider = ({ children }) => {
     },
     leaves: {
       name: 'Leaves',
-      infected: 5,
+      infected: 30,
       newInfected: 0,
       deaths: 0,
       newDeaths: 0,
@@ -57,7 +58,7 @@ export const GlobalVarsProvider = ({ children }) => {
     },
     branches: {
       name: 'Branches',
-      infected: 5,
+      infected: 30,
       newInfected: 0,
       deaths: 0,
       newDeaths: 0,
