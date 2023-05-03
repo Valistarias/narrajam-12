@@ -126,7 +126,7 @@ const DialogueWindow = () => {
           textBlocks={textBlocks}
           setButtonDisabled={setButtonDisabled}
           scrollBottom={scrollBottom}
-          toSkip
+          // toSkip
         />
       </Scrollbar>
       <div className="dialogue__buttons">
