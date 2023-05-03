@@ -12,8 +12,8 @@ const GlobalVarsContext = React.createContext();
 export const GlobalVarsProvider = ({ children }) => {
   // Numeral values
   const [vars, setVars] = useState({
-    nectar: 2,
-    flower: 2,
+    nectar: 1,
+    flower: 1,
     timeBlock: 3,
     day: 0,
     stepCycle: 3,
@@ -23,8 +23,8 @@ export const GlobalVarsProvider = ({ children }) => {
   });
 
   const [income, setIncome] = useState({
-    nectar: 0,
-    flower: 0,
+    nectar: 1,
+    flower: 1,
     _tribe: 0,
     _dryad: 0,
   });

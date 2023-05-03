@@ -18,7 +18,7 @@ const trunkEvents = {
     answers: [
       {
         text: 'Poorly placed sores it is.',
-        actions: ['var:flower:1'],
+        actions: ['var:flower:1', 'var:nectar:-1'],
       },
       {
         text: 'The quietly sick will have to wait. I\'m not done with the others today.',
