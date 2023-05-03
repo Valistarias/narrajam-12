@@ -1,5 +1,5 @@
 .disclaimer {
-  background-color: var(--black-semi-opaque);
+  background-color: var(--black);
   height: 100%;
   left: 0;
   opacity: 0;
@@ -54,6 +54,12 @@
       flex-direction: row;
       gap: 2rem;
       justify-content: space-between;
+
+      &__loading {
+        font-size: 2rem;
+        text-align: center;
+        width: 100%;
+      }
     }
   }
 }

@@ -8,10 +8,13 @@ import { classTrim } from '../../utils';
 
 import './dryadWindow.scss';
 import { useEvent } from '../../providers/Event';
+import { useMusic } from '../../providers/Music';
 
 const DryadWindow = () => {
   const [visible, setVisible] = useState(false);
   const dispatchedEvent = useRef(false);
+
+  const { switchMusic } = useMusic();
 
   const {
     vars, displayedScreen, isActualStep, goToNextDay,
@@ -56,6 +59,7 @@ const DryadWindow = () => {
           name: dialogByDay,
         },
       }));
+      switchMusic('dryad');
     }
   }, [
     vars?.stepCycle,
@@ -64,14 +68,16 @@ const DryadWindow = () => {
     dialogByDay,
     Event,
     goToNextDay,
+    switchMusic,
   ]);
 
   const onGoToNextDay = useCallback(() => {
     if (!dispatchedEvent.current) {
       goToNextDay();
       dispatchedEvent.current = true;
+      switchMusic('main');
     }
-  }, [goToNextDay]);
+  }, [goToNextDay, switchMusic]);
 
   useEffect(() => {
     Event.addEventListener('closeDialogue', () => {

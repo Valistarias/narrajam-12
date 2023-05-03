@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { useMusic } from '../../providers/Music';
 import Button from '../molecules/button';
@@ -26,23 +26,29 @@ const Disclaimer = () => {
           Also, mild language and abuse. Also, sound.
         </p>
         <div className="disclaimer__block__buttons">
-          <Button
-            disabled={ready < 2}
-            onClick={() => {
-              setVisible(false);
-              switchMusic('main');
-            }}
-          >
-            Continue With Sound
-          </Button>
-          <Button
-            disabled={ready < 2}
-            onClick={() => {
-              setVisible(false);
-            }}
-          >
-            Continue Without Sound
-          </Button>
+          {
+            ready < 2 ? (
+              <p className="disclaimer__block__buttons__loading">Loading...</p>
+            ) : (
+              <>
+                <Button
+                  onClick={() => {
+                    setVisible(false);
+                    switchMusic('main');
+                  }}
+                >
+                  Continue With Sound
+                </Button>
+                <Button
+                  onClick={() => {
+                    setVisible(false);
+                  }}
+                >
+                  Continue Without Sound
+                </Button>
+              </>
+            )
+          }
         </div>
       </div>
     </div>
