@@ -77,7 +77,7 @@ export const GlobalVarsProvider = ({ children }) => {
 
   // Events handling
   const [, setEventQueueId] = useState([
-    'sickHelpless', 'sickHelpless2', 'sickHelpless3',
+    'sickHelpless', 'roughHands', 'packingLunch',
   ]);
   const [eventNode, setEventNode] = useState({
     trunk: 1,
