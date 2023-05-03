@@ -36,7 +36,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(jpe?g|png|gif|ico|eot|ttf|woff2?)(\?v=\d+\.\d+\.\d+)?$/i,
+        test: /\.(jpe?g|png|gif|ico|eot|ttf|woff2|ogg|mp3|wav?)(\?v=\d+\.\d+\.\d+)?$/i,
         type: 'asset/resource',
       },
     ],
@@ -52,7 +52,7 @@ module.exports = {
     static: {
       directory: path.join(__dirname, 'public/'),
     },
-    port: 3003,
+    port: 3004,
     devMiddleware: {
       publicPath: 'https://localhost:3000/dist/',
     },

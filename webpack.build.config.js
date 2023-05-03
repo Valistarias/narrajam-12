@@ -35,7 +35,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(jpe?g|png|gif|ico|eot|ttf|woff2?)(\?v=\d+\.\d+\.\d+)?$/i,
+        test: /\.(jpe?g|png|gif|ico|eot|ttf|woff2|ogg|mp3|wav?)(\?v=\d+\.\d+\.\d+)?$/i,
         type: 'asset/resource',
       },
     ],

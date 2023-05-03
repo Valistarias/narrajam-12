@@ -12,9 +12,11 @@ import DaytimeWindow from '../organisms/daytimeWindow';
 import Gui from '../organisms/gui';
 import HybridationWindow from '../organisms/hybridationWindow';
 import TribeWindow from '../organisms/tribeWindow';
+import Disclaimer from '../organisms/disclaimer';
 
 const Home = () => (
   <div className="home">
+    <Disclaimer />
     <DialogueWindow />
     <MiniDialogueWindow />
     <TitleWindow />
