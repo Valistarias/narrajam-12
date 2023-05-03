@@ -3,11 +3,13 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 
+import NarrativeEvents from '../assets/data/narrativeEvents';
 import Hybridations from '../assets/data/hybridations';
 
 const GlobalVarsContext = React.createContext();
 
 export const GlobalVarsProvider = ({ children }) => {
+  // Numeral values
   const [vars, setVars] = useState({
     nectar: 2,
     flower: 2,
@@ -25,8 +27,7 @@ export const GlobalVarsProvider = ({ children }) => {
     _dryad: 0,
   });
 
-  const [hybridationResearch, setHybridationResearch] = useState(null);
-
+  // Infected ratio handling
   const infectedDayRatio = useMemo(() => [
     { maxRand: 0, flatBonus: 0 },
     { maxRand: 10, flatBonus: 5 },
@@ -36,6 +37,7 @@ export const GlobalVarsProvider = ({ children }) => {
     { maxRand: 60, flatBonus: 25 },
   ], []);
 
+  // Tribes handling
   const [tribes, setTribes] = useState({
     trunk: {
       name: 'Trunk',
@@ -63,7 +65,19 @@ export const GlobalVarsProvider = ({ children }) => {
     },
   });
 
+  // Hybridations handling
+  const [hybridationResearch, setHybridationResearch] = useState(null);
   const [hybridationIds, setHybridationIds] = useState([]);
+
+  // Events handling
+  const [, setEventQueueId] = useState([
+    'sickHelpless', 'sickHelpless2', 'sickHelpless3',
+  ]);
+  const [eventNode, setEventNode] = useState({
+    trunk: 1,
+    leaves: 1,
+    branches: 1,
+  });
 
   const [displayedScreen, setDisplayedScreen] = useState('title');
 
@@ -95,10 +109,46 @@ export const GlobalVarsProvider = ({ children }) => {
     return index === vars.stepCycle;
   }, [screenCycle, vars]);
 
-  const updateVar = useCallback(({ name, value }) => {
+  const addRelevantEventToQueue = useCallback((tribeId) => {
+    const relevantNode = eventNode[tribeId] + 1;
+    const foundEventId = Object.key(NarrativeEvents).find(
+      (narrativeEventId) => NarrativeEvents[narrativeEventId].eventType === tribeId
+      && NarrativeEvents[narrativeEventId].chainNode === relevantNode,
+    );
+    if (foundEventId) {
+      setEventQueueId((prev) => {
+        const next = [...prev];
+        next.push(foundEventId);
+        return next;
+      });
+      setEventNode((prev) => {
+        const next = { ...prev };
+        next[tribeId] = relevantNode;
+        return next;
+      });
+    } else {
+      console.error('No event found with this tribe and progression', tribeId, relevantNode);
+    }
+  }, [eventNode]);
+
+  const removeEventFromQueue = useCallback((cb) => {
+    setEventQueueId((prev) => {
+      const next = [...prev];
+      const [evt] = prev;
+      next.shift();
+      cb(evt);
+      return next;
+    });
+  }, []);
+
+  const updateVar = useCallback(({ name, value, addition }) => {
     setVars((prev) => {
       const next = { ...prev };
-      next[name] = value;
+      if (addition) {
+        next[name] += Number(value);
+      } else {
+        next[name] = value;
+      }
       if (JSON.stringify(prev) === JSON.stringify(next)) {
         return prev;
       }
@@ -256,6 +306,8 @@ export const GlobalVarsProvider = ({ children }) => {
     goToNextDay,
     goToNextCycle,
     goToNextBlock,
+    removeEventFromQueue,
+    addRelevantEventToQueue,
   }), [
     vars,
     income,
@@ -271,6 +323,8 @@ export const GlobalVarsProvider = ({ children }) => {
     goToNextDay,
     goToNextCycle,
     goToNextBlock,
+    removeEventFromQueue,
+    addRelevantEventToQueue,
   ]);
 
   return (
@@ -301,6 +355,8 @@ export const useGlobalVars = () => {
     goToNextDay,
     goToNextCycle,
     goToNextBlock,
+    removeEventFromQueue,
+    addRelevantEventToQueue,
   } = useContext(GlobalVarsContext);
 
   return {
@@ -319,5 +375,7 @@ export const useGlobalVars = () => {
     goToNextDay,
     goToNextCycle,
     goToNextBlock,
+    removeEventFromQueue,
+    addRelevantEventToQueue,
   };
 };

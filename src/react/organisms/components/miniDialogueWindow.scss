@@ -1,5 +1,5 @@
 .mini-dialogue {
-  background: var(--black-opaque);
+  background: var(--vanta);
   border: .1rem solid var(--white-opaque);
   display: flex;
   flex-direction: column;
@@ -53,6 +53,7 @@
   }
 
   .hint {
+    background: var(--vanta);
     border: .1rem solid var(--white-opaque);
     display: flex;
     flex-direction: column;
@@ -65,6 +66,17 @@
     top: 0;
     width: 20rem;
 
+    &::after {
+      border: .1rem solid var(--white-opaque);
+      content: '';
+      height: calc(100% - 2rem);
+      left: 1rem;
+      pointer-events: none;
+      position: absolute;
+      top: 1rem;
+      width: calc(100% - 2rem);
+    }
+
     &__entry {
       &--positive,
       &--negative {
@@ -72,7 +84,7 @@
       }
 
       &--positive{
-        color: var(--secondary);
+        color: var(--green-neon);
       }
 
       &--negative{

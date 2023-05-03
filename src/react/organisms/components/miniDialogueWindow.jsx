@@ -14,6 +14,7 @@ import VarNames from '../../../assets/data/varNames';
 import { curateAndDomifyText } from '../../../utils';
 
 import './miniDialogueWindow.scss';
+import { useGlobalVars } from '../../../providers/GlobalVars';
 
 const MiniDialogueWindow = () => {
   const [isOpen, setOpen] = useState(false);
@@ -30,21 +31,29 @@ const MiniDialogueWindow = () => {
   const scrollRef = useRef();
 
   const { Event } = useEvent();
+  const {
+    updateVar,
+  } = useGlobalVars();
 
   const activateEvents = useCallback((events) => {
     if (events && events.length > 0) {
       events.forEach((evt) => {
         const slicedEvt = evt.split(':');
-        Event.dispatchEvent(new CustomEvent(slicedEvt[0], {
-          detail: {
+        if (slicedEvt[0] === 'var') {
+          updateVar({
             name: slicedEvt[1],
-            ...(slicedEvt[2] ? { value: slicedEvt[2] } : null),
-          },
-        }));
+            value: slicedEvt[2],
+            addition: true,
+          });
+        }
       });
     }
     setOpen(false);
-  }, [Event]);
+    updateVar({
+      name: 'DISPLAY_MINI_DIALOG',
+      value: false,
+    });
+  }, [updateVar]);
 
   const activateHint = useCallback((actions) => {
     const toDisplay = [];
@@ -87,8 +96,12 @@ const MiniDialogueWindow = () => {
       setAnswers([]);
       setTimeout(() => {
         setOpen(true);
+        updateVar({
+          name: 'DISPLAY_MINI_DIALOG',
+          value: true,
+        });
         const dialog = NarrativeEvents[detail.name];
-        setText(curateAndDomifyText(dialog.text));
+        setText(curateAndDomifyText(dialog));
         setTitle(dialog.title);
         setAnswers(dialog.answers.length > 0
           ? dialog.answers.map((answer, index) => ({
@@ -102,11 +115,11 @@ const MiniDialogueWindow = () => {
       setvars(detail);
     });
     Event.dispatchEvent(new CustomEvent('sendGlobalvars'));
-  }, [Event]);
+  }, [Event, updateVar]);
 
   return (
     <div className={`mini-dialogue ${isOpen ? ' mini-dialogue--open' : ''}`}>
-      <h1 className="mini-dialogue__title">{title}</h1>
+      <h2 className="mini-dialogue__title">{title}</h2>
       <div className={`hint ${hintVisible ? ' hint--open' : ''}`}>
         {hintContent}
       </div>
@@ -139,7 +152,7 @@ const MiniDialogueWindow = () => {
                 deactivateHint();
               }}
             >
-              {curateAndDomifyText(answer.text)}
+              {curateAndDomifyText(answer)}
             </Button>
           ))
           : (

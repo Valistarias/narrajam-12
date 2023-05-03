@@ -97,6 +97,11 @@ const Gui = () => {
     setHybridationVisible(!!vars.DISPLAY_HYBRIDATION);
   }, [vars?.DISPLAY_HYBRIDATION]);
 
+  useEffect(() => {
+    setCanModifyHybridation(!vars.DISPLAY_MINI_DIALOG);
+    setCanGoNextPeriod(!vars.DISPLAY_MINI_DIALOG);
+  }, [vars?.DISPLAY_MINI_DIALOG]);
+
   return (
     <div
       className={classTrim(`
