@@ -6,6 +6,7 @@
   &__healthBar {
     display: flex;
     gap: 0.5rem;
+    justify-content: center;
 
     &__bar {
       background: var(--white);

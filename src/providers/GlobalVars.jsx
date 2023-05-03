@@ -17,8 +17,8 @@ export const GlobalVarsProvider = ({ children }) => {
     timeBlock: 3,
     day: 0,
     stepCycle: 3,
-    dryadTier: 0,
-    tribeTier: 0,
+    dryadTier: 1,
+    tribeTier: 1,
     usedNectar: 0,
   });
 
@@ -73,7 +73,7 @@ export const GlobalVarsProvider = ({ children }) => {
 
   // Hybridations handling
   const [hybridationResearch, setHybridationResearch] = useState(null);
-  const [hybridationIds, setHybridationIds] = useState([]);
+  const [hybridationIds, setHybridationIds] = useState(['valerian']);
 
   // Events handling
   const [, setEventQueueId] = useState([

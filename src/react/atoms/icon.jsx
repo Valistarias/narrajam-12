@@ -51,7 +51,6 @@ export const Icon = ({
 
 Icon.propTypes = {
   type: possibleIcons,
-  children: PropTypes.node.isRequired,
   onClick: PropTypes.func,
   preventDefault: PropTypes.bool,
 };

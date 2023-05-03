@@ -14,10 +14,10 @@ const DryadWindow = () => {
   const [visible, setVisible] = useState(false);
   const dispatchedEvent = useRef(false);
 
-  const { switchMusic } = useMusic();
+  const { switchMusic, whoosh, whoosh2 } = useMusic();
 
   const {
-    vars, displayedScreen, isActualStep, goToNextDay,
+    vars, displayedScreen, isActualStep, goToNextDay, income,
   } = useGlobalVars();
 
   const { Event } = useEvent();
@@ -32,6 +32,11 @@ const DryadWindow = () => {
         return 'begining';
       }
       case 2: {
+        if (income._dryad >= income._tribe) {
+          // Dialog dryad
+          return 'FirstNightDialog';
+        }
+        // Dialog tribe
         return 'FirstNightDialog';
       }
       case 3: {
@@ -48,7 +53,7 @@ const DryadWindow = () => {
         return null;
       }
     }
-  }, [vars?.day, isActualStep]);
+  }, [vars?.day, isActualStep, income?._dryad, income?._tribe]);
 
   useEffect(() => {
     setVisible(displayedScreen === 'game' && isActualStep('dryad'));
@@ -59,6 +64,7 @@ const DryadWindow = () => {
           name: dialogByDay,
         },
       }));
+      whoosh();
       switchMusic('dryad');
     }
   }, [
@@ -69,6 +75,7 @@ const DryadWindow = () => {
     Event,
     goToNextDay,
     switchMusic,
+    whoosh,
   ]);
 
   const onGoToNextDay = useCallback(() => {
@@ -82,8 +89,9 @@ const DryadWindow = () => {
   useEffect(() => {
     Event.addEventListener('closeDialogue', () => {
       onGoToNextDay();
+      whoosh2();
     });
-  }, [Event, onGoToNextDay]);
+  }, [Event, onGoToNextDay, whoosh2]);
 
   return (
     <div className={classTrim(`

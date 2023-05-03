@@ -5,6 +5,7 @@ import { classTrim, nectarToFlower } from '../../utils';
 import './nectarGiveway.scss';
 import Button from './button';
 import { Icon } from '../atoms/icon';
+import { tribeShape } from '../types/tribe';
 
 const NectarGiveway = ({
   tribe,
@@ -128,7 +129,7 @@ const NectarGiveway = ({
 };
 
 NectarGiveway.propTypes = {
-  tribe: PropTypes.string.isRequired,
+  tribe: tribeShape.isRequired,
   canGiveNectar: PropTypes.bool,
   onGive: PropTypes.func.isRequired,
 };

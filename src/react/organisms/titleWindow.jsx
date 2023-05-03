@@ -46,6 +46,8 @@ const TitleWindow = () => {
           </Button>
           <Button
             theme="title"
+            onClick={() => {}}
+            disabled
           >
             Settings
           </Button>

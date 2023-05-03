@@ -4,10 +4,14 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 
-import { Howl } from 'howler';
+import { Howl, Howler } from 'howler';
 
 import MainTheme from '../assets/sound/main-theme.mp3';
 import DryadTheme from '../assets/sound/dryad-theme.mp3';
+
+import WhooshSound from '../assets/sound/wooshTemp.mp3';
+import WhooshSound2 from '../assets/sound/wooshTemp2.mp3';
+import PingSound from '../assets/sound/pingTemp.mp3';
 
 const MusicContext = React.createContext();
 
@@ -16,12 +20,26 @@ export const MusicProvider = ({ children }) => {
 
   const mainSound = useMemo(() => new Howl({
     src: [MainTheme],
+    loop: true,
     html5: true,
   }), []);
 
   const dryadSound = useMemo(() => new Howl({
     src: [DryadTheme],
+    loop: true,
     html5: true,
+  }), []);
+
+  const whooshSound = useMemo(() => new Howl({
+    src: [WhooshSound],
+  }), []);
+
+  const whooshSound2 = useMemo(() => new Howl({
+    src: [WhooshSound2],
+  }), []);
+
+  const pingSound = useMemo(() => new Howl({
+    src: [PingSound],
   }), []);
 
   useEffect(() => {
@@ -34,6 +52,10 @@ export const MusicProvider = ({ children }) => {
     });
   }, [dryadSound, mainSound]);
 
+  const muteAll = useCallback(() => {
+    Howler.mute(true);
+  }, []);
+
   const fadeMainVolumeToDown = useCallback(() => {
     const step = 0.01;
     const actualVolume = mainSound.volume();
@@ -43,8 +65,8 @@ export const MusicProvider = ({ children }) => {
         fadeMainVolumeToDown();
       }, '10');
     } else {
-      mainSound.stop();
-      mainSound.volume(1);
+      mainSound.volume(0);
+      mainSound.pause();
     }
   }, [mainSound]);
 
@@ -57,41 +79,86 @@ export const MusicProvider = ({ children }) => {
         fadeDryadVolumeToDown();
       }, '10');
     } else {
-      dryadSound.stop();
-      dryadSound.volume(1);
+      dryadSound.volume(0);
+      dryadSound.pause();
+    }
+  }, [dryadSound]);
+
+  const fadeMainVolumeToUp = useCallback(() => {
+    const step = 0.01;
+    const actualVolume = mainSound.volume();
+    if (actualVolume < 1 - step) {
+      mainSound.volume(actualVolume + step);
+      setTimeout(() => {
+        fadeMainVolumeToUp();
+      }, '10');
+    } else {
+      mainSound.volume(10);
+    }
+  }, [mainSound]);
+
+  const fadeDryadVolumeToUp = useCallback(() => {
+    const step = 0.01;
+    const actualVolume = dryadSound.volume();
+    if (actualVolume < 1 - step) {
+      dryadSound.volume(actualVolume + step);
+      setTimeout(() => {
+        fadeDryadVolumeToUp();
+      }, '10');
+    } else {
+      dryadSound.volume(10);
     }
   }, [dryadSound]);
 
   const switchMusic = useCallback((id) => {
-    console.log('switchMusic', id);
     if (id === 'main') {
-      console.log('ID', id);
       if (dryadSound.playing()) {
         fadeDryadVolumeToDown();
       }
-      // dryadSound.stop();
-      // mainSound.stop();
-      mainSound.stop();
-      mainSound.volume(1);
       mainSound.play();
-      // mainSound.fade(0, 1, 1000);
+      fadeMainVolumeToUp();
     } else {
       if (mainSound.playing()) {
         fadeMainVolumeToDown();
       }
-      // mainSound.stop();
-      dryadSound.stop();
-      dryadSound.volume(1);
       dryadSound.play();
+      fadeDryadVolumeToUp();
     }
-  }, [fadeDryadVolumeToDown, mainSound, fadeMainVolumeToDown, dryadSound]);
+  }, [
+    dryadSound,
+    mainSound,
+    fadeMainVolumeToUp,
+    fadeDryadVolumeToDown,
+    fadeDryadVolumeToUp,
+    fadeMainVolumeToDown,
+  ]);
+
+  const whoosh = useCallback(() => {
+    whooshSound.play();
+  }, [whooshSound]);
+
+  const whoosh2 = useCallback(() => {
+    whooshSound2.play();
+  }, [whooshSound2]);
+
+  const ping = useCallback(() => {
+    pingSound.play();
+  }, [pingSound]);
 
   const providerValues = useMemo(() => ({
     ready,
     switchMusic,
+    muteAll,
+    whoosh,
+    whoosh2,
+    ping,
   }), [
     ready,
     switchMusic,
+    muteAll,
+    whoosh,
+    whoosh2,
+    ping,
   ]);
 
   return (
@@ -109,10 +176,18 @@ export const useMusic = () => {
   const {
     ready,
     switchMusic,
+    muteAll,
+    whoosh,
+    whoosh2,
+    ping,
   } = useContext(MusicContext);
 
   return {
     ready,
     switchMusic,
+    muteAll,
+    whoosh,
+    whoosh2,
+    ping,
   };
 };

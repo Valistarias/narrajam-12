@@ -7,7 +7,7 @@ import { classTrim } from '../../utils';
 import './disclaimer.scss';
 
 const Disclaimer = () => {
-  const { ready, switchMusic } = useMusic();
+  const { ready, switchMusic, muteAll } = useMusic();
 
   const [visible, setVisible] = useState(true);
 
@@ -42,6 +42,7 @@ const Disclaimer = () => {
                 <Button
                   onClick={() => {
                     setVisible(false);
+                    muteAll();
                   }}
                 >
                   Continue Without Sound

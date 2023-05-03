@@ -9,6 +9,7 @@ import { capitalize, classTrim } from '../../utils';
 import './gui.scss';
 import RessourceBlock from './components/ressourceBlock';
 import Button from '../molecules/button';
+import { useMusic } from '../../providers/Music';
 
 const Gui = () => {
   const [timebarVisible, setTimebarVisible] = useState(false);
@@ -41,6 +42,8 @@ const Gui = () => {
       value: !hybridationVisible,
     });
   }, [updateVar, hybridationVisible]);
+
+  const { whoosh2 } = useMusic();
 
   const blockToPeriod = useMemo(() => {
     if (isActualStep('tribe')) {
@@ -211,6 +214,7 @@ const Gui = () => {
         `)}
         onClick={() => {
           goToNextBlock();
+          whoosh2();
         }}
         disabled={!canGoNextPeriod || hybridationVisible}
       >

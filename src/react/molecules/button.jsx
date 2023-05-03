@@ -4,6 +4,7 @@ import { classTrim } from '../../utils';
 
 import './button.scss';
 import { Icon, possibleIcons } from '../atoms/icon';
+import { useMusic } from '../../providers/Music';
 
 const Button = ({
   submit,
@@ -17,39 +18,43 @@ const Button = ({
   disabled,
   invisible,
   theme,
-}) => (
-  <button
-    className={classTrim(`
-    button
-    ${className ?? ''}
-    button--theme-${theme}
-    ${disabled ? ' button--disabled' : ''}
-    ${invisible ? ' button--invisible' : ''}
-  `)}
-    type={submit ? 'submit' : 'button'}
-    onClick={(e) => {
-      if (preventDefault) { e.preventDefault(); }
-      onClick(e);
-    }}
-    onMouseLeave={(e) => {
-      if (preventDefault) { e.preventDefault(); }
-      onMouseLeave(e);
-    }}
-    onMouseEnter={(e) => {
-      if (preventDefault) { e.preventDefault(); }
-      onMouseEnter(e);
-    }}
-  >
-    {children}
-    {
-      icon ? (
-        <Icon
-          type={icon}
-        />
-      ) : null
-    }
-  </button>
-);
+}) => {
+  const { ping } = useMusic();
+  return (
+    <button
+      className={classTrim(`
+      button
+      ${className ?? ''}
+      button--theme-${theme}
+      ${disabled ? ' button--disabled' : ''}
+      ${invisible ? ' button--invisible' : ''}
+    `)}
+      type={submit ? 'submit' : 'button'}
+      onClick={(e) => {
+        if (preventDefault) { e.preventDefault(); }
+        onClick(e);
+      }}
+      onMouseLeave={(e) => {
+        if (preventDefault) { e.preventDefault(); }
+        onMouseLeave(e);
+      }}
+      onMouseEnter={(e) => {
+        if (preventDefault) { e.preventDefault(); }
+        onMouseEnter(e);
+        ping();
+      }}
+    >
+      {children}
+      {
+        icon ? (
+          <Icon
+            type={icon}
+          />
+        ) : null
+      }
+    </button>
+  );
+};
 
 Button.propTypes = {
   submit: PropTypes.bool,
