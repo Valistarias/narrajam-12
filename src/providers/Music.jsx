@@ -37,26 +37,28 @@ export const MusicProvider = ({ children }) => {
   const fadeMainVolumeToDown = useCallback(() => {
     const step = 0.01;
     const actualVolume = mainSound.volume();
-    if (actualVolume > 0) {
+    if (actualVolume > step) {
       mainSound.volume(actualVolume - step);
       setTimeout(() => {
         fadeMainVolumeToDown();
       }, '10');
     } else {
       mainSound.stop();
+      mainSound.volume(1);
     }
   }, [mainSound]);
 
   const fadeDryadVolumeToDown = useCallback(() => {
     const step = 0.01;
     const actualVolume = dryadSound.volume();
-    if (actualVolume > 0) {
+    if (actualVolume > step) {
       dryadSound.volume(actualVolume - step);
       setTimeout(() => {
         fadeDryadVolumeToDown();
       }, '10');
     } else {
       dryadSound.stop();
+      dryadSound.volume(1);
     }
   }, [dryadSound]);
 
@@ -71,9 +73,7 @@ export const MusicProvider = ({ children }) => {
       // mainSound.stop();
       mainSound.stop();
       mainSound.volume(1);
-      console.log('volume', mainSound.volume());
       mainSound.play();
-      console.log('playing', mainSound.playing());
       // mainSound.fade(0, 1, 1000);
     } else {
       if (mainSound.playing()) {
