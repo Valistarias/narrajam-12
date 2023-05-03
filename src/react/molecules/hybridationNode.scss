@@ -13,18 +13,20 @@
   &__icon,
   &__icon__backdrop {
     filter: blur(0);
+    height: 6rem;
     left: 50%;
     position: absolute;
     top: 50%;
     transform: translate3d(-50%, -50%, 0);
     transition: filter .1s ease;
+    width: 6rem;
   }
 
   &__img {
-    height: 5rem;
+    height: 10rem;
     opacity: 0;
     transition: opacity .2s ease;
-    width: 5rem;
+    width: 10rem;
   }
 
   &--launched {

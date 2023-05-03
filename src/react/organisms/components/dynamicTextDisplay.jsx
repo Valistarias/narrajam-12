@@ -64,7 +64,7 @@ const DynamicTextDisplay = ({
       } else {
         setTimeout(() => {
           displayLoopWords(cb);
-        }, toSkip ? 0 : 50);
+        }, toSkip ? 0 : 30);
       }
     }, delayNewMessage ? 500 : 0);
   }, [toSkip, scrollBottom]);

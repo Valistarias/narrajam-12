@@ -42,11 +42,12 @@
 
     &__content {
       font-family: var(--main-title-font);
+      text-align: center;
       text-transform: uppercase;
     }
 
     &__text {
-      line-height: 2rem;
+      line-height: 2.6rem;
       padding: 0 1rem;
       text-align: justify;
     }

@@ -46,6 +46,11 @@ const CreditWindow = () => {
         <li className="creditWindow__list__sub">Helly Demekin</li>
         <li className="creditWindow__list__sub">Gwendoline Bleu</li>
       </ul>
+      <h3 className="creditWindow__participants">Production cats</h3>
+      <ul className="creditWindow__list">
+        <li className="creditWindow__list__sub">Barnaby</li>
+        <li className="creditWindow__list__sub">Kaiba</li>
+      </ul>
       <Button
         onClick={() => {
           updateVar({
