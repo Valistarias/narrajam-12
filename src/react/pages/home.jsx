@@ -11,6 +11,7 @@ import RecapWindow from '../organisms/recapWindow';
 import DaytimeWindow from '../organisms/daytimeWindow';
 import Gui from '../organisms/gui';
 import HybridationWindow from '../organisms/hybridationWindow';
+import TribeWindow from '../organisms/tribeWindow';
 
 const Home = () => (
   <div className="home">
@@ -21,6 +22,7 @@ const Home = () => (
     <RecapWindow />
     <DaytimeWindow />
     <HybridationWindow />
+    <TribeWindow />
     <CreditWindow />
     <Gui />
   </div>

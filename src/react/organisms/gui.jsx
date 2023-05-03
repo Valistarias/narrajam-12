@@ -82,6 +82,12 @@ const Gui = () => {
       || isActualStep('tribe')
     );
     setTimebarVisible(displayMainGui);
+    if (displayedScreen === 'game' && !isActualStep('main')) {
+      setCanModifyHybridation(false);
+    } else {
+      console.log('ok');
+      setCanModifyHybridation(true);
+    }
     setRessourcesVisible(displayMainGui);
     setNextPeriodVisible(displayMainGui);
   }, [

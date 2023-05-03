@@ -52,7 +52,7 @@ module.exports = {
     static: {
       directory: path.join(__dirname, 'public/'),
     },
-    port: 3000,
+    port: 8080,
     devMiddleware: {
       publicPath: 'https://localhost:3000/dist/',
     },

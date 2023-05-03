@@ -1,0 +1,54 @@
+.hybridationNode {
+  cursor: pointer;
+  position: absolute;
+
+  &:hover {
+    .hybridationNode{
+      &__icon__backdrop {
+        filter: blur(.5rem);
+      }
+    }
+  }
+
+  &__icon,
+  &__icon__backdrop {
+    filter: blur(0);
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    transition: filter .1s ease;
+  }
+
+  &__img {
+    height: 5rem;
+    opacity: 0;
+    transition: opacity .2s ease;
+    width: 5rem;
+  }
+
+  &--launched {
+    .hybridationNode__img {
+      opacity: .3;
+    }
+  }
+
+  &--completed {
+    .hybridationNode__img {
+      opacity: 1;
+    }
+  }
+
+  &--selected {
+    .hybridationNode{
+      &__icon__backdrop {
+        filter: blur(1rem);
+      }
+    }
+  }
+
+  &--notUnlocked {
+    opacity: .3;
+    pointer-events: none;
+  }
+}
