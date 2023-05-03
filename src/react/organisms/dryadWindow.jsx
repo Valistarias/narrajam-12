@@ -1,4 +1,5 @@
 import React, {
+  useCallback,
   useEffect, useMemo, useState,
 } from 'react';
 
@@ -10,6 +11,7 @@ import { useEvent } from '../../providers/Event';
 
 const DryadWindow = () => {
   const [visible, setVisible] = useState(false);
+  const [dispatchedEvent, setDispatchedEvent] = useState(false);
 
   const {
     vars, displayedScreen, isActualStep, goToNextDay,
@@ -48,6 +50,7 @@ const DryadWindow = () => {
   useEffect(() => {
     setVisible(displayedScreen === 'game' && isActualStep('dryad'));
     if (displayedScreen === 'game' && isActualStep('dryad')) {
+      setDispatchedEvent(false);
       Event.dispatchEvent(new CustomEvent('openDialogue', {
         detail: {
           name: dialogByDay,
@@ -63,11 +66,18 @@ const DryadWindow = () => {
     goToNextDay,
   ]);
 
+  const onGoToNextDay = useCallback(() => {
+    if (!dispatchedEvent) {
+      goToNextDay();
+      setDispatchedEvent(true);
+    }
+  }, [goToNextDay, dispatchedEvent]);
+
   useEffect(() => {
     Event.addEventListener('closeDialogue', () => {
-      goToNextDay();
+      onGoToNextDay();
     });
-  }, [Event, goToNextDay]);
+  }, [Event, onGoToNextDay]);
 
   return (
     <div className={classTrim(`

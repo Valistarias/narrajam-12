@@ -125,6 +125,8 @@ export const curateText = ({
   return curatedText;
 };
 
+export const nectarToFlower = (nectar) => nectar * 2;
+
 export const curateAndDomifyText = (props) => {
   const curatedText = curateText(props);
   const regroupedText = [];

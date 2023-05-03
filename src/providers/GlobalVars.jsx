@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 import NarrativeEvents from '../assets/data/narrativeEvents';
 import Hybridations from '../assets/data/hybridations';
+import { nectarToFlower } from '../utils';
 
 const GlobalVarsContext = React.createContext();
 
@@ -18,6 +19,7 @@ export const GlobalVarsProvider = ({ children }) => {
     stepCycle: 3,
     dryadTier: 0,
     tribeTier: 0,
+    usedNectar: 0,
   });
 
   const [income, setIncome] = useState({
@@ -30,8 +32,8 @@ export const GlobalVarsProvider = ({ children }) => {
   // Infected ratio handling
   const infectedDayRatio = useMemo(() => [
     { maxRand: 0, flatBonus: 0 },
-    // { maxRand: 10, flatBonus: 5 },
-    { maxRand: 70, flatBonus: 20 },
+    { maxRand: 10, flatBonus: 5 },
+    // { maxRand: 50, flatBonus: 20 },
     { maxRand: 20, flatBonus: 10 },
     { maxRand: 40, flatBonus: 15 },
     { maxRand: 50, flatBonus: 20 },
@@ -47,6 +49,7 @@ export const GlobalVarsProvider = ({ children }) => {
       deaths: 0,
       newDeaths: 0,
       people: 70,
+      nectar: 0,
     },
     leaves: {
       name: 'Leaves',
@@ -55,6 +58,7 @@ export const GlobalVarsProvider = ({ children }) => {
       deaths: 0,
       newDeaths: 0,
       people: 70,
+      nectar: 0,
     },
     branches: {
       name: 'Branches',
@@ -63,6 +67,7 @@ export const GlobalVarsProvider = ({ children }) => {
       deaths: 0,
       newDeaths: 0,
       people: 70,
+      nectar: 0,
     },
   });
 
@@ -72,7 +77,7 @@ export const GlobalVarsProvider = ({ children }) => {
 
   // Events handling
   const [, setEventQueueId] = useState([
-    'sickHelpless', 'sickHelpless2', 'sickHelpless3',
+    // 'sickHelpless', 'sickHelpless2', 'sickHelpless3',
   ]);
   const [eventNode, setEventNode] = useState({
     trunk: 1,
@@ -226,6 +231,9 @@ export const GlobalVarsProvider = ({ children }) => {
     setVars((prev) => {
       const next = { ...prev };
       next.day += 1;
+      next.flower += nectarToFlower(next.usedNectar) + income.flower;
+      next.nectar += income.nectar;
+      next.usedNectar = 0;
       nextDay = next.day;
       next.stepCycle = 0;
       next.timeBlock = 3;
@@ -233,35 +241,61 @@ export const GlobalVarsProvider = ({ children }) => {
     });
     setTribes((prev) => {
       const next = { ...prev };
-
       Object.keys(next).forEach((tribeName) => {
+        // Use nectar
+        next[tribeName].infected -= next[tribeName].nectar * 10;
+        if (next[tribeName].infected < 0) {
+          next[tribeName].infected = 0;
+        }
+        next[tribeName].nectar = 0;
+
+        // Handling deaths
         let deathToll = Math.floor(deathRatio(0.7) * next[tribeName].infected);
         if (next[tribeName].people === 1) {
           deathToll = 0;
         }
-        let newInfected = Math.floor(Math.random() * infectedDayRatio[nextDay].maxRand)
-          + infectedDayRatio[nextDay].flatBonus;
-        if (next[tribeName].people === 1) {
-          newInfected = 0;
-        }
         next[tribeName].deaths += deathToll;
-        const tempInfectedCount = next[tribeName].infected + newInfected;
-        if (tempInfectedCount > next[tribeName].people) {
-          next[tribeName].infected = next[tribeName].people;
-          next[tribeName].newInfected = next[tribeName].people - next[tribeName].infected;
-        } else {
-          next[tribeName].infected = tempInfectedCount - deathToll;
-          next[tribeName].newInfected = newInfected;
-        }
+
+        // Handling peoples
         next[tribeName].people -= deathToll;
         if (next[tribeName].people <= 0) {
           next[tribeName].people = 1;
         }
         next[tribeName].newDeaths = deathToll;
+
+        // Handling infection
+        let newInfectedCounter = Math.floor(Math.random() * infectedDayRatio[nextDay].maxRand)
+          + infectedDayRatio[nextDay].flatBonus;
+        if (next[tribeName].people === 1) {
+          newInfectedCounter = 0;
+        }
+
+        const maxInfectedCount = next[tribeName].infected + newInfectedCounter - deathToll;
+        if (maxInfectedCount >= next[tribeName].people) {
+          next[tribeName].newInfected = next[tribeName].people - next[tribeName].infected;
+          next[tribeName].infected = next[tribeName].people;
+        } else {
+          next[tribeName].infected = maxInfectedCount;
+          next[tribeName].newInfected = newInfectedCounter;
+        }
       });
       return next;
     });
-  }, [infectedDayRatio, deathRatio]);
+  }, [infectedDayRatio, deathRatio, income]);
+
+  const giveNectar = useCallback((id) => {
+    setTribes((prev) => {
+      const next = { ...prev };
+      next[id].nectar += 1;
+      return next;
+    });
+    setVars((prev) => {
+      const next = { ...prev };
+      next.nectar -= 1;
+      next.usedNectar += 1;
+      return next;
+    });
+  }, []);
 
   const goToNextCycle = useCallback(() => {
     setVars((prev) => {
@@ -313,6 +347,7 @@ export const GlobalVarsProvider = ({ children }) => {
     goToNextBlock,
     removeEventFromQueue,
     addRelevantEventToQueue,
+    giveNectar,
   }), [
     vars,
     income,
@@ -330,6 +365,7 @@ export const GlobalVarsProvider = ({ children }) => {
     goToNextBlock,
     removeEventFromQueue,
     addRelevantEventToQueue,
+    giveNectar,
   ]);
 
   return (
@@ -362,6 +398,7 @@ export const useGlobalVars = () => {
     goToNextBlock,
     removeEventFromQueue,
     addRelevantEventToQueue,
+    giveNectar,
   } = useContext(GlobalVarsContext);
 
   return {
@@ -382,5 +419,6 @@ export const useGlobalVars = () => {
     goToNextBlock,
     removeEventFromQueue,
     addRelevantEventToQueue,
+    giveNectar,
   };
 };

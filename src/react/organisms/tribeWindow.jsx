@@ -12,7 +12,11 @@ const TribeWindow = () => {
   const [visible, setVisible] = useState(false);
 
   const {
-    displayedScreen, isActualStep, tribes,
+    vars,
+    displayedScreen,
+    isActualStep,
+    tribes,
+    giveNectar,
   } = useGlobalVars();
 
   const tribesDom = useMemo(() => {
@@ -20,10 +24,6 @@ const TribeWindow = () => {
     Object.keys(tribes).forEach((tribeId) => {
       const {
         name,
-        deaths,
-        infected,
-        newInfected,
-        newDeaths,
       } = tribes[tribeId];
       dom.push(
         <div
@@ -37,15 +37,14 @@ const TribeWindow = () => {
           <NectarGiveway
             tribe={tribes[tribeId]}
             nectarGiven={0}
-            onGive={() => {
-              console.log('test');
-            }}
+            canGiveNectar={vars.nectar > 0}
+            onGive={() => { giveNectar(tribeId); }}
           />
         </div>,
       );
     });
     return dom;
-  }, [tribes]);
+  }, [tribes, vars?.nectar, giveNectar]);
 
   useEffect(() => {
     setVisible(displayedScreen === 'game' && isActualStep('tribe'));

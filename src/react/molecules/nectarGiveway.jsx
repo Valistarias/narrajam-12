@@ -1,14 +1,13 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { PropTypes } from 'prop-types';
-import { classTrim } from '../../utils';
-import { Icon } from '../atoms/icon';
+import { classTrim, nectarToFlower } from '../../utils';
 
 import './nectarGiveway.scss';
 import Button from './button';
+import { Icon } from '../atoms/icon';
 
 const NectarGiveway = ({
   tribe,
-  nectarGiven,
   canGiveNectar,
   onGive,
 }) => {
@@ -19,18 +18,16 @@ const NectarGiveway = ({
     const deathsPool = tribe.deaths >= 1 ? Math.round(tribe.deaths / 10) || 1 : 0;
     const infectedPool = (
       tribe.infected >= 1 ? Math.round(tribe.infected / 10) || 1 : 0
-    ) - nectarGiven;
-    const healthPool = maxHealth - infectedPool - deathsPool;
+    ) - tribe.nectar;
+    const healthPool = maxHealth - infectedPool - deathsPool - tribe.nectar;
     return {
       max: maxHealth,
       deathsPool,
       infectedPool,
       healthPool,
-      nectarPool: nectarGiven,
+      nectarPool: tribe.nectar || 0,
     };
-  }, [nectarGiven, tribe?.deaths, tribe?.infected]);
-
-  console.log('pools', pools);
+  }, [tribe?.deaths, tribe?.infected, tribe?.nectar]);
 
   const healthIndicator = useMemo(() => {
     const domBar = [];
@@ -87,15 +84,12 @@ const NectarGiveway = ({
 
   useEffect(() => {
     if (
-      pools.deathsPool
-      + pools.infectedPool
-      + pools.healthPool
-      + pools.nectarPool
-      + 1 >= pools.max
+      pools.infectedPool >= 1
+      && pools.nectarPool <= pools.infectedPool
     ) {
-      setLocalCanGiveNectar(false);
-    } else {
       setLocalCanGiveNectar(true);
+    } else {
+      setLocalCanGiveNectar(false);
     }
   }, [pools]);
 
@@ -106,6 +100,22 @@ const NectarGiveway = ({
       `)}
     >
       {healthIndicator}
+      {
+        tribe.nectar > 0 ? (
+          <div className="nectarGiveway__bonus">
+            <p className="nectarGiveway__bonus__detail">Bonus :</p>
+            <div className="nectarGiveway__bonus__block">
+              <p className="nectarGiveway__bonus__number">
+                {`+${nectarToFlower(tribe.nectar)}`}
+              </p>
+              <Icon
+                className="nectarGiveway__bonus__icon"
+                type="flower"
+              />
+            </div>
+          </div>
+        ) : null
+      }
       <Button
         onClick={onGive}
         className="nectarGiveway__button"
@@ -119,13 +129,11 @@ const NectarGiveway = ({
 
 NectarGiveway.propTypes = {
   tribe: PropTypes.string.isRequired,
-  nectarGiven: PropTypes.number,
   canGiveNectar: PropTypes.bool,
   onGive: PropTypes.func.isRequired,
 };
 
 NectarGiveway.defaultProps = {
-  nectarGiven: 0,
   canGiveNectar: true,
 };
 

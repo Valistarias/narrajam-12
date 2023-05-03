@@ -29,6 +29,26 @@
     }
   }
 
+  &__bonus {
+    position: relative;
+
+    &__detail {
+      text-align: center;
+    }
+
+    &__block {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+    }
+
+    &__number {
+      font-size: 3rem;
+      position: relative;
+      top: -0.3rem;
+    }
+  }
+
   // &__button {
   //   display: flex;
   // }

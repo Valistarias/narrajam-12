@@ -85,7 +85,6 @@ const Gui = () => {
     if (displayedScreen === 'game' && !isActualStep('main')) {
       setCanModifyHybridation(false);
     } else {
-      console.log('ok');
       setCanModifyHybridation(true);
     }
     setRessourcesVisible(displayMainGui);
