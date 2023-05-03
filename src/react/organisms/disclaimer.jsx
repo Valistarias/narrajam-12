@@ -21,9 +21,7 @@ const Disclaimer = () => {
         <h2 className="disclaimer__block__title">Disclaimer</h2>
         <p className="disclaimer__block__sub">Mild Language, Abuse</p>
         <p className="disclaimer__block__main">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus semper,
-          felis in euismod congue, magna mi ullamcorper neque, id condimentum sem mi at ipsum.
-          Also, mild language and abuse. Also, sound.
+          This game contains themes of abuse which may be upsetting for some readers.
         </p>
         <div className="disclaimer__block__buttons">
           {
