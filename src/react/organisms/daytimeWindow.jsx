@@ -31,11 +31,13 @@ const DaytimeWindow = () => {
   useEffect(() => {
     if (displayedScreen === 'game' && isActualStep('main') && !dispatchedEvent) {
       removeEventFromQueue((id) => {
-        Event.dispatchEvent(new CustomEvent('openMiniDialogue', {
-          detail: {
-            name: id,
-          },
-        }));
+        if (id) {
+          Event.dispatchEvent(new CustomEvent('openMiniDialogue', {
+            detail: {
+              name: id,
+            },
+          }));
+        }
       });
       setDispatchedEvent(true);
     }

@@ -134,10 +134,14 @@ export const GlobalVarsProvider = ({ children }) => {
   const removeEventFromQueue = useCallback((cb) => {
     setEventQueueId((prev) => {
       const next = [...prev];
-      const [evt] = prev;
-      next.shift();
-      cb(evt);
-      return next;
+      if (next[0]) {
+        const [evt] = prev;
+        cb(evt);
+        next.shift();
+        return next;
+      }
+      cb(null);
+      return prev;
     });
   }, []);
 
