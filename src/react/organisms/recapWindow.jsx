@@ -33,7 +33,7 @@ const RecapWindow = () => {
           <div className="recapWindow__tribe__data">
             <p className="recapWindow__tribe__data__elt">
               <span className="recapWindow__tribe__data__elt__value">
-                +
+                {`${newInfected > 0 ? '+' : ''}`}
                 {newInfected}
                 <span className="recapWindow__tribe__data__elt__value__total">
                   (
@@ -45,7 +45,7 @@ const RecapWindow = () => {
             </p>
             <p className="recapWindow__tribe__data__elt">
               <span className="recapWindow__tribe__data__elt__value">
-                +
+                {`${newDeaths > 0 ? '+' : ''}`}
                 {newDeaths}
                 <span className="recapWindow__tribe__data__elt__value__total">
                   (

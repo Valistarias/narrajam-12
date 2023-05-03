@@ -56,7 +56,7 @@ const HybridationWindow = () => {
   useEffect(() => {
     if (
       selectedTalent?.flowerCost <= vars.flower
-      && selectedTalent?.duration <= vars.timeBlock
+      // && selectedTalent?.duration <= vars.timeBlock
     ) {
       setCanResearch(true);
     } else {
@@ -181,7 +181,6 @@ const HybridationWindow = () => {
           <p
             className={classTrim(`
               hybridationWindow__info__cost__time
-              ${selectedTalent?.duration > vars.timeBlock ? ' hybridationWindow__info__cost__time--expensive' : ''}
             `)}
           >
             <Icon

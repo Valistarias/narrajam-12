@@ -274,6 +274,10 @@
       pointer-events: all;
       right: 1rem;
       transform: translateX(0);
+
+      &.button--disabled {
+        pointer-events: none;
+      }
     }
   }
 

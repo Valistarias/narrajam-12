@@ -1,6 +1,6 @@
 import React, {
   useCallback,
-  useEffect, useMemo, useState,
+  useEffect, useMemo, useRef, useState,
 } from 'react';
 
 import { useGlobalVars } from '../../providers/GlobalVars';
@@ -11,7 +11,7 @@ import { useEvent } from '../../providers/Event';
 
 const DryadWindow = () => {
   const [visible, setVisible] = useState(false);
-  const [dispatchedEvent, setDispatchedEvent] = useState(false);
+  const dispatchedEvent = useRef(false);
 
   const {
     vars, displayedScreen, isActualStep, goToNextDay,
@@ -50,7 +50,7 @@ const DryadWindow = () => {
   useEffect(() => {
     setVisible(displayedScreen === 'game' && isActualStep('dryad'));
     if (displayedScreen === 'game' && isActualStep('dryad')) {
-      setDispatchedEvent(false);
+      dispatchedEvent.current = false;
       Event.dispatchEvent(new CustomEvent('openDialogue', {
         detail: {
           name: dialogByDay,
@@ -67,11 +67,11 @@ const DryadWindow = () => {
   ]);
 
   const onGoToNextDay = useCallback(() => {
-    if (!dispatchedEvent) {
+    if (!dispatchedEvent.current) {
       goToNextDay();
-      setDispatchedEvent(true);
+      dispatchedEvent.current = true;
     }
-  }, [goToNextDay, dispatchedEvent]);
+  }, [goToNextDay]);
 
   useEffect(() => {
     Event.addEventListener('closeDialogue', () => {

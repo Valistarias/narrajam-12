@@ -269,7 +269,6 @@ export const GlobalVarsProvider = ({ children }) => {
         if (next[tribeName].people === 1) {
           newInfectedCounter = 0;
         }
-
         const maxInfectedCount = next[tribeName].infected + newInfectedCounter - deathToll;
         if (maxInfectedCount >= next[tribeName].people) {
           next[tribeName].newInfected = next[tribeName].people - next[tribeName].infected;
