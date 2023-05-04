@@ -623,11 +623,11 @@ const FourthNightDialog = {
       'There is a nest where the Dryad was.',
       {
         text: 'A cocoon of leaves and petals, wide and curtseying, tips caressing the patches of grass at its feet. Pollen and insects of dark and yellow fur dance through the air, unbothered by your presence.',
-        conditions: ['hybridCount:tribe'],
+        conditions: ['hybridCount:dryad'],
       },
       {
         text: 'A cocoon of twigs and spiderwebs, crawling and trembling, lit by hundred little black eyes. Gnarled knots and blooming mushrooms cover it, pungent and dense.',
-        conditions: ['hybridCount:dryad'],
+        conditions: ['hybridCount:tribe'],
       },
       'Its wood is drenched in pearls of Nectar, sticky and shining like morning dew.',
     ],
@@ -833,7 +833,7 @@ const FourthNightDialog = {
   },
 };
 const FifthNightDryadDialog = {
-  fifthNightDryadDialog: {
+  FifthNightDryadDialog: {
     title: 'The Fifth Night',
     text: 'It’s been a long day. Caring for the Dryad while working the Nectar, it’s too much for one person. You didn’t get a wink of sleep. Everything is out of focus and you take every step like it’s the first one of your life. Your arms are so sore you can’t lift them up. And then there’s your chest, still burning, gnawing at your lungs with an appetite for destruction. The Elders did not say anything, but they know. Are they worried about you, or about their Botanist?',
     speaker: 'Botanist',
@@ -991,7 +991,7 @@ const FifthNightDryadDialog = {
   },
 };
 const FifthNightTribeDialog = {
-  fifthNightTribeDialog: {
+  FifthNightTribeDialog: {
     title: 'The Fifth Night',
     text: 'It’s been a long day. Caring for the Dryad while working the Nectar, it’s too much for one person. You didn’t get a wink of sleep. Everything is out of focus and you take every step like it’s the first one of your life. Your arms are so sore you can’t lift them up. And then there’s your chest, still burning, gnawing at your lungs with an appetite for destruction. The Elders did not say anything, but they know. They’re worried about you, about the Nectar.',
     speaker: 'Botanist',

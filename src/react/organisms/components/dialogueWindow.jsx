@@ -106,7 +106,7 @@ const DialogueWindow = () => {
             name: index,
           }))
           : []);
-      }, 0);
+      }, 10);
     });
   }, [Event]);
 
