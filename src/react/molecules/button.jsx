@@ -19,7 +19,7 @@ const Button = ({
   invisible,
   theme,
 }) => {
-  const { ping } = useMusic();
+  const { click } = useMusic();
   return (
     <button
       className={classTrim(`
@@ -33,6 +33,7 @@ const Button = ({
       onClick={(e) => {
         if (preventDefault) { e.preventDefault(); }
         onClick(e);
+        click();
       }}
       onMouseLeave={(e) => {
         if (preventDefault) { e.preventDefault(); }
@@ -41,7 +42,6 @@ const Button = ({
       onMouseEnter={(e) => {
         if (preventDefault) { e.preventDefault(); }
         onMouseEnter(e);
-        ping();
       }}
     >
       {children}
@@ -55,6 +55,7 @@ const Button = ({
     </button>
   );
 };
+// const { ping } = useMusic();
 
 Button.propTypes = {
   submit: PropTypes.bool,

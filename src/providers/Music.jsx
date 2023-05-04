@@ -9,9 +9,15 @@ import { Howl, Howler } from 'howler';
 import MainTheme from '../assets/sound/main-theme.mp3';
 import DryadTheme from '../assets/sound/dryad-theme.mp3';
 
-import WhooshSound from '../assets/sound/wooshTemp.mp3';
-import WhooshSound2 from '../assets/sound/wooshTemp2.mp3';
-import PingSound from '../assets/sound/pingTemp.mp3';
+import WhooshSound from '../assets/sound/woosh.mp3';
+import DaySound from '../assets/sound/day.mp3';
+import NightSound from '../assets/sound/night.mp3';
+import ClickSound from '../assets/sound/click.mp3';
+import PopupSound from '../assets/sound/popup.mp3';
+import TextSound from '../assets/sound/text.mp3';
+import UnlockDryadSound from '../assets/sound/unlockDryad.mp3';
+import UnlockTribeSound from '../assets/sound/unlockTribe.mp3';
+import WrongClickSound from '../assets/sound/wrongClick.mp3';
 
 const MusicContext = React.createContext();
 
@@ -34,12 +40,44 @@ export const MusicProvider = ({ children }) => {
     src: [WhooshSound],
   }), []);
 
-  const whooshSound2 = useMemo(() => new Howl({
-    src: [WhooshSound2],
+  const daySound = useMemo(() => new Howl({
+    src: [DaySound],
+    volume: 0.4,
   }), []);
 
-  const pingSound = useMemo(() => new Howl({
-    src: [PingSound],
+  const nightSound = useMemo(() => new Howl({
+    src: [NightSound],
+    volume: 0.4,
+  }), []);
+
+  const clickSound = useMemo(() => new Howl({
+    src: [ClickSound],
+    volume: 0.4,
+  }), []);
+
+  const popupSound = useMemo(() => new Howl({
+    src: [PopupSound],
+    volume: 0.4,
+  }), []);
+
+  const textSound = useMemo(() => new Howl({
+    src: [TextSound],
+    volume: 0.4,
+  }), []);
+
+  const unlockDryadSound = useMemo(() => new Howl({
+    src: [UnlockDryadSound],
+    volume: 0.4,
+  }), []);
+
+  const unlockTribeSound = useMemo(() => new Howl({
+    src: [UnlockTribeSound],
+    volume: 0.4,
+  }), []);
+
+  const wrongClickSound = useMemo(() => new Howl({
+    src: [WrongClickSound],
+    volume: 0.4,
   }), []);
 
   useEffect(() => {
@@ -137,28 +175,64 @@ export const MusicProvider = ({ children }) => {
     whooshSound.play();
   }, [whooshSound]);
 
-  const whoosh2 = useCallback(() => {
-    whooshSound2.play();
-  }, [whooshSound2]);
+  const day = useCallback(() => {
+    daySound.play();
+  }, [daySound]);
 
-  const ping = useCallback(() => {
-    pingSound.play();
-  }, [pingSound]);
+  const night = useCallback(() => {
+    nightSound.play();
+  }, [nightSound]);
+
+  const click = useCallback(() => {
+    clickSound.play();
+  }, [clickSound]);
+
+  const popup = useCallback(() => {
+    popupSound.play();
+  }, [popupSound]);
+
+  const text = useCallback(() => {
+    textSound.play();
+  }, [textSound]);
+
+  const unlockDryad = useCallback(() => {
+    unlockDryadSound.play();
+  }, [unlockDryadSound]);
+
+  const unlockTribe = useCallback(() => {
+    unlockTribeSound.play();
+  }, [unlockTribeSound]);
+
+  const wrongClick = useCallback(() => {
+    wrongClickSound.play();
+  }, [wrongClickSound]);
 
   const providerValues = useMemo(() => ({
     ready,
     switchMusic,
     muteAll,
     whoosh,
-    whoosh2,
-    ping,
+    day,
+    night,
+    click,
+    popup,
+    text,
+    unlockDryad,
+    unlockTribe,
+    wrongClick,
   }), [
     ready,
     switchMusic,
     muteAll,
     whoosh,
-    whoosh2,
-    ping,
+    day,
+    night,
+    click,
+    popup,
+    text,
+    unlockDryad,
+    unlockTribe,
+    wrongClick,
   ]);
 
   return (
@@ -178,8 +252,14 @@ export const useMusic = () => {
     switchMusic,
     muteAll,
     whoosh,
-    whoosh2,
-    ping,
+    day,
+    night,
+    click,
+    popup,
+    text,
+    unlockDryad,
+    unlockTribe,
+    wrongClick,
   } = useContext(MusicContext);
 
   return {
@@ -187,7 +267,13 @@ export const useMusic = () => {
     switchMusic,
     muteAll,
     whoosh,
-    whoosh2,
-    ping,
+    day,
+    night,
+    click,
+    popup,
+    text,
+    unlockDryad,
+    unlockTribe,
+    wrongClick,
   };
 };

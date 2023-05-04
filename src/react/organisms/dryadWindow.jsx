@@ -14,7 +14,7 @@ const DryadWindow = () => {
   const [visible, setVisible] = useState(false);
   const dispatchedEvent = useRef(false);
 
-  const { switchMusic, whoosh, whoosh2 } = useMusic();
+  const { switchMusic, day, night } = useMusic();
 
   const {
     vars, displayedScreen, isActualStep, goToNextDay, income,
@@ -104,21 +104,21 @@ const DryadWindow = () => {
       dispatchedEvent.current = false;
       Event.dispatchEvent(new CustomEvent('openDialogue', {
         detail: {
-          name: dialogByDay,
+          name: testDialogByDay,
         },
       }));
-      whoosh();
+      night();
       switchMusic('dryad');
     }
   }, [
     vars?.stepCycle,
     displayedScreen,
     isActualStep,
-    dialogByDay,
+    testDialogByDay,
     Event,
     goToNextDay,
     switchMusic,
-    whoosh,
+    night,
   ]);
 
   const onGoToNextDay = useCallback(() => {
@@ -132,9 +132,9 @@ const DryadWindow = () => {
   useEffect(() => {
     Event.addEventListener('closeDialogue', () => {
       onGoToNextDay();
-      whoosh2();
+      day();
     });
-  }, [Event, onGoToNextDay, whoosh2]);
+  }, [Event, onGoToNextDay, day]);
 
   return (
     <div className={classTrim(`

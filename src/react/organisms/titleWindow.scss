@@ -46,6 +46,11 @@
       padding-bottom: 2rem;
       text-align: center;
       width: 30rem;
+
+      &__main,
+      &__sub {
+        text-align: center;
+      }
     }
 
     &__text {

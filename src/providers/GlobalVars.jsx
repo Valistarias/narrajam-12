@@ -87,6 +87,65 @@ export const GlobalVarsProvider = ({ children }) => {
 
   const [displayedScreen, setDisplayedScreen] = useState('title');
 
+  const resetGame = useCallback(() => {
+    setVars({
+      nectar: 1,
+      flower: 1,
+      timeBlock: 3,
+      day: 0,
+      stepCycle: 3,
+      dryadTier: 1,
+      tribeTier: 1,
+      usedNectar: 0,
+    });
+    setIncome({
+      nectar: 1,
+      flower: 1,
+      _tribe: 0,
+      _dryad: 0,
+    });
+    setTribes({
+      trunk: {
+        name: 'Trunk',
+        infected: 30,
+        newInfected: 0,
+        deaths: 0,
+        newDeaths: 0,
+        people: 70,
+        nectar: 0,
+      },
+      leaves: {
+        name: 'Leaves',
+        infected: 30,
+        newInfected: 0,
+        deaths: 0,
+        newDeaths: 0,
+        people: 70,
+        nectar: 0,
+      },
+      branches: {
+        name: 'Branches',
+        infected: 30,
+        newInfected: 0,
+        deaths: 0,
+        newDeaths: 0,
+        people: 70,
+        nectar: 0,
+      },
+    });
+    setEventQueueId([
+      'sickHelpless', 'roughHands', 'packingLunch',
+    ]);
+    setHybridationResearch(null);
+    setHybridationIds(['valerian']);
+    setEventNode({
+      trunk: 1,
+      leaves: 1,
+      branches: 1,
+    });
+    setDisplayedScreen('title');
+  }, []);
+
   const screenCycle = useMemo(() => [
     'recap',
     'main',
@@ -352,6 +411,7 @@ export const GlobalVarsProvider = ({ children }) => {
     removeEventFromQueue,
     addRelevantEventToQueue,
     giveNectar,
+    resetGame,
   }), [
     vars,
     income,
@@ -370,6 +430,7 @@ export const GlobalVarsProvider = ({ children }) => {
     removeEventFromQueue,
     addRelevantEventToQueue,
     giveNectar,
+    resetGame,
   ]);
 
   return (
@@ -403,6 +464,7 @@ export const useGlobalVars = () => {
     removeEventFromQueue,
     addRelevantEventToQueue,
     giveNectar,
+    resetGame,
   } = useContext(GlobalVarsContext);
 
   return {
@@ -424,5 +486,6 @@ export const useGlobalVars = () => {
     removeEventFromQueue,
     addRelevantEventToQueue,
     giveNectar,
+    resetGame,
   };
 };

@@ -8,6 +8,7 @@
 // ACTIONS -------------
 // story:xxx (CHANGE) -> new story event triggered, with is as xxx
 // var:xxx:yyy (CHANGE) -> change global variable xxx with value yyy
+// mainMenu (FUNCTION) -> change global variable xxx with value yyy
 // hybridCount:xxx (IF) -> xxx is equal to 'tribe' or 'dryad', and display the most advanced path
 // hybridation:xxx ( IF) -> xxx is equal to an hybridation id
 
@@ -31,8 +32,7 @@ const beginningTest = {
     answers: [
       {
         text: 'What the **fuck** are you talking about man',
-        goto: '_beginning__fuck',
-        actions: [],
+        actions: ['mainMenu'],
       },
       {
         text: '911, it,s an *emergency*',
@@ -876,7 +876,7 @@ const FifthNightDryadDialog = {
     ],
   },
   fifthNightDryadDialogStep4: {
-    text: 'Not a stirring leaf or a snaking vine, not a swinging branch or an opening bud. Just her, warm body going cold in your arms. It strikes you how little she changed. She’s still that little thing that popped up less than a week ago and you had to keep away from the sharp tools. You worried she’d cut herself bad even though you’d end up pruning some of her anyway.', 
+    text: 'Not a stirring leaf or a snaking vine, not a swinging branch or an opening bud. Just her, warm body going cold in your arms. It strikes you how little she changed. She’s still that little thing that popped up less than a week ago and you had to keep away from the sharp tools. You worried she’d cut herself bad even though you’d end up pruning some of her anyway.',
     speaker: 'Botanist',
     speakerName: 'Botanist',
     answers: [
@@ -1032,7 +1032,7 @@ const FifthNightTribeDialog = {
     ],
   },
   fifthNightTribeDialogStep4: {
-    text: 'Foliage, crawling with stings and mandibles, pierces her skin, remaking her coffin around her. If she can’t have her freedom, she’ll make sure you won’t have yours too. You can’t fail. A village counts on you for its survival. Is one life worth certain death?', 
+    text: 'Foliage, crawling with stings and mandibles, pierces her skin, remaking her coffin around her. If she can’t have her freedom, she’ll make sure you won’t have yours too. You can’t fail. A village counts on you for its survival. Is one life worth certain death?',
     speaker: 'Botanist',
     speakerName: 'Botanist',
     answers: [

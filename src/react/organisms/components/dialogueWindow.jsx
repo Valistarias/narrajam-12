@@ -13,6 +13,7 @@ import DryadDialog from '../../../assets/data/dryadDialogue';
 import './dialogueWindow.scss';
 import DynamicTextDisplay from './dynamicTextDisplay';
 import { curateAndDomifyText } from '../../../utils';
+import { useGlobalVars } from '../../../providers/GlobalVars';
 
 const DialogueWindow = () => {
   const [isOpen, setOpen] = useState(false);
@@ -23,6 +24,8 @@ const DialogueWindow = () => {
 
   const scrollRef = useRef();
 
+  const { resetGame } = useGlobalVars();
+
   const { Event } = useEvent();
 
   const scrollBottom = useCallback(() => {
@@ -32,6 +35,9 @@ const DialogueWindow = () => {
   const activateEvents = useCallback((events) => {
     if (events && events.length > 0) {
       events.forEach((evt) => {
+        if (evt === 'mainMenu') {
+          resetGame();
+        }
         const slicedEvt = evt.split(':');
         Event.dispatchEvent(new CustomEvent(slicedEvt[0], {
           detail: {
@@ -41,7 +47,7 @@ const DialogueWindow = () => {
         }));
       });
     }
-  }, [Event]);
+  }, [Event, resetGame]);
 
   const addDialogue = useCallback((text, goto, continueButton) => {
     if (goto) {
@@ -126,7 +132,7 @@ const DialogueWindow = () => {
           textBlocks={textBlocks}
           setButtonDisabled={setButtonDisabled}
           scrollBottom={scrollBottom}
-          // toSkip
+          toSkip
         />
       </Scrollbar>
       <div className="dialogue__buttons">

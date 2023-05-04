@@ -43,8 +43,6 @@ const Gui = () => {
     });
   }, [updateVar, hybridationVisible]);
 
-  const { whoosh2 } = useMusic();
-
   const blockToPeriod = useMemo(() => {
     if (isActualStep('tribe')) {
       return 'night';
@@ -214,7 +212,6 @@ const Gui = () => {
         `)}
         onClick={() => {
           goToNextBlock();
-          whoosh2();
         }}
         disabled={!canGoNextPeriod || hybridationVisible}
       >
