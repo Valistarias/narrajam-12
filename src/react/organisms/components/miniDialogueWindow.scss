@@ -55,6 +55,7 @@
   .hint {
     background: var(--vanta);
     border: .1rem solid var(--white-opaque);
+    bottom: 0;
     display: flex;
     flex-direction: column;
     gap: .5rem;
@@ -63,7 +64,6 @@
     padding: 2rem;
     pointer-events: none;
     position: absolute;
-    top: 0;
     width: 20rem;
 
     &::after {

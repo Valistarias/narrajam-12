@@ -200,7 +200,12 @@ const HybridationWindow = () => {
             || !!hybridationResearch
           }
         >
-          Research ?
+          {
+            // eslint-disable-next-line no-nested-ternary
+            hybridationResearch?.id === selectedTalent?.id ? 'Researching...' : (
+              hybridationIds.includes(selectedTalent?.id) ? 'Researched' : 'Research ?'
+            )
+          }
         </Button>
       </div>
     </ScrollContainer>

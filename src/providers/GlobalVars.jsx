@@ -156,6 +156,9 @@ export const GlobalVarsProvider = ({ children }) => {
       const next = { ...prev };
       if (addition) {
         next[name] += Number(value);
+        if (next[name] < 0) {
+          next[name] = 0;
+        }
       } else {
         next[name] = value;
       }

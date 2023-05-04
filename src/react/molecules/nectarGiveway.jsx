@@ -101,22 +101,23 @@ const NectarGiveway = ({
       `)}
     >
       {healthIndicator}
-      {
-        tribe.nectar > 0 ? (
-          <div className="nectarGiveway__bonus">
-            <p className="nectarGiveway__bonus__detail">Bonus :</p>
-            <div className="nectarGiveway__bonus__block">
-              <p className="nectarGiveway__bonus__number">
-                {`+${nectarToFlower(tribe.nectar)}`}
-              </p>
-              <Icon
-                className="nectarGiveway__bonus__icon"
-                type="flower"
-              />
-            </div>
-          </div>
-        ) : null
-      }
+      <div
+        className={classTrim(`
+          nectarGiveway__bonus
+          ${tribe.nectar > 0 ? ' nectarGiveway__bonus--visible' : ''}
+        `)}
+      >
+        <p className="nectarGiveway__bonus__detail">Bonus :</p>
+        <div className="nectarGiveway__bonus__block">
+          <p className="nectarGiveway__bonus__number">
+            {`+${nectarToFlower(tribe.nectar)}`}
+          </p>
+          <Icon
+            className="nectarGiveway__bonus__icon"
+            type="flower"
+          />
+        </div>
+      </div>
       <Button
         onClick={onGive}
         className="nectarGiveway__button"

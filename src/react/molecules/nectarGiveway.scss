@@ -31,7 +31,12 @@
   }
 
   &__bonus {
+    opacity: 0;
     position: relative;
+
+    &--visible {
+      opacity: 1;
+    }
 
     &__detail {
       text-align: center;
