@@ -26,21 +26,21 @@ const DryadWindow = () => {
     if (!isActualStep('dryad')) { return null; }
     switch (vars.day) {
       case 0: {
-        return 'begining';
+        return 'FirstNightDialog';
       }
       case 1: {
-        return 'begining';
+        return 'SecondNightDialog';
       }
       case 2: {
         if (income._dryad >= income._tribe) {
           // Dialog dryad
-          return 'FirstNightDialog';
+          return 'ThirdNightDryadDialog';
         }
         // Dialog tribe
-        return 'FirstNightDialog';
+        return 'ThirdNightTribeDialog';
       }
       case 3: {
-        return 'FirstNightDialog';
+        return 'FourthNightDialog';
       }
       case 4: {
         return 'FirstNightDialog';
@@ -55,13 +55,46 @@ const DryadWindow = () => {
     }
   }, [vars?.day, isActualStep, income?._dryad, income?._tribe]);
 
+  const testDialogByDay = useMemo(() => {
+    if (!isActualStep('dryad')) { return null; }
+    switch (vars.day) {
+      case 0: {
+        return 'begining';
+      }
+      case 1: {
+        return 'begining';
+      }
+      case 2: {
+        if (income._dryad >= income._tribe) {
+          // Dialog dryad
+          return 'begining';
+        }
+        // Dialog tribe
+        return 'begining';
+      }
+      case 3: {
+        return 'begining';
+      }
+      case 4: {
+        return 'begining';
+      }
+      case 5: {
+        return 'begining';
+      }
+      default: {
+        console.error('NO DIALOG FOUND ON DAY', vars?.day);
+        return null;
+      }
+    }
+  }, [vars?.day, isActualStep, income?._dryad, income?._tribe]);
+
   useEffect(() => {
     setVisible(displayedScreen === 'game' && isActualStep('dryad'));
     if (displayedScreen === 'game' && isActualStep('dryad')) {
       dispatchedEvent.current = false;
       Event.dispatchEvent(new CustomEvent('openDialogue', {
         detail: {
-          name: dialogByDay,
+          name: testDialogByDay,
         },
       }));
       whoosh();
@@ -71,7 +104,7 @@ const DryadWindow = () => {
     vars?.stepCycle,
     displayedScreen,
     isActualStep,
-    dialogByDay,
+    testDialogByDay,
     Event,
     goToNextDay,
     switchMusic,

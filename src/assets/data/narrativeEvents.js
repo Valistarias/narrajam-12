@@ -28,7 +28,7 @@ const trunkEvents = {
     eventType: 'trunk',
     chainNode: 1,
   },
-  /*farmHelp: {
+  farmHelp: {
     title: 'Farm Help',
     text: 'An old elvish woman crumbles through your door with a sack of stringy brown vegetables and dessicated fruits. She catches her breath in laborious rasps: "Why in Eu Coé’s name would you live so high up a hill? My poor heart..." she straightens her back then wipes the sweat pooling in her wrinkles, "Here is a little something from Elder Orion, to thank you again for the last batch of Nectar. I’d have brought more, but if I pluck one more carrot, my bones will shoot out of my hands!"',
     speaker: 'elderOrion',
@@ -54,7 +54,7 @@ const trunkEvents = {
     answers: [
       {
         text: 'Chamomille and Valerian roots are good for the nerves. Let me get you some.',
-        actions: ['var:flower:1','var:nectar:-1'],
+        actions: ['var:flower:1', 'var:nectar:-1'],
       },
       {
         text: 'Last I checked, the Nethgwaith weren’t the only one to let the Reckoning happen.',
@@ -72,11 +72,11 @@ const trunkEvents = {
     answers: [
       {
         text: 'You might be right. Messing with those is how we got there.',
-        actions: ['var:flower:2','var:nectar:-2'],
+        actions: ['var:flower:2', 'var:nectar:-2'],
       },
       {
         text: 'You should not stop her. The Ley Lines are our only link to the Reckoning and the Ash Plague.',
-        actions: ['var:nectar:1','var:flower:-1'],
+        actions: ['var:nectar:1', 'var:flower:-1'],
       },
     ],
     eventType: 'trunk',
@@ -99,7 +99,7 @@ const trunkEvents = {
     ],
     eventType: 'trunk',
     chainNode: 5,
-  },*/
+  },
 };
 
 const branchesEvents = {
@@ -121,7 +121,7 @@ const branchesEvents = {
     eventType: 'branches',
     chainNode: 1,
   },
-  /*hiddenTeachings: {
+  hiddenTeachings: {
     title: 'Hidden Teachings',
     text: '« What is it with Nethgwaiths and Ier ? Any Bengwaith dares even mentionning the name and you clamp down like... like...<br/>— A bear trap with a vengeance ?<br/>— Exactly, that ! <br/>Ier is the last god of the Nethgwaith, and he only answers to often unsavoury expiations rites. Not exactly what you’d want to share in a town that already looks down on you.<br/>« Care to share what you know for my archives? I can’t push Leaves to talk with Miglia around... but you’re another story.»',
     speaker: 'elderAevie',
@@ -129,11 +129,11 @@ const branchesEvents = {
     answers: [
       {
         text: 'Alright, but don’t go tell everyone I’m teaching you this.',
-        actions: ['var:nectar:1','var:flower:-1'],
+        actions: ['var:nectar:1', 'var:flower:-1'],
       },
       {
         text: 'Nethgwaith faith isn’t meant to be shared, especially Ier’s. Sorry.',
-        actions: ['var:flower:+1','var:nectar:-1'],
+        actions: ['var:flower:+1', 'var:nectar:-1'],
       },
     ],
     eventType: 'branches',
@@ -147,11 +147,11 @@ const branchesEvents = {
     answers: [
       {
         text: 'I have some in the back, but you better bring me some materials.',
-        actions: ['var:flower:+2','var:nectar:-2'],
+        actions: ['var:flower:+2', 'var:nectar:-2'],
       },
       {
         text: 'I can manage the normal amount, but no more.',
-        actions: ['var:flower:+1','var:nectar:-1'],
+        actions: ['var:flower:+1', 'var:nectar:-1'],
       },
     ],
     eventType: 'branches',
@@ -165,7 +165,7 @@ const branchesEvents = {
     answers: [
       {
         text: 'You should accept Miglia. Twice the dosage is more than enough.',
-        actions: ['var:flower:+6','var:nectar:-3'],
+        actions: ['var:flower:+6', 'var:nectar:-3'],
       },
       {
         text: 'Twice the dosage! This... this is beyond me Aevie.',
@@ -192,7 +192,7 @@ const branchesEvents = {
     ],
     eventType: 'branches',
     chainNode: 5,
-  },*/
+  },
 };
 
 const leavesEvents = {
@@ -204,7 +204,7 @@ const leavesEvents = {
     answers: [
       {
         text: 'Sure thing, but you better make it a nice one.',
-        actions: ['var:flower:1','var:nectar:-1'],
+        actions: ['var:flower:1', 'var:nectar:-1'],
       },
       {
         text: 'I have a half-eaten sandwich to spare.',
@@ -214,7 +214,7 @@ const leavesEvents = {
     eventType: 'leaves',
     chainNode: 1,
   },
-  /*nethgwaithTroubles: {
+  nethgwaithTroubles: {
     title: 'Nethgwaith troubles',
     text: '"You old fucks wouldn’t survive a week without us! <br/>— And you half-wit Nethgwaith can’t survive even with a whole world to burn through.How was the rat leg by the way?" <br/>A skewer of grey meat caked in wet ash lay between an emaciated orc, drawn sword weighting on limp arms. The elf insulting him stands two heads lower but his hair flutters with streaks of magic. This will end poorly for the green-skin.',
     speaker: 'elderMiglia',
@@ -240,7 +240,7 @@ const leavesEvents = {
     answers: [
       {
         text: 'They’ll come around. In the mean time, here’s for your wounded.',
-        actions: ['var:flower:1','var:nectar:-1'],
+        actions: ['var:flower:1', 'var:nectar:-1'],
       },
       {
         text: 'To the Commonwealth!',
@@ -258,7 +258,7 @@ const leavesEvents = {
     answers: [
       {
         text: 'Join the crowd',
-        actions: ['var:flower:2','var:nectar:-1'],
+        actions: ['var:flower:2', 'var:nectar:-1'],
       },
       {
         text: 'Close your door',
@@ -281,12 +281,11 @@ const leavesEvents = {
       {
         text: 'You should stop. The Commonwealth did enough wrong. It does not need a second chance. ',
         actions: ['var:flower:3'],
-        actions: [],
       },
     ],
     eventType: 'leaves',
     chainNode: 5,
-  },*/
+  },
 };
 
 export default {

@@ -117,7 +117,7 @@ export const GlobalVarsProvider = ({ children }) => {
 
   const addRelevantEventToQueue = useCallback((tribeId) => {
     const relevantNode = eventNode[tribeId] + 1;
-    const foundEventId = Object.key(NarrativeEvents).find(
+    const foundEventId = Object.keys(NarrativeEvents).find(
       (narrativeEventId) => NarrativeEvents[narrativeEventId].eventType === tribeId
       && NarrativeEvents[narrativeEventId].chainNode === relevantNode,
     );
@@ -239,6 +239,7 @@ export const GlobalVarsProvider = ({ children }) => {
       next.timeBlock = 3;
       return next;
     });
+
     setTribes((prev) => {
       const next = { ...prev };
       Object.keys(next).forEach((tribeName) => {
@@ -294,7 +295,8 @@ export const GlobalVarsProvider = ({ children }) => {
       next.usedNectar += 1;
       return next;
     });
-  }, []);
+    addRelevantEventToQueue(id);
+  }, [addRelevantEventToQueue]);
 
   const goToNextCycle = useCallback(() => {
     setVars((prev) => {
