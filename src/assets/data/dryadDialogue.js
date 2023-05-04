@@ -2,7 +2,7 @@
 // <br/>: new line
 // ** ... ** -> bold
 // * ... ** -> italic
-// *** ... *** -> bold italic
+// *** ... *** -> bold italicFifth
 // **** ... **** -> angry text
 
 // ACTIONS -------------
@@ -832,6 +832,303 @@ const FourthNightDialog = {
     ],
   },
 };
+const FifthNightDryadDialog = {
+  fifthNightDryadDialog: {
+    title: 'The Fifth Night',
+    text: 'It’s been a long day. Caring for the Dryad while working the Nectar, it’s too much for one person. You didn’t get a wink of sleep. Everything is out of focus and you take every step like it’s the first one of your life. Your arms are so sore you can’t lift them up. And then there’s your chest, still burning, gnawing at your lungs with an appetite for destruction. The Elders did not say anything, but they know. Are they worried about you, or about their Botanist?',
+    speaker: 'Botanist',
+    speakerName: 'Botanist',
+    answers: [
+      {
+        text: 'Continue',
+        goto: 'fifthNightDryadDialogStep2',
+        continueButton: true,
+        actions: [],
+      },
+    ],
+  },
+  fifthNightDryadDialogStep2: {
+    text: [
+      'When you come home, it’s to hear a rustle, a falling of leaves and disappearing ancient forests. The cocoon is breaking. Each part of its shell falls a high peal against the cold floor. A familiar branch rummages around, looks for an exit. When you grab it, you notice how fragile it feels, how easily it will break if you’re not careful. Inch by inch, in a slow pull where you forget how much your back hurt, you help the Dryad out.',
+    ],
+    speaker: 'Botanist',
+    speakerName: 'Botanist',
+    answers: [
+      {
+        text: 'Continue',
+        goto: 'fifthNightDryadDialogStep3',
+        continueButton: true,
+        actions: [],
+      },
+    ],
+  },
+  fifthNightDryadDialogStep3: {
+    text: 'She’s not moving.',
+    speaker: 'Botanist',
+    speakerName: 'Botanist',
+    answers: [
+      {
+        text: 'Continue',
+        goto: 'fifthNightDryadDialogStep4',
+        continueButton: true,
+        actions: [],
+      },
+    ],
+  },
+  fifthNightDryadDialogStep4: {
+    text: 'Not a stirring leaf or a snaking vine, not a swinging branch or an opening bud. Just her, warm body going cold in your arms. It strikes you how little she changed. She’s still that little thing that popped up less than a week ago and you had to keep away from the sharp tools. You worried she’d cut herself bad even though you’d end up pruning some of her anyway.', 
+    speaker: 'Botanist',
+    speakerName: 'Botanist',
+    answers: [
+      {
+        text: 'Continue',
+        goto: 'fifthNightDryadDialogStep5',
+        continueButton: true,
+        actions: [],
+      },
+    ],
+  },
+  fifthNightDryadDialogStep5: {
+    text: 'You run to fresh soil and empty a full tank in it, uncaring of the soppy brown mess leaving the box. Fertilizer and flowers join the mud bath as you mix with furious abandon, rivulets of spits at the bottom of your lip. You lift the Dryad, take one look at her unconscious pupils, then lower her in.',
+    speaker: 'Botanist',
+    speakerName: 'Botanist',
+    answers: [
+      {
+        text: 'Come one, sweetheart. You can do this.',
+        goto: 'fifthNightDryadDialogStep6',
+        actions: [],
+      },
+      {
+        text: 'Don’t you die on me, now! Wake up!',
+        goto: 'fifthNightDryadDialogStep6',
+        actions: [],
+      },
+    ],
+  },
+  fifthNightDryadDialogStep6: {
+    text: 'She’s a siphon, a tempest that devours your offerings, leaving nothing behind and yet she does not wake. You repeat the steps. Soil, water, fertilizer, flower, she devours, soil, water, fertilizer, flower, she devours, soil, water, fertilizer, flower, she devours. You bend the knee. Cough.',
+    speaker: 'Botanist',
+    speakerName: 'Botanist',
+    answers: [
+      {
+        text: 'Continue',
+        goto: 'fifthNightDryadDialogStep7',
+        continueButton: true,
+        actions: [],
+      },
+    ],
+  },
+  fifthNightDryadDialogStep7: {
+    text: 'A long, breaking string of coughs that does not break. Deposits of ash blood fill your lungs and plug your throat. You can’t breathe. There is nectar but it’s too far. Muscles are as out of air as you are. The best you can do is drag yourself to her.',
+    speaker: 'Botanist',
+    speakerName: 'Botanist',
+    answers: [
+      {
+        text: 'I’m sorry, I’m so sorry.',
+        goto: 'fifthNightDryadDialogStep8',
+        actions: [],
+      },
+      {
+        text: 'Get a move on kiddo, I... can’t wait forever.',
+        goto: 'fifthNightDryadDialogStep8',
+        actions: [],
+      },
+    ],
+  },
+  fifthNightDryadDialogStep8: {
+    text: 'A drop of black blood falls on her neck.',
+    speaker: 'Botanist',
+    speakerName: 'Botanist',
+    answers: [
+      {
+        text: 'Continue',
+        goto: 'fifthNightDryadDialogStep9',
+        continueButton: true,
+        actions: [],
+      },
+    ],
+  },
+  fifthNightDryadDialogStep9: {
+    text: 'She opens her eyes. A crown of orange petals, small like pins covers you, finds a way through your mouth to your insides. Each brings a drop of nectar, each is a painful laborer cleaning up the muck. Still hurts like a bastard.',
+    speaker: 'Botanist',
+    speakerName: 'Botanist',
+    answers: [
+      {
+        text: 'Continue',
+        goto: 'fifthNightDryadDialogStep10',
+        continueButton: true,
+        actions: [],
+      },
+    ],
+  },
+  fifthNightDryadDialogStep10: {
+    text: 'You gasp, drinking air like it’s your last one. Actually, the last one wasn’t as pleasant as this one. The last one didn’t come with the fizz in her eyes, and the smile, like a thousand of the old sun. She’s there, she’s ready. As dreams start taking you over, you notice that nothing connects her to her box anymore.',
+    speaker: 'Botanist',
+    speakerName: 'Botanist',
+    answers: [
+      {
+        text: 'Please, don’t go.',
+        goto: 'fifthNightDryadDialogStep11',
+        actions: [],
+      },
+      {
+        text: 'Grown wild?',
+        goto: 'fifthNightDryadDialogStep11',
+        actions: [],
+      },
+    ],
+  },
+  fifthNightDryadDialogStep11: {
+    text: '“I will, soon. But not tonight. You can rest easy.” The lull of her voice rocks you to sleep.',
+    speaker: 'Botanist',
+    speakerName: 'Botanist',
+    answers: [
+      {
+        text: 'Continue',
+        actions: [],
+      },
+    ],
+  },
+};
+const FifthNightTribeDialog = {
+  fifthNightTribeDialog: {
+    title: 'The Fifth Night',
+    text: 'It’s been a long day. Caring for the Dryad while working the Nectar, it’s too much for one person. You didn’t get a wink of sleep. Everything is out of focus and you take every step like it’s the first one of your life. Your arms are so sore you can’t lift them up. And then there’s your chest, still burning, gnawing at your lungs with an appetite for destruction. The Elders did not say anything, but they know. They’re worried about you, about the Nectar.',
+    speaker: 'Botanist',
+    speakerName: 'Botanist',
+    answers: [
+      {
+        text: 'Continue',
+        goto: 'fifthNightTribeDialogStep2',
+        continueButton: true,
+        actions: [],
+      },
+    ],
+  },
+  fifthNightTribeDialogStep2: {
+    text: 'When you come home, it’s to hear a rustle, a falling of webs and decaying trees. The cocoon is broken. Part of its shell cracking into thunder through the dry air. A familiar branch hangs over a hole, wrinkled and dark, leading in. You rip the branches, ignoring the pricks of insects and the splinters of the dead wood. One handful at a time, in a flurry that makes you forget the pain in your back, you unveil the Dryad from her cocoon.',
+    speaker: 'Botanist',
+    speakerName: 'Botanist',
+    answers: [
+      {
+        text: 'Continue',
+        goto: 'fifthNightTribeDialogStep3',
+        continueButton: true,
+        actions: [],
+      },
+    ],
+  },
+  fifthNightTribeDialogStep3: {
+    text: 'She stands there, held up by trunk, and roots and vines that snake around the vestiges of her limbs. Her spirit is gone, except for a dull spark that fixates on you, your hands covered in sap and blood. Both are black. There is the shadow of a smirk on the ghostly face of the Dryad.',
+    speaker: 'Botanist',
+    speakerName: 'Botanist',
+    answers: [
+      {
+        text: 'Continue',
+        goto: 'fifthNightTribeDialogStep4',
+        continueButton: true,
+        actions: [],
+      },
+    ],
+  },
+  fifthNightTribeDialogStep4: {
+    text: 'Foliage, crawling with stings and mandibles, pierces her skin, remaking her coffin around her. If she can’t have her freedom, she’ll make sure you won’t have yours too. You can’t fail. A village counts on you for its survival. Is one life worth certain death?', 
+    speaker: 'Botanist',
+    speakerName: 'Botanist',
+    answers: [
+      {
+        text: 'I’m sorry, but you won’t die.',
+        goto: 'fifthNightTribeDialogStep5',
+        actions: [],
+      },
+      {
+        text: 'Enough! You’re not getting away!',
+        goto: 'fifthNightTribeDialogStep5',
+        actions: [],
+      },
+    ],
+  },
+  fifthNightTribeDialogStep5: {
+    text: 'And so you plunge back into the wild of the forest, the remnant of nightmares from a time long gone, where kind children were lost amidst haunted oaks. Wood hits your head, your arms, your legs. Wood stabs you in the chest and throat. The dryad just stands, eyes to the void as if none of this concerned her anymore. Cough.',
+    speaker: 'Botanist',
+    speakerName: 'Botanist',
+    answers: [
+      {
+        text: 'Continue',
+        goto: 'fifthNightTribeDialogStep6',
+        continueButton: true,
+        actions: [],
+      },
+    ],
+  },
+  fifthNightTribeDialogStep6: {
+    text: 'A long, painful string of coughs that does not break. Deposits of ash blood fill your lungs and plug your throat. You can’t breathe. Muscles are as out of air as you are. Your pouch of Nectar lies too far, stolen by a wave of twigs and ants. It doesn’t matter, there is more where that came from.',
+    speaker: 'Botanist',
+    speakerName: 'Botanist',
+    answers: [
+      {
+        text: 'Bite. Hard.',
+        goto: 'fifthNightTribeDialogStep7',
+        continueButton: true,
+        actions: [],
+      },
+    ],
+  },
+  fifthNightTribeDialogStep7: {
+    text: 'Your teeth sink into the soft bark, filling your mouth with the taste of rot and humus slime. You choke but keep it in. The honey-like taste of Nectar permeates through nausea. Gulp. You breathe, renewed with just enough vigor to reach another uncovered bit of dark green flesh. Rip. Bite. Breathe. Rip. Bite. Breathe. Rip. Bite. Breathe. Thoughts of survival creep through the cycle, vision of friends and charges, alive. Visions of you.',
+    speaker: 'Botanist',
+    speakerName: 'Botanist',
+    answers: [
+      {
+        text: 'Continue',
+        goto: 'fifthNightTribeDialogStep8',
+        continueButton: true,
+        actions: [],
+      },
+    ],
+  },
+  fifthNightTribeDialogStep8: {
+    text: 'The sun rises in thin threads under your window. Your lungs are clean, your veins bloated by a binge of Nectar that make you feel as alive as the day you arrived in Vedinor. This is the sensation of duty fulfilled.',
+    speaker: 'Botanist',
+    speakerName: 'Botanist',
+    answers: [
+      {
+        text: 'Continue',
+        goto: 'fifthNightTribeDialogStep9',
+        continueButton: true,
+        actions: [],
+      },
+    ],
+  },
+  fifthNightTribeDialogStep9: {
+    text: 'The Dryad is firm in her box, her body faded, abandoned by her cocoon, captive.',
+    speaker: 'Botanist',
+    speakerName: 'Botanist',
+    answers: [
+      {
+        text: 'This didn’t need to happen.',
+        goto: 'fifthNightTribeDialogStep10',
+        actions: [],
+      },
+      {
+        text: 'You couldn’t just make this easy, did you?',
+        goto: 'fifthNightTribeDialogStep10',
+        actions: [],
+      },
+    ],
+  },
+  fifthNightTribeDialogStep10: {
+    text: '“No”. Her voice is already nothing but a memory of the last days. As she closes her eyes, you’re sure she’ll never speak again.',
+    speaker: 'Botanist',
+    speakerName: 'Botanist',
+    answers: [
+      {
+        text: 'Continue',
+        actions: [],
+      },
+    ],
+  },
+};
 
 export default {
   ...FirstNightDialog,
@@ -839,5 +1136,7 @@ export default {
   ...ThirdNightDryadDialog,
   ...ThirdNightTribeDialog,
   ...FourthNightDialog,
+  ...FifthNightDryadDialog,
+  ...FifthNightTribeDialog,
   ...beginningTest,
 };
