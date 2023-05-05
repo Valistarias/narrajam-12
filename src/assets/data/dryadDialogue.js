@@ -1129,6 +1129,178 @@ const FifthNightTribeDialog = {
     ],
   },
 };
+const SixthNightDryadDialog = {
+  SixthNightDryadDialog: {
+    title: 'The Last Night',
+    text: 'You know before coming in. The music is gone, the energy in the air, the soft feel of the night on your skin. The living room is still a mess of lost leaves, but it’s a dead one: every book you put back in its place, every glass, every toy stays where it is. Wild flowers grow alone in the lab, her box is empty',
+    speaker: 'Botanist',
+    speakerName: 'Botanist',
+    answers: [
+      {
+        text: 'Continue',
+        goto: 'SixthNightDryadDialogStep2',
+        continueButton: true,
+        actions: [],
+      },
+    ],
+  },
+  SixthNightDryadDialogStep2: {
+    text: 'She’s gone.',
+    speaker: 'Botanist',
+    speakerName: 'Botanist',
+    answers: [
+      {
+        text: 'Continue',
+        goto: 'SixthNightDryadDialogStep3',
+        continueButton: true,
+        actions: [],
+      },
+    ],
+  },
+  SixthNightDryadDialogStep3: {
+    text: 'Footsteps of chlorophyll and earth dot the way to the backdoor. She didn’t shut it: you can hear the hinges weep. Makes sense: she’s not the kind to enjoy being locked up. All things considered, neither are you. The Order, the Tribe, Vedinor, your charges, it’s been a lot. You remember how you loved your duty, how important it was for you. You wonder when that changed, if it’s only from a couple of days or if it’s been there, growing underneath and you just didn’t notice it. What you did, it’s a failure, one you don’t know how you’ll deal with. Hard to explain that you let the only source of Nectar walk away into the desert.',
+    speaker: 'Botanist',
+    speakerName: 'Botanist',
+    answers: [
+      {
+        text: 'Continue',
+        goto: 'SixthNightDryadDialogStep4',
+        continueButton: true,
+        actions: [],
+      },
+    ],
+  },
+  SixthNightDryadDialogStep4: {
+    text: 'The moons embrace the ashen wastes in their silver glow. A fresh breeze, laden with the smell of ozone, caresses away your hood. Your chest doesn’t hurt tonight. Order and duty can wait.',
+    speaker: 'Botanist',
+    speakerName: 'Botanist',
+    answers: [
+      {
+        text: 'Continue',
+        goto: 'SixthNightDryadDialogStep5',
+        continueButton: true,
+        actions: [],
+      },
+    ],
+  },
+  SixthNightDryadDialogStep5: {
+    text: 'A few steps away, you see a green patch on a dune, a wild ripple under the wind. You step away from your house, from Vedinor. The walk is a short one, but the ash shirks away under you, a treacherous swamp that refuses to support you. You arrive, you pants, you swear a couple times. At your feet is a circle of grass, no bigger than your fist. Less than a meter away is another, then another, then another. The trail reaches into the horizon.',
+    speaker: 'Botanist',
+    speakerName: 'Botanist',
+    answers: [
+      {
+        text: 'Continue',
+        goto: 'SixthNightDryadDialogStep6',
+        continueButton: true,
+        actions: [],
+      },
+    ],
+  },
+  SixthNightDryadDialogStep6: {
+    text: 'You smile.', 
+    speaker: 'Botanist',
+    speakerName: 'Botanist',
+    answers: [
+      {
+        text: 'Continue',
+        actions: ['mainMenu'],
+      },
+    ],
+  },
+};
+const SixthNightTribeDialog = {
+  SixthNightTribeDialog: {
+    title: 'The Last Night',
+    text: 'You lie in bed, trying to find some sleep that refuses to show up. Nothing’s right: you feel hot, then cold, you feel faint but the weight in your stomach pins you to your mattress, far away from dreamland. You throw your covers against the wall, stomp to the living room and get some water. Make it some Nectar. Sweet and syrupy, it falls from the corner of your mouth, escaping gluttonous gulps. A loud rattle grows out of your mouth, satisfied.',
+    speaker: 'Botanist',
+    speakerName: 'Botanist',
+    answers: [
+      {
+        text: 'Continue',
+        goto: 'SixthNightTribeDialogStep2',
+        continueButton: true,
+        actions: [],
+      },
+    ],
+  },
+  SixthNightTribeDialogStep2: {
+    text: 'The Lab is locked. You know it’s locked, you turned the key then tried the handle twice before you left to meet the Elders. Yet, you can’t resist the thought, the idea that worms its way through your head.',
+    speaker: 'Botanist',
+    speakerName: 'Botanist',
+    answers: [
+      {
+        text: 'Continue',
+        goto: 'SixthNightTribeDialogStep3',
+        continueButton: true,
+        actions: [],
+      },
+    ],
+  },
+  SixthNightTribeDialogStep3: {
+    text: 'So you try it again.',
+    speaker: 'Botanist',
+    speakerName: 'Botanist',
+    answers: [
+      {
+        text: 'Continue',
+        goto: 'SixthNightTribeDialogStep4',
+        continueButton: true,
+        actions: [],
+      },
+    ],
+  },
+  SixthNightTribeDialogStep4: {
+    text: 'And it’s locked alright, exactly as expected. You should leave it be, go back to your pillow. But the thought is not gone. It squirms, and twists, and bends and cracks and bites and suddenly, the Lab key is in your hand. And you need to know if she’s still on the other side of this damn door. You grit your teeth… you can still feel yesterday’s bite.',
+    speaker: 'Botanist',
+    speakerName: 'Botanist',
+    answers: [
+      {
+        text: 'Continue',
+        goto: 'SixthNightTribeDialogStep5',
+        continueButton: true,
+        actions: [],
+      },
+    ],
+  },
+  SixthNightTribeDialogStep5: {
+    text: 'The Dryad is there, thick trunk and dead gaze, sweating Nectar in quantities you’ve never hoped to reach. Vedinor is safe, the Elders are safe, you are safe. Not only that, you might have discovered a way to make survival easier for everyone. The Order will knight you for this!',
+    speaker: 'Botanist',
+    speakerName: 'Botanist',
+    answers: [
+      {
+        text: 'Continue',
+        goto: 'SixthNightTribeDialogStep6',
+        continueButton: true,
+        actions: [],
+      },
+    ],
+  },
+  SixthNightTribeDialogStep6: {
+    text: 'And yet, you cannot sleep, so you sit at the feet of your new tool. You lose yourself in the shadow of her crown, in the absence of her voice, in the lifeless smell of coal and rotten flowers',
+    speaker: 'Botanist',
+    speakerName: 'Botanist',
+    answers: [
+      {
+        text: 'Bite. Hard.',
+        goto: 'SixthNightTribeDialogStep7',
+        continueButton: true,
+        actions: [],
+      },
+    ],
+  },
+  SixthNightTribeDialogStep7: {
+    text: 'You did what was right.',
+    speaker: 'Botanist',
+    speakerName: 'Botanist',
+    answers: [
+      {
+        text: 'Continue',
+        actions: ['mainMenu'],
+      },
+    ],
+  },
+};
+
 
 export default {
   ...FirstNightDialog,
@@ -1138,5 +1310,7 @@ export default {
   ...FourthNightDialog,
   ...FifthNightDryadDialog,
   ...FifthNightTribeDialog,
+  ...SixthNightDryadDialog,
+  ...SixthNightTribeDialog,
   ...beginningTest,
 };

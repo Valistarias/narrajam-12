@@ -53,10 +53,10 @@ const DryadWindow = () => {
       case 5: {
         if (income._dryad >= income._tribe) {
           // Dialog dryad
-          return 'FifthNightDryadDialog';
+          return 'SixthNightDryadDialog';
         }
         // Dialog tribe
-        return 'FifthNightTribeDialog';
+        return 'SixthNightTribeDialog';
       }
       default: {
         console.error('NO DIALOG FOUND ON DAY', vars?.day);
@@ -104,7 +104,7 @@ const DryadWindow = () => {
       dispatchedEvent.current = false;
       Event.dispatchEvent(new CustomEvent('openDialogue', {
         detail: {
-          name: testDialogByDay,
+          name: dialogByDay,
         },
       }));
       night();
@@ -114,7 +114,7 @@ const DryadWindow = () => {
     vars?.stepCycle,
     displayedScreen,
     isActualStep,
-    testDialogByDay,
+    dialogByDay,
     Event,
     goToNextDay,
     switchMusic,
