@@ -1,6 +1,6 @@
 import React, {
   useCallback,
-  useEffect, useState,
+  useEffect, useRef, useState,
 } from 'react';
 
 import ScrollContainer from 'react-indiana-drag-scroll';
@@ -20,6 +20,8 @@ const HybridationWindow = () => {
 
   const [selectedTalent, setSelectedTalent] = useState(null);
   const [openInfo, setOpenInfo] = useState(false);
+
+  const scrollRef = useRef();
 
   // const [lockInfo, setLockInfo] = useState(false);
 
@@ -72,10 +74,20 @@ const HybridationWindow = () => {
     }
   }, [vars?.DISPLAY_HYBRIDATION]);
 
+  useEffect(() => {
+    if (visible && scrollRef.current) {
+      scrollRef.current.getElement().scrollTo(
+        window.innerWidth / 2,
+        (window.innerHeight / 2) - 100,
+      );
+    }
+  }, [visible]);
+
   return (
     <ScrollContainer
-      // vertical
-      // horizontal
+      ref={scrollRef}
+      vertical
+      horizontal
       hideScrollbars
       className={classTrim(`
         hybridationWindow
@@ -104,6 +116,7 @@ const HybridationWindow = () => {
           // }}
           selected={selectedTalent?.id === 'valerian'}
         />
+        {/* TRIBE UPGRADES */}
         <HybridationNode
           id="belladonna"
           type="tribe"
@@ -120,6 +133,97 @@ const HybridationWindow = () => {
           selected={selectedTalent?.id === 'belladonna'}
         />
         <HybridationNode
+          id="bluebell"
+          type="tribe"
+          notUnlocked={vars.tribeTier < Hybridations.bluebell.tier}
+          state={
+            // eslint-disable-next-line no-nested-ternary
+            hybridationResearch?.id === 'bluebell' ? 'launched' : (
+              hybridationIds.includes('bluebell') ? 'completed' : 'idle'
+            )
+          }
+          onClick={() => {
+            selectTalent('bluebell');
+          }}
+          selected={selectedTalent?.id === 'bluebell'}
+        />
+        <HybridationNode
+          id="chives"
+          type="tribe"
+          notUnlocked={vars.tribeTier < Hybridations.chives.tier}
+          state={
+            // eslint-disable-next-line no-nested-ternary
+            hybridationResearch?.id === 'chives' ? 'launched' : (
+              hybridationIds.includes('chives') ? 'completed' : 'idle'
+            )
+          }
+          onClick={() => {
+            selectTalent('chives');
+          }}
+          selected={selectedTalent?.id === 'chives'}
+        />
+        <HybridationNode
+          id="holly"
+          type="tribe"
+          notUnlocked={vars.tribeTier < Hybridations.holly.tier}
+          state={
+            // eslint-disable-next-line no-nested-ternary
+            hybridationResearch?.id === 'holly' ? 'launched' : (
+              hybridationIds.includes('holly') ? 'completed' : 'idle'
+            )
+          }
+          onClick={() => {
+            selectTalent('holly');
+          }}
+          selected={selectedTalent?.id === 'holly'}
+        />
+        <HybridationNode
+          id="geranium"
+          type="tribe"
+          notUnlocked={vars.tribeTier < Hybridations.geranium.tier}
+          state={
+            // eslint-disable-next-line no-nested-ternary
+            hybridationResearch?.id === 'geranium' ? 'launched' : (
+              hybridationIds.includes('geranium') ? 'completed' : 'idle'
+            )
+          }
+          onClick={() => {
+            selectTalent('geranium');
+          }}
+          selected={selectedTalent?.id === 'geranium'}
+        />
+        <HybridationNode
+          id="candytuft"
+          type="tribe"
+          notUnlocked={vars.tribeTier < Hybridations.candytuft.tier}
+          state={
+            // eslint-disable-next-line no-nested-ternary
+            hybridationResearch?.id === 'candytuft' ? 'launched' : (
+              hybridationIds.includes('candytuft') ? 'completed' : 'idle'
+            )
+          }
+          onClick={() => {
+            selectTalent('candytuft');
+          }}
+          selected={selectedTalent?.id === 'candytuft'}
+        />
+        <HybridationNode
+          id="hyssop"
+          type="tribe"
+          notUnlocked={vars.tribeTier < Hybridations.hyssop.tier}
+          state={
+            // eslint-disable-next-line no-nested-ternary
+            hybridationResearch?.id === 'hyssop' ? 'launched' : (
+              hybridationIds.includes('hyssop') ? 'completed' : 'idle'
+            )
+          }
+          onClick={() => {
+            selectTalent('hyssop');
+          }}
+          selected={selectedTalent?.id === 'hyssop'}
+        />
+        {/* DRYAD UPGRADES */}
+        <HybridationNode
           id="crocus"
           type="dryad"
           notUnlocked={vars.dryadTier < Hybridations.crocus.tier}
@@ -133,6 +237,96 @@ const HybridationWindow = () => {
             selectTalent('crocus');
           }}
           selected={selectedTalent?.id === 'crocus'}
+        />
+        <HybridationNode
+          id="sage"
+          type="dryad"
+          notUnlocked={vars.dryadTier < Hybridations.sage.tier}
+          state={
+            // eslint-disable-next-line no-nested-ternary
+            hybridationResearch?.id === 'sage' ? 'launched' : (
+              hybridationIds.includes('sage') ? 'completed' : 'idle'
+            )
+          }
+          onClick={() => {
+            selectTalent('sage');
+          }}
+          selected={selectedTalent?.id === 'sage'}
+        />
+        <HybridationNode
+          id="callaLily"
+          type="dryad"
+          notUnlocked={vars.dryadTier < Hybridations.callaLily.tier}
+          state={
+            // eslint-disable-next-line no-nested-ternary
+            hybridationResearch?.id === 'callaLily' ? 'launched' : (
+              hybridationIds.includes('callaLily') ? 'completed' : 'idle'
+            )
+          }
+          onClick={() => {
+            selectTalent('callaLily');
+          }}
+          selected={selectedTalent?.id === 'callaLily'}
+        />
+        <HybridationNode
+          id="edelweiss"
+          type="dryad"
+          notUnlocked={vars.dryadTier < Hybridations.edelweiss.tier}
+          state={
+            // eslint-disable-next-line no-nested-ternary
+            hybridationResearch?.id === 'edelweiss' ? 'launched' : (
+              hybridationIds.includes('edelweiss') ? 'completed' : 'idle'
+            )
+          }
+          onClick={() => {
+            selectTalent('edelweiss');
+          }}
+          selected={selectedTalent?.id === 'edelweiss'}
+        />
+        <HybridationNode
+          id="borage"
+          type="dryad"
+          notUnlocked={vars.dryadTier < Hybridations.borage.tier}
+          state={
+            // eslint-disable-next-line no-nested-ternary
+            hybridationResearch?.id === 'borage' ? 'launched' : (
+              hybridationIds.includes('borage') ? 'completed' : 'idle'
+            )
+          }
+          onClick={() => {
+            selectTalent('borage');
+          }}
+          selected={selectedTalent?.id === 'borage'}
+        />
+        <HybridationNode
+          id="coriander"
+          type="dryad"
+          notUnlocked={vars.dryadTier < Hybridations.coriander.tier}
+          state={
+            // eslint-disable-next-line no-nested-ternary
+            hybridationResearch?.id === 'coriander' ? 'launched' : (
+              hybridationIds.includes('coriander') ? 'completed' : 'idle'
+            )
+          }
+          onClick={() => {
+            selectTalent('coriander');
+          }}
+          selected={selectedTalent?.id === 'coriander'}
+        />
+        <HybridationNode
+          id="butterflyWeed"
+          type="dryad"
+          notUnlocked={vars.dryadTier < Hybridations.butterflyWeed.tier}
+          state={
+            // eslint-disable-next-line no-nested-ternary
+            hybridationResearch?.id === 'butterflyWeed' ? 'launched' : (
+              hybridationIds.includes('butterflyWeed') ? 'completed' : 'idle'
+            )
+          }
+          onClick={() => {
+            selectTalent('butterflyWeed');
+          }}
+          selected={selectedTalent?.id === 'butterflyWeed'}
         />
       </div>
       <div

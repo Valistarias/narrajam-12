@@ -12,7 +12,7 @@ const GlobalVarsContext = React.createContext();
 export const GlobalVarsProvider = ({ children }) => {
   // Numeral values
   const [vars, setVars] = useState({
-    nectar: 4,
+    nectar: 1,
     flower: 1,
     timeBlock: 3,
     day: 0,

@@ -102,7 +102,7 @@ const DryadWindow = () => {
   useEffect(() => {
     setVisible(displayedScreen === 'game' && isActualStep('dryad'));
     if (displayedScreen === 'game' && isActualStep('dryad')) {
-      setSelectedDialog(dialogByDay);
+      setSelectedDialog(testDialogByDay);
       night();
       switchMusic('dryad');
     }
@@ -110,7 +110,7 @@ const DryadWindow = () => {
     vars?.stepCycle,
     displayedScreen,
     isActualStep,
-    dialogByDay,
+    testDialogByDay,
     Event,
     goToNextDay,
     switchMusic,
