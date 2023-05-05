@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import React, {
-  useState, useMemo, useContext, useCallback, useEffect,
+  useState, useMemo, useContext, useCallback, useEffect, useRef,
 } from 'react';
 import PropTypes from 'prop-types';
 
@@ -23,6 +23,8 @@ const MusicContext = React.createContext();
 
 export const MusicProvider = ({ children }) => {
   const [ready, setReady] = useState(0);
+
+  const timeoutPlayWrite = useRef(true);
 
   const mainSound = useMemo(() => new Howl({
     src: [MainTheme],
@@ -62,7 +64,7 @@ export const MusicProvider = ({ children }) => {
 
   const textSound = useMemo(() => new Howl({
     src: [TextSound],
-    volume: 0.4,
+    volume: 0.1,
   }), []);
 
   const unlockDryadSound = useMemo(() => new Howl({
@@ -192,7 +194,13 @@ export const MusicProvider = ({ children }) => {
   }, [popupSound]);
 
   const text = useCallback(() => {
-    textSound.play();
+    if (timeoutPlayWrite.current) {
+      textSound.play();
+      timeoutPlayWrite.current = false;
+      setTimeout(() => {
+        timeoutPlayWrite.current = true;
+      }, 3000);
+    }
   }, [textSound]);
 
   const unlockDryad = useCallback(() => {

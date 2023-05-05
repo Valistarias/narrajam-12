@@ -8,11 +8,14 @@ import { dryadDialogType } from '../../types/dialogs';
 
 import './dynamicTextDisplay.scss';
 import { useGlobalVars } from '../../../providers/GlobalVars';
+import { useMusic } from '../../../providers/Music';
 
 const DynamicTextDisplay = ({
   textBlocks, toSkip, setButtonDisabled, scrollBottom,
 }) => {
   const { vars, income, hybridationIds } = useGlobalVars();
+
+  const { text: soundText } = useMusic();
 
   const [curatedTextBlocks, setCuratedTextBlocks] = useState([]);
 
@@ -26,6 +29,10 @@ const DynamicTextDisplay = ({
 
     // Treating the html to add
     const actualWord = wordsToDisplay.current[0];
+    if (actualWord.speaker !== 'player') {
+      soundText();
+    }
+
     const text = `${actualWord.text}${Array.isArray(wordsToDisplay.current) && wordsToDisplay.current.length > 0 ? ' ' : ''}`;
     let domToAdd = text;
     if (actualWord.bold || actualWord.italic) {
@@ -67,7 +74,7 @@ const DynamicTextDisplay = ({
         }, toSkip ? 0 : 30);
       }
     }, delayNewMessage ? 500 : 0);
-  }, [toSkip, scrollBottom]);
+  }, [toSkip, scrollBottom, soundText]);
 
   useEffect(() => {
     if (textBlocks.length === 0 && curatedTextBlocks.length !== 0) {
