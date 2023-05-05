@@ -12,7 +12,7 @@ const GlobalVarsContext = React.createContext();
 export const GlobalVarsProvider = ({ children }) => {
   // Numeral values
   const [vars, setVars] = useState({
-    nectar: 1,
+    nectar: 4,
     flower: 1,
     timeBlock: 3,
     day: 0,
@@ -293,7 +293,7 @@ export const GlobalVarsProvider = ({ children }) => {
     setVars((prev) => {
       const next = { ...prev };
       next.day += 1;
-      next.flower += nectarToFlower(next.usedNectar) + income.flower;
+      next.flower += nectarToFlower(prev.usedNectar) + income.flower;
       next.nectar += income.nectar;
       next.usedNectar = 0;
       nextDay = next.day;

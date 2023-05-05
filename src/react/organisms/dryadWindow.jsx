@@ -1,6 +1,6 @@
 import React, {
   useCallback,
-  useEffect, useMemo, useRef, useState,
+  useEffect, useMemo, useState,
 } from 'react';
 
 import { useGlobalVars } from '../../providers/GlobalVars';
@@ -9,10 +9,11 @@ import { classTrim } from '../../utils';
 import './dryadWindow.scss';
 import { useEvent } from '../../providers/Event';
 import { useMusic } from '../../providers/Music';
+import DialogueWindow from './components/dialogueWindow';
 
 const DryadWindow = () => {
   const [visible, setVisible] = useState(false);
-  const dispatchedEvent = useRef(false);
+  const [selectedDialog, setSelectedDialog] = useState(null);
 
   const { switchMusic, day, night } = useMusic();
 
@@ -101,12 +102,7 @@ const DryadWindow = () => {
   useEffect(() => {
     setVisible(displayedScreen === 'game' && isActualStep('dryad'));
     if (displayedScreen === 'game' && isActualStep('dryad')) {
-      dispatchedEvent.current = false;
-      Event.dispatchEvent(new CustomEvent('openDialogue', {
-        detail: {
-          name: dialogByDay,
-        },
-      }));
+      setSelectedDialog(testDialogByDay);
       night();
       switchMusic('dryad');
     }
@@ -114,34 +110,31 @@ const DryadWindow = () => {
     vars?.stepCycle,
     displayedScreen,
     isActualStep,
-    dialogByDay,
+    testDialogByDay,
     Event,
     goToNextDay,
     switchMusic,
     night,
   ]);
 
-  const onGoToNextDay = useCallback(() => {
-    if (!dispatchedEvent.current) {
-      goToNextDay();
-      dispatchedEvent.current = true;
-      switchMusic('main');
-    }
-  }, [goToNextDay, switchMusic]);
-
-  useEffect(() => {
-    Event.addEventListener('closeDialogue', () => {
-      onGoToNextDay();
-      day();
-    });
-  }, [Event, onGoToNextDay, day]);
+  const onCloseDialog = useCallback(() => {
+    goToNextDay();
+    switchMusic('main');
+    day();
+    setSelectedDialog(null);
+  }, [day, goToNextDay, switchMusic]);
 
   return (
     <div className={classTrim(`
       dryadWindow
       ${visible ? ' dryadWindow--visible' : ''}
     `)}
-    />
+    >
+      <DialogueWindow
+        onCloseDialog={onCloseDialog}
+        selectedDialog={selectedDialog}
+      />
+    </div>
   );
 };
 

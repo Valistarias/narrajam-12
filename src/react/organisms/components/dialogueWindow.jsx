@@ -4,6 +4,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
+import { PropTypes } from 'prop-types';
 import { Scrollbar } from 'react-scrollbars-custom';
 import Button from '../../molecules/button';
 import { useEvent } from '../../../providers/Event';
@@ -15,7 +16,10 @@ import DynamicTextDisplay from './dynamicTextDisplay';
 import { curateAndDomifyText } from '../../../utils';
 import { useGlobalVars } from '../../../providers/GlobalVars';
 
-const DialogueWindow = () => {
+const DialogueWindow = ({
+  onCloseDialog,
+  selectedDialog,
+}) => {
   const [isOpen, setOpen] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const [textBlocks, setTextBlocks] = useState([]);
@@ -82,39 +86,37 @@ const DialogueWindow = () => {
         : []);
     } else {
       setOpen(false);
-      Event.dispatchEvent(new CustomEvent('closeDialogue'));
+      onCloseDialog();
     }
-  }, [Event]);
+  }, [onCloseDialog]);
 
   useEffect(() => {
-    if (!Event) { return; }
-    Event.addEventListener('openDialogue', ({ detail }) => {
-      setTextBlocks([]);
-      setAnswers([]);
-      setTitle('');
-      setTimeout(() => {
-        setOpen(true);
-        const dialog = DryadDialog[detail.name];
-        setTextBlocks((prev) => {
-          if (!prev) {
-            return [dialog];
-          }
-          const next = [...prev];
-          next.push(dialog);
-          return next;
-        });
-        if (dialog.title) {
-          setTitle(dialog.title);
+    if (!selectedDialog) { return; }
+    setTextBlocks([]);
+    setAnswers([]);
+    setTitle('');
+    setTimeout(() => {
+      setOpen(true);
+      const dialog = DryadDialog[selectedDialog];
+      setTextBlocks((prev) => {
+        if (!prev) {
+          return [dialog];
         }
-        setAnswers(dialog.answers.length > 0
-          ? dialog.answers.map((answer, index) => ({
-            ...answer,
-            name: index,
-          }))
-          : []);
-      }, 10);
-    });
-  }, [Event]);
+        const next = [...prev];
+        next.push(dialog);
+        return next;
+      });
+      if (dialog.title) {
+        setTitle(dialog.title);
+      }
+      setAnswers(dialog.answers.length > 0
+        ? dialog.answers.map((answer, index) => ({
+          ...answer,
+          name: index,
+        }))
+        : []);
+    }, 1000);
+  }, [selectedDialog]);
 
   return (
     <div className={`dialogue ${isOpen ? ' dialogue--open' : ''}`}>
@@ -132,7 +134,7 @@ const DialogueWindow = () => {
           textBlocks={textBlocks}
           setButtonDisabled={setButtonDisabled}
           scrollBottom={scrollBottom}
-          toSkip
+          // toSkip
         />
       </Scrollbar>
       <div className="dialogue__buttons">
@@ -164,6 +166,16 @@ const DialogueWindow = () => {
       </div>
     </div>
   );
+};
+
+DialogueWindow.propTypes = {
+  onCloseDialog: PropTypes.func,
+  selectedDialog: PropTypes.string,
+};
+
+DialogueWindow.defaultProps = {
+  onCloseDialog: () => {},
+  selectedDialog: null,
 };
 
 export default DialogueWindow;
