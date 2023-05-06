@@ -647,7 +647,7 @@ const FourthNightDialog = {
     ],
   },
   fourthNightDialogStep3: {
-    text: 'Nothing but the pops and cracks of a distant tree that disappear in the faded smell of parched flowers. You feel even less prepared than you were getting used to. It’s another change, another step, one that’s so fast and foreign you can’t imagine you\'ll catch up to it. Is this even normal? Is she ill? You thought about her leaving but what if she dies? You take the pruner from your belt and cut the smallest of paths to where she lies. A faint glow pierces the hole, purring, beckoning.',
+    text: 'Nothing but the pops and cracks of a distant tree that disappear in the faded smell of parched flowers. You feel even less prepared than you were getting used to. It’s another change, another step, one that’s so fast and foreign you can’t imagine how you\'ll catch up to it. Is this even normal? Is she ill? You thought about her leaving but what if she dies? You take the pruner from your belt and cut the smallest of paths to where she lies. A faint glow pierces the hole, purring, beckoning.',
     speaker: 'Botanist',
     speakerName: 'Botanist',
     answers: [
@@ -705,59 +705,59 @@ const FourthNightDialog = {
     text: [
       {
         text: 'You gave me virtue through silence.<br/>',
-        conditions: ['hybridCount:tribe'],
+        conditions: ['hybridCount:tribe','hybridation:belladonna'],
       },
       {
         text: 'You gave me virtue through humility.<br/>',
-        conditions: ['hybridCount:tribe'],
+        conditions: ['hybridCount:tribe','hybridation:bluebell'],
       },
       {
         text: 'You gave me virtue through usefulness.<br/>',
-        conditions: ['hybridCount:tribe'],
+        conditions: ['hybridCount:tribe','hybridation:chives'],
       },
       {
         text: 'You gave me virtue through a house, and a place in it.<br/>',
-        conditions: ['hybridCount:tribe'],
+        conditions: ['hybridCount:tribe','hybridation:holly'],
       },
       {
         text: 'You gave me virtue through ignorance of sin.<br/>',
-        conditions: ['hybridCount:tribe'],
+        conditions: ['hybridCount:tribe','hybridation:geranium'],
       },
       {
         text: 'You gave me virtue through placidity.<br/>',
-        conditions: ['hybridCount:tribe'],
+        conditions: ['hybridCount:tribe','hybridation:candytuft',]
       },
       {
         text: 'And you promised me a future through sacrifice.<br/>',
-        conditions: ['hybridCount:tribe'],
+        conditions: ['hybridCount:tribe','hybridation:hyssop'],
       },
       {
         text: 'You allowed me joy, to be a child at heart.<br/>',
-        conditions: ['hybridCount:dryad'],
+        conditions: ['hybridCount:dryad','hybridation:crocus'],
       },
       {
         text: 'You gave me wisdom and knowledge.<br/>',
-        conditions: ['hybridCount:dryad'],
+        conditions: ['hybridCount:dryad','hybridation:sage'],
       },
       {
         text: 'You told me I was beautiful, and to have pride in it.<br/>',
-        conditions: ['hybridCount:dryad'],
+        conditions: ['hybridCount:dryad','hybridation:callaLily'],
       },
       {
         text: 'You showed me courage, and to wield it.<br/>',
-        conditions: ['hybridCount:dryad'],
+        conditions: ['hybridCount:dryad','hybridation:edelweiss'],
       },
       {
         text: 'You didn’t mind that I was blunt, and encouraged me to be honest.<br/>',
-        conditions: ['hybridCount:dryad'],
+        conditions: ['hybridCount:dryad','hybridation:borage'],
       },
       {
         text: 'You taught me that worth isn’t always easy to see.<br/>',
-        conditions: ['hybridCount:dryad'],
+        conditions: ['hybridCount:dryad','hybridation:coriander'],
       },
       {
         text: 'And you promised that, in the end, you would let me go.<br/>',
-        conditions: ['hybridCount:dryad'],
+        conditions: ['hybridCount:dryad','hybridation:butterflyWeed'],
       },
       'So, I will be all of this, if I can.” ',
     ],

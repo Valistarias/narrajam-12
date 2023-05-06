@@ -12,8 +12,8 @@ const GlobalVarsContext = React.createContext();
 export const GlobalVarsProvider = ({ children }) => {
   // Numeral values
   const [vars, setVars] = useState({
-    nectar: 1,
-    flower: 1,
+    nectar: 3,
+    flower: 3,
     timeBlock: 3,
     day: 0,
     stepCycle: 3,
@@ -89,8 +89,8 @@ export const GlobalVarsProvider = ({ children }) => {
 
   const resetGame = useCallback(() => {
     setVars({
-      nectar: 1,
-      flower: 1,
+      nectar: 3,
+      flower: 3,
       timeBlock: 3,
       day: 0,
       stepCycle: 3,
