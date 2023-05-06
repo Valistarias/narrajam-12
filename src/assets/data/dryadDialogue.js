@@ -1202,7 +1202,7 @@ const SixthNightDryadDialog = {
     speakerName: 'Botanist',
     answers: [
       {
-        text: 'Continue',
+        text: 'End',
         actions: ['mainMenu'],
       },
     ],
@@ -1294,7 +1294,7 @@ const SixthNightTribeDialog = {
     speakerName: 'Botanist',
     answers: [
       {
-        text: 'Continue',
+        text: 'End',
         actions: ['mainMenu'],
       },
     ],
