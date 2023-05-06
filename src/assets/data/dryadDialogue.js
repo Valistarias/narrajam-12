@@ -83,7 +83,7 @@ const FirstNightDialog = {
   FirstNightDialog: {
     title: 'The First Night',
     text: [
-      'Your back is nothing but painful knots and arched bones. Your legs have folded so long ago,  the pins and needles have dulled. Your hands are rough, dark nails and broken skin infected by all the microorganisms crawling along the potting ground. It’s a privilege, to touch fertile soil. It pays for the sleepless nights. ',
+      'Your back is nothing but painful knots and arched bones. Your legs have folded so long ago,  the pins and needles have dulled. Your hands are rough, dark nails and broken skin infected by all the microorganisms that crawls in the potting ground. It’s a privilege, to touch fertile soil. It pays for the sleepless nights. ',
     ],
     speaker: 'Botanist',
     speakerName: 'Botanist',
@@ -141,7 +141,7 @@ const FirstNightDialog = {
     ],
   },
   Step5: {
-    text: 'She can’t be. You made sure of it! You never fed her anything but water and compost void of… <br/><br/>Seeds.',
+    text: 'She can’t be. You made sure of it! You never fed her anything but water and compost devoid of… <br/><br/>Seeds.',
     speaker: 'Botanist',
     speakerName: 'Botanist',
     answers: [
@@ -154,7 +154,7 @@ const FirstNightDialog = {
     ],
   },
   Step6: {
-    text: 'There is one, split open: a bent valerian groveling through the muck, swimming towards the artificial light of your lab. You missed it. You let the Dryad consume it, and now she talks. Quite loudly too. A strange green baby’s babbling, breathing in spent air in exchange for one heavy with the mixed scent of Coriander and grass, of Bluebell and Borage. It’s dizzying, but not as much as what you must do. What you can’t do. ',
+    text: 'There is one, split open: a bent valerian that crawled through the muck and swam towards the artificial light of your lab. You missed it. You let the Dryad consume it, and now she talks. Quite loudly too. A strange green baby’s babbling, breathing in spent air in exchange for one heavy with the mixed scent of Coriander and grass, of Bluebell and Borage. It’s dizzying, but not as much as what you must do. What you can’t do. Just look at her.',
     speaker: 'Botanist',
     speakerName: 'Botanist',
     answers: [
@@ -184,7 +184,7 @@ const FirstNightDialog = {
     ],
   },
   Step8: {
-    text: '“Grow free!” Her eyes twinkle with pride, a childish satisfaction that nearly wrenches a chuckle out of you. There is no way you can let her go. Without the fruits she bears, there is no Nectar. Without her, you’re no Botanist, you’re just dead weight in a village that has not much love for your kin.',
+    text: '“Grow free!” Her eyes twinkle with pride, a childish satisfaction that could wrench a chuckle out of you in other circumstances. There is no way you can let her go. Without her, there is no Nectar. Without her, you’re no Botanist, you’re just dead weight in a village that has not much love for your kin.',
     speaker: 'Botanist',
     speakerName: 'Botanist',
     answers: [
@@ -211,7 +211,7 @@ const FirstNightDialog = {
 const SecondNightDialog = {
   SecondNightDialog: {
     title: 'The Second Night',
-    text: '“Aï, Aye, ih, HI, hi. Hi!” The Dryad plays with the words and laughs, beaming at failures and successes alike, reveling in the exploration of each syllable. Were she picked up said words, you’re not sure. Some are from listening to you, when the day grows lonely and you mumble to yourself, some are from somewhere else. Wherever that is, you’re not sure you approve. ',
+    text: '“Aï, Aye, ih, HI, hi. Hi!” The Dryad plays with the words and laughs. She beams at failures and successes alike and revels in the exploration of each syllable. Were she picked up said words, you’re not sure. Some she clearly picked up from you, when the day grows lonely and you mumble to yourself, some are from somewhere else. Wherever that is, you’re not sure you approve. ',
     speaker: 'Botanist',
     speakerName: 'Botanist',
     answers: [
@@ -224,7 +224,7 @@ const SecondNightDialog = {
     ],
   },
   SecondNightDialogStep2: {
-    text: 'The whole day, you’ve looked at her awake to everything. First, she reacted to the spouts, giggling and squirming away from the tickles they made her feel. Then there was the whole “leaving the room” incident. She took a good long while to stop crying from that one. Finally, she found a bucket of clear water, and she saw herself, a silhouette of twigs and leaves and branches and roots, so very much different from you. She thought long and hard after that: “Bark!”, she pointed at your hands. Well, gee. Thanks. ',
+    text: 'The whole day, you’ve looked at her awake to everything. First, she reacted to the spouts, giggling and squirming away from the tickles they made her feel. Then there was the whole “leaving the room” incident. You took a good long while to stop the tears from that one. Finally, she found a bucket of clear water, and she saw herself, a silhouette of twigs and leaves and branches and roots, so very much different from you. She thought long and hard after that: “Bark!”, she pointed at your hands. Well, gee. Thanks. ',
     speaker: 'Botanist',
     speakerName: 'Botanist',
     answers: [
@@ -237,7 +237,7 @@ const SecondNightDialog = {
     ],
   },
   SecondNightDialogStep3: {
-    text: 'Then she fell silent. A succession of long stares and pinched earlobes. Every once in a while, she leans over a trowel or a pruner. Her branches brushing against the wooden handle. Does not take a genius to notice the questions racing through her head. ',
+    text: 'Then she fell silent. A succession of long stares and pinched earlobes. Every once in a while, she leans over a trowel or a pruner. Her branches brush against the wooden handle. Does not take a genius to notice the questions racing through her head. ',
     speaker: 'Botanist',
     speakerName: 'Botanist',
     answers: [
@@ -264,7 +264,7 @@ const SecondNightDialog = {
         text: '“No fun. Sad?” She looks at you, suddenly meek after a day of horsing around.',
         conditions: ['hybridCount:dryad'],
       },
-      'You nod along, hiding your discomfort. Teaching and growing at the same time, you’re not sure it’s right. She takes it in stride, though, one idea the root of another: “Wanna grow out! Out!”',
+      'You nod along and try to hide your discomfort. Teaching and growing at the same time, you’re not sure it’s right. She takes it in stride, though, one idea the root of another: “Wanna grow out! Out!”',
     ],
     speaker: 'Botanist',
     speakerName: 'Botanist',
@@ -282,12 +282,12 @@ const SecondNightDialog = {
     ],
   },
   SecondNightDialogStep5: {
-    text: '“Too small” she twirls around, showing with all branches her box of man-made ground. How can you explain to her? That she’s not supposed to “be”, here? That she’ll get you exiled from Vedinor and the order? That there’s nowhere to go for her, no forest to take hold in, no stream to drink her fill. No wild fey to find her place with. You don’t know which one’s worst. “Can?”',
+    text: '“Too small” she twirls around, showing with all branches her box of man-made ground. How can you explain to her? That she’s not supposed to “be”, here? That she’ll get you exiled from Vedinor and the Order? That there’s nowhere to go for her, no forest to take hold in, no stream to drink her fill. No wild fey to find her place with. You don’t know which one’s worst. “Can?”',
     speaker: 'Botanist',
     speakerName: 'Botanist',
     answers: [
       {
-        text: 'Not yet, but maybe later?',
+        text: 'Maybe later?',
         goto: 'SecondNightDialogStep6',
         actions: [],
       },
@@ -299,7 +299,7 @@ const SecondNightDialog = {
     ],
   },
   SecondNightDialogStep6: {
-    text: '“But I wanna! I wanna, I wanna, I wanna!” She’s a flurry of shrill screams and trembling leaves, locked on you like you owe her, big time. There is no soothing her this time, nor any wagging of the finger, promises or threats. You just wait, feeling like someone should have prepared you for this, as she tires herself out.',
+    text: '“But I wanna! I wanna, I wanna, I wanna!” She’s a flurry of shrill screams and trembling leaves, locked on you like you owe her, big time. There is no soothing her this time, no finger wagging, promises or threats that will quiet her. So you just wait, as she tires herself out. Someone should have prepared you for this.',
     speaker: 'Botanist',
     speakerName: 'Botanist',
     answers: [
@@ -312,7 +312,7 @@ const SecondNightDialog = {
     ],
   },
   SecondNightDialogStep7: {
-    text: 'Looking at the Dryad, deep slow breaths rocking back and forth a flower crown on her skin, you shiver. You got more Nectar for your trouble, but she’s growing so fast. Too fast. How long before she grows out of control, before she uproots herself and disappears. What if the flower you gave her robs her of something? What if you make it worse?',
+    text: 'The Dryad\'s deep slow breaths rock a flower crown back and forth on her skin. You shiver. You got more Nectar for your trouble, but she grows so fast. Too fast. How long before she\'s out of control, before she uproots herself and disappears. What if the flower you gave her robs her of something? What if you make it worse?',
     speaker: 'Botanist',
     speakerName: 'Botanist',
     answers: [
@@ -325,7 +325,7 @@ const SecondNightDialog = {
     ],
   },
   SecondNightDialogStep8: {
-    text: 'Tonight, you toss and turn in your bed, remembering your classes in the Order’s Caravan. None of them made it look so hard.',
+    text: 'Tonight, you toss and turn in your bed, haunted by your classes back in the Order’s. None of them made this looks so hard.',
     speaker: 'Botanist',
     speakerName: 'Botanist',
     answers: [
@@ -339,7 +339,7 @@ const SecondNightDialog = {
 const ThirdNightDryadDialog = {
   ThirdNightDryadDialog: {
     title: 'The Third Night',
-    text: 'The cough catches you by surprise, scratchy throat turning to fistful of shredded flecks in your palm. Blackened Blood. You limp home, hiding the shocks wracking your body from anxious stares and unpleasant thoughts. When you reach your door, you freeze, forehead hanging to the hard wood while you fight for a moment of peace, a single breath that doesn’t die on its way in.',
+    text: 'The cough catches you by surprise as scratchy throat turns to fistful of shredded flecks in your palm. Blackened Blood. You limp home, hiding the shocks wracking your body from anxious stares and unpleasant thoughts. When you reach your door, you freeze, forehead hanged to the hard wood while you fight for a moment of peace, a single breath that doesn’t die on its way in.',
     speaker: 'Botanist',
     speakerName: 'Botanist',
     answers: [
@@ -371,7 +371,7 @@ const ThirdNightDryadDialog = {
     ],
   },
   ThirdNightDryadDialogStep3: {
-    text: 'You hear someone singing in the lab. <br/><br/>The Dryad is out of her box, connected to the earth by a couple of supple and green roots. She’s picked up a watering can - the small one - and is doing the round of the flowers you’ve planted the last few days. One at a time, she showers them with care, lifting a leaf here and holding a bent stem there. She’s tracing your movement, like a kid playing grown-up. The song though, that’s her own.',
+    text: 'You hear someone singing in the lab. <br/><br/>The Dryad is out of her box, connected to the earth by a couple of supple and green roots. She’s picked up a watering can - the small one - and does the round of the flowers you’ve planted the last few days. One at a time, she showers them with care, lifting a leaf here and holding a bent stem there. She’s traces your movement, like a kid playing grown-up. The song though, that’s her own.',
     speaker: 'Botanist',
     speakerName: 'Botanist',
     answers: [
@@ -390,7 +390,7 @@ const ThirdNightDryadDialog = {
   },
   ThirdNightDryadDialogStep4: {
     text: [
-      'When she turns around, you can see the drowsy fizz in her eyes. A lethargic joy that feeds and consumes itself. Her smile is all dreams, and somehow, you’re part of it, rough hands and a thousand-times patched clothes included. “Hi! I’m helping.”',
+      'When she turns around, you can see the lethargic fizz in her eyes. A joy that feeds and consumes itself. Her smile is all dreams, and somehow, you’re part of it, rough hands and a thousand-times patched clothes included. “Hi! I’m helping.”',
     ],
     speaker: 'Botanist',
     speakerName: 'Botanist',
@@ -408,7 +408,7 @@ const ThirdNightDryadDialog = {
     ],
   },
   ThirdNightDryadDialogStep5: {
-    text: 'She brings the spout back over the pot of a small white carnation, spilling a few drops. In one overly exaggerated sorry pout, she has you chuckling. You feel the itch crawling up the back of your mouth, and bite hard on it. “I went out”, she says as if she was telling you she picked up some food on the way back. Was she seen? Did some stranger talk to her? Did they try something? Did she run away? Pictures of crazed idiots with dangerous ideas ice your heart and boil your stomach. You should have told her about these things.',
+    text: 'She brings the spout back over the pot of a small white carnation and spills a few drops. In one overly exaggerated sorry pout, she has you chuckling. The itch crawls up again in the back of your mouth. You bite hard on it. “I went out”, she says as if she had just picked up some food on the way back. Was she seen? Did some stranger talk to her? Did they try something? Did she run away? Pictures of crazed idiots with dangerous ideas ice your heart and boil your stomach. You should have told her about these things.',
     speaker: 'Botanist',
     speakerName: 'Botanist',
     answers: [
@@ -434,7 +434,7 @@ const ThirdNightDryadDialog = {
     ],
   },
   ThirdNightDryadDialogStep7: {
-    text: 'How do you answer that? Why should you, to begin with? She was never supposed to look any further than her box and now you’re trying to find the word to tell her the end of the world isn’t… the end of the world. “Wanna make it green again”, she continues. There is something behind the half-closed eyelid: a confidence that she’s gonna make it. Hopeful, perhaps. Youthful, certainly.',
+    text: 'How do you answer that? Why should you, to begin with? She was never supposed to look any further than her box and now you have to find the word to tell her the end of the world isn’t… the end of the world. “Wanna make it green again”, she continues. There is something behind the half-closed eyelids: a confidence that she’s gonna make it. Hopeful, perhaps. Youthful, certainly.',
     speaker: 'Botanist',
     speakerName: 'Botanist',
     answers: [
@@ -465,7 +465,7 @@ const ThirdNightDryadDialog = {
 const ThirdNightTribeDialog = {
   ThirdNightTribeDialog: {
     title: 'The Third Night',
-    text: 'The cough catches you by surprise, scratchy throat turning to fistful of shredded flecks in your palms. Blackened blood. When you finally slam your door behind you, you fall to the ground, boiling forehead digging in the cold floor. A pulsating grasp reduces you to a wheeze, your lungs only allowed enough air to make it last. You worm your way to a bottle of Nectar. You breathe.',
+    text: 'The cough catches you by surprise as scratchy throat turns to fistful of shredded flecks in your palms. Blackened blood. When you finally slam your door behind you, you fall to the ground. Your forehead boils even against the cold floor. A red hot pulse grasps you, reduces you to a wheeze. Your lungs are only allowed enough air to make it last. You worm your way to a bottle of Nectar. You breathe.',
     speaker: 'Botanist',
     speakerName: 'Botanist',
     answers: [
@@ -505,7 +505,7 @@ const ThirdNightTribeDialog = {
   },
   ThirdNightTribeDialogStep4: {
     text: [
-      'The Dryad is halfway uprooted, sobbing and raging against the heavy limbs she tries to rip away from the pot you’ve confined her to. She can’t leave. You fed her well. She’s bloated with Nectar, and she turned so dense her movements have gone sluggish. She notices you. Desperation pulls another root of the thick potting ground. She screams and sobs: “Let me go! I don’t want this! I don’t want to be here! I hate the thoughts in my head!”',
+      'The Dryad is halfway uprooted. She sobs and rages against her heavy limbs as she tries to rip herself away from the pot you’ve confined her to. She can’t leave. You fed her well. She’s bloated with Nectar, and she turned so dense her movements have gone sluggish. She notices you. Desperation pulls another root of the thick potting ground. She screams: “Let me go! I don’t want this! I don’t want to be here! I hate the thoughts you put in my head!”',
     ],
     speaker: 'Botanist',
     speakerName: 'Botanist',
@@ -519,7 +519,7 @@ const ThirdNightTribeDialog = {
     ],
   },
   ThirdNightTribeDialogStep5: {
-    text: 'You look at the flowers you’ve been feeding her the last few days, carefully giving her the weak ones, the easily grown and pruned. You weren’t sure it would work but it does. She’s turning into the tool you need. What you’re turning into, you’re not sure. You can’t help but think of the sickness wrecking your inside. The timing of it. You’re doing what you must.',
+    text: 'You look at the flowers you’ve fed her the last few days. You picked the weak ones, easily grown and pruned. It worked: She’s turning into the tool you need. What you’re turning into, you’re not sure. You can’t help but think of the sickness wrecking your insides. The timing of it. You’re doing what you must.',
     speaker: 'Botanist',
     speakerName: 'Botanist',
     answers: [
@@ -592,7 +592,7 @@ const ThirdNightTribeDialog = {
     ],
   },
   ThirdNightTribeDialogStep10: {
-    text: 'You rip away the light runes before leaving, and cut the water while you’re at it. This can’t happen again. A few more days of this, and you’ll have your damn tool again. Vedinor must survive the plague, its people count on you. You can’t fail… even if it costs you, even if it costs her.',
+    text: 'You rip away the light runes before you leave, and cut the water while you’re at it. This can’t happen again. A few more days of this, and you’ll have your damn tool again. Vedinor must survive the plague, its people count on you. You can’t fail… even if it costs you, even if it costs her.',
     speaker: 'Botanist',
     speakerName: 'Botanist',
     answers: [
@@ -647,7 +647,7 @@ const FourthNightDialog = {
     ],
   },
   fourthNightDialogStep3: {
-    text: 'Nothing but the pops and cracks of a distant tree, disappearing in the faded smell of parched flowers. You feel even less prepared than you were getting used to. It’s another change, another step, one that’s so fast and foreign you can’t imagine catching up to it. Is this even normal? Is she ill? You thought about her leaving but what if she dies? You take the pruner from your belt and cut the smallest of paths to where she lies. A faint glow pierces the hole, purring, beckoning.',
+    text: 'Nothing but the pops and cracks of a distant tree that disappear in the faded smell of parched flowers. You feel even less prepared than you were getting used to. It’s another change, another step, one that’s so fast and foreign you can’t imagine you\'ll catch up to it. Is this even normal? Is she ill? You thought about her leaving but what if she dies? You take the pruner from your belt and cut the smallest of paths to where she lies. A faint glow pierces the hole, purring, beckoning.',
     speaker: 'Botanist',
     speakerName: 'Botanist',
     answers: [
@@ -1132,7 +1132,7 @@ const FifthNightTribeDialog = {
 const SixthNightDryadDialog = {
   SixthNightDryadDialog: {
     title: 'The Last Night',
-    text: 'You know before coming in. The music is gone, the energy in the air, the soft feel of the night on your skin. The living room is still a mess of lost leaves, but it’s a dead one: every book you put back in its place, every glass, every toy stays where it is. Wild flowers grow alone in the lab, her box is empty',
+    text: 'You know before you come in. The music is gone, the energy in the air, the soft feel of the night on your skin. The living room is still a mess of lost leaves, but it’s a dead one: each book you put back in its place, each bowl, each wooden toy stays where it is. Wild flowers grow alone in the lab, her box is empty',
     speaker: 'Botanist',
     speakerName: 'Botanist',
     answers: [
@@ -1224,7 +1224,7 @@ const SixthNightTribeDialog = {
     ],
   },
   SixthNightTribeDialogStep2: {
-    text: 'The Lab is locked. You know it’s locked, you turned the key then tried the handle twice before you left to meet the Elders. Yet, you can’t resist the thought, the idea that worms its way through your head.',
+    text: 'The Lab is locked. You know it is, you turned the key then tried the handle twice before you left to meet the Elders. Yet, you can’t resist the thought, the idea that worms its way through your head.',
     speaker: 'Botanist',
     speakerName: 'Botanist',
     answers: [
@@ -1263,7 +1263,7 @@ const SixthNightTribeDialog = {
     ],
   },
   SixthNightTribeDialogStep5: {
-    text: 'The Dryad is there, thick trunk and dead gaze, sweating Nectar in quantities you’ve never hoped to reach. Vedinor is safe, the Elders are safe, you are safe. Not only that, you might have discovered a way to make survival easier for everyone. The Order will knight you for this!',
+    text: 'The Dryad is there, wide trunk and dead gaze, sweating Nectar in quantities you’ve never hoped to reach. Vedinor is safe, the Elders are safe, you are safe. Not only that, you might have discovered a way to make survival easier for everyone. The Order will make you Meister you for this!',
     speaker: 'Botanist',
     speakerName: 'Botanist',
     answers: [
@@ -1281,7 +1281,7 @@ const SixthNightTribeDialog = {
     speakerName: 'Botanist',
     answers: [
       {
-        text: 'Bite. Hard.',
+        text: 'Continue',
         goto: 'SixthNightTribeDialogStep7',
         continueButton: true,
         actions: [],
