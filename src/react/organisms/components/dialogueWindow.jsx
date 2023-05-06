@@ -53,7 +53,7 @@ const DialogueWindow = ({
     }
   }, [Event, resetGame]);
 
-  const addDialogue = useCallback((text, goto, continueButton) => {
+  const addDialogue = useCallback((text, goto, continueButton, actions) => {
     if (goto) {
       const dialogs = [];
       if (!continueButton) {
@@ -84,7 +84,7 @@ const DialogueWindow = ({
           name: index,
         }))
         : []);
-    } else {
+    } else if (!actions.includes('mainMenu')) {
       setOpen(false);
       onCloseDialog();
     }
@@ -145,7 +145,7 @@ const DialogueWindow = ({
               invisible={buttonDisabled}
               key={answer.name}
               onClick={() => {
-                addDialogue(answer.text, answer.goto, answer.continueButton);
+                addDialogue(answer.text, answer.goto, answer.continueButton, answer.actions);
                 activateEvents(answer.actions);
               }}
             >

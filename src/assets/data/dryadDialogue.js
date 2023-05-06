@@ -1197,7 +1197,7 @@ const SixthNightDryadDialog = {
     ],
   },
   SixthNightDryadDialogStep6: {
-    text: 'You smile.', 
+    text: 'You smile.',
     speaker: 'Botanist',
     speakerName: 'Botanist',
     answers: [
@@ -1300,7 +1300,6 @@ const SixthNightTribeDialog = {
     ],
   },
 };
-
 
 export default {
   ...FirstNightDialog,
