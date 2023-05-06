@@ -3,9 +3,26 @@ import { PropTypes } from 'prop-types';
 import { classTrim } from '../../utils';
 import { Icon } from '../atoms/icon';
 
-import NeutralDone from '../../assets/imgs/neutralDone.jpg';
-import TribeDone from '../../assets/imgs/tribeDone.jpg';
-import DryadDone from '../../assets/imgs/dryadDone.png';
+import ValerianImg from '../../assets/imgs/valerian.png';
+import BelladonnaImg from '../../assets/imgs/belladonna.png';
+import BorageImg from '../../assets/imgs/borage.png';
+import ButterlyImg from '../../assets/imgs/butterly.png';
+import CallaLillyImg from '../../assets/imgs/callaLilly.png';
+import CandytuftImg from '../../assets/imgs/candytuft.png';
+import ChivesImg from '../../assets/imgs/chives.png';
+import BluebellsImg from '../../assets/imgs/cluebells.png';
+import CorianderImg from '../../assets/imgs/coriander.png';
+import CrocusImg from '../../assets/imgs/crocus.png';
+import EdelweissImg from '../../assets/imgs/edelweiss.png';
+import GeraniumImg from '../../assets/imgs/geranium.png';
+import HollyImg from '../../assets/imgs/holly.png';
+import HyssopImg from '../../assets/imgs/hyssop.png';
+import SageImg from '../../assets/imgs/sage.png';
+
+import BaseTribe from '../../assets/imgs/support-hybridation-tribe.png';
+import BaseDryad from '../../assets/imgs/support-hybridation-dryad.png';
+
+import HybridationNodeImg from '../../assets/imgs/hybridation-node.png';
 
 import './hybridationNode.scss';
 
@@ -19,27 +36,45 @@ const HybridationNode = ({
   onMouseLeave,
   notUnlocked,
 }) => {
-  const doneDom = useMemo(() => {
-    const classes = 'hybridationNode__img';
+  const flowerImg = useMemo(() => {
+    switch (id) {
+      case 'belladonna': return <img alt={id} src={BelladonnaImg} className="hybridationNode__flower" />;
+      case 'borage': return <img alt={id} src={BorageImg} className="hybridationNode__flower" />;
+      case 'butterflyWeed': return <img alt={id} src={ButterlyImg} className="hybridationNode__flower" />;
+      case 'callaLily': return <img alt={id} src={CallaLillyImg} className="hybridationNode__flower" />;
+      case 'candytuft': return <img alt={id} src={CandytuftImg} className="hybridationNode__flower" />;
+      case 'chives': return <img alt={id} src={ChivesImg} className="hybridationNode__flower" />;
+      case 'bluebell': return <img alt={id} src={BluebellsImg} className="hybridationNode__flower" />;
+      case 'coriander': return <img alt={id} src={CorianderImg} className="hybridationNode__flower" />;
+      case 'crocus': return <img alt={id} src={CrocusImg} className="hybridationNode__flower" />;
+      case 'edelweiss': return <img alt={id} src={EdelweissImg} className="hybridationNode__flower" />;
+      case 'geranium': return <img alt={id} src={GeraniumImg} className="hybridationNode__flower" />;
+      case 'holly': return <img alt={id} src={HollyImg} className="hybridationNode__flower" />;
+      case 'hyssop': return <img alt={id} src={HyssopImg} className="hybridationNode__flower" />;
+      case 'sage': return <img alt={id} src={SageImg} className="hybridationNode__flower" />;
+      default: return <img alt={id} src={ValerianImg} className="hybridationNode__flower" />;
+    }
+  }, [id]);
+
+  const baseDom = useMemo(() => {
     const alt = 'Completed';
     switch (type) {
       case 'tribe': {
         return (
-          <img className={classes} src={TribeDone} alt={alt} />
+          <img className="hybridationNode__base hybridationNode__base--tribe" src={BaseTribe} alt={alt} />
         );
       }
       case 'dryad': {
         return (
-          <img className={classes} src={DryadDone} alt={alt} />
+          <img className="hybridationNode__base hybridationNode__base--dryad" src={BaseDryad} alt={alt} />
         );
       }
       default: {
-        return (
-          <img className={classes} src={NeutralDone} alt={alt} />
-        );
+        return null;
       }
     }
   }, [type]);
+
   return (
     <div
       className={classTrim(`
@@ -57,15 +92,17 @@ const HybridationNode = ({
       role="button"
       tabIndex={0}
     >
-      <Icon
+      <img
+        alt="node"
+        src={HybridationNodeImg}
         className="hybridationNode__icon"
-        type={state === 'completed' ? 'singleHybridSelected' : 'singleHybrid'}
       />
       <Icon
         className="hybridationNode__icon__backdrop"
         type={state === 'completed' ? 'singleHybridSelected' : 'singleHybrid'}
       />
-      {doneDom}
+      {flowerImg}
+      {baseDom}
     </div>
   );
 };
