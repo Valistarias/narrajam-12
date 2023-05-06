@@ -125,11 +125,11 @@ const Gui = () => {
           <h2 className="gui__title-hybridation__content">Hybridation tree</h2>
         </div>
         <p className="gui__title-hybridation__text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Sed tempor consectetur nibh, quis lacinia quam ornare nec.
-          Vestibulum interdum vitae erat eget bibendum.
-          Praesent cursus convallis lectus sit amet euismod.
-          Cras ipsum lectus, dapibus a tincidunt sit amet, blandit sit amet sem.
+          In this screen, you can pick new hybridations for the Dryad. 
+          By feeding her Flowers, you can increase the quantity of Nectar 
+          and Flowers she'll produce at the start of each new day. 
+          Hybridations cost Flowers and take some time to finish. They impact 
+          the Dryad in more than one way, be careful which one you pick...
         </p>
       </div>
       <div
