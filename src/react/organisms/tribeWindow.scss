@@ -1,5 +1,6 @@
 .tribeWindow {
   background-color: var(--black);
+  background-image: url('../../assets/imgs/tribe-bg.jpg');
   background-size: cover;
   height: 100%;
   left: 0;
@@ -19,29 +20,29 @@
   &__title {
     background: var(--black-opaque);
     left: 0;
-    padding: 1rem;
+    padding: 4rem;
     position: absolute;
     text-align: center;
-    top: -1.1rem;
+    top: 0;
     transition: transform .5s ease;
-    width: 40rem;
+    width: 50rem;
     z-index: 1;
+
+    &::after {
+      border: .1rem solid var(--white-opaque);
+      content: '';
+      height: calc(100% - 4rem);
+      left: 2rem;
+      pointer-events: none;
+      position: absolute;
+      top: 2rem;
+      width: calc(100% - 4rem);
+    }
 
     &__block {
       margin-bottom: 2rem;
-      padding: 3rem 2rem;
+      padding: 0 2rem;
       position: relative;
-
-      &::after {
-        border: .1rem solid var(--white-opaque);
-        content: '';
-        height: calc(100% - 2rem);
-        left: 1rem;
-        pointer-events: none;
-        position: absolute;
-        top: 1rem;
-        width: calc(100% - 2rem);
-      }
     }
 
     &__content {
@@ -51,6 +52,7 @@
 
     &__text {
       line-height: 2rem;
+      line-height: 2.5rem;
       padding: 0 1rem;
       text-align: justify;
     }
@@ -66,21 +68,25 @@
 
   &__tribe {
     align-items: center;
+    background-color: var(--black-transparent);
     cursor: pointer;
     display: flex;
     flex-direction: column;
     height: 100%;
     justify-content: space-evenly;
     position: relative;
+    transition: background .4s ease;
     width: 25%;
 
     &:hover {
+      background-color: var(--black-semi-opaque);
+
       &::after {
         border: .1rem solid var(--white-opaque);
       }
 
       &::before {
-        opacity: .6;
+        opacity: 1;
       }
     }
 
@@ -98,12 +104,12 @@
 
     &::before {
       content: '';
-      height: 100%;
+      height: 80%;
       left: 0;
-      opacity: 1;
+      opacity: .6;
       pointer-events: none;
       position: absolute;
-      top: 0;
+      top: 10%;
       transition: opacity .2s ease;
       width: 100%;
     }
@@ -115,28 +121,34 @@
       text-align: center;
       text-transform: uppercase;
       top: 60%;
+      z-index: 1;
     }
 
     &--trunk::before {
-      background-image: url('../../assets/imgs/trunktribeTemp.png');
-      background-position: center;
-      background-size: cover;
+      background-image: url('../../assets/imgs/trunktribe.png');
+      background-position: bottom;
+      background-repeat: no-repeat;
+      background-size: contain;
     }
 
     &--branches::before {
-      background-image: url('../../assets/imgs/branchestribeTemp.png');
-      background-position: center;
-      background-size: cover;
+      background-image: url('../../assets/imgs/branchestribe.png');
+      background-position: bottom;
+      background-repeat: no-repeat;
+      background-size: contain;
     }
 
     &--leaves::before {
-      background-image: url('../../assets/imgs/leavestribeTemp.png');
-      background-position: center;
-      background-size: cover;
+      background-image: url('../../assets/imgs/leavestribe.png');
+      background-position: bottom;
+      background-repeat: no-repeat;
+      background-size: contain;
     }
 
     .nectarGiveway {
+      position: relative;
       width: 80%;
+      z-index: 1;
     }
   }
 }

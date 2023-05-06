@@ -122,6 +122,7 @@ const NectarGiveway = ({
         onClick={onGive}
         className="nectarGiveway__button"
         disabled={!canGiveNectar || !localCanGiveNectar}
+        theme="icon"
       >
         Give Nectar
       </Button>
