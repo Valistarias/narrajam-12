@@ -45,11 +45,16 @@
       margin: 0 auto;
       padding-bottom: 2rem;
       text-align: center;
-      width: 30rem;
+      width: 40rem;
+      font-size: 5rem;
 
       &__main,
       &__sub {
         text-align: center;
+      }
+
+      &__sub {
+        margin-top: 0.5rem;
       }
     }
 
@@ -60,7 +65,7 @@
     &__buttons {
       display: flex;
       flex-direction: column;
-      gap: 4rem;
+      gap: 8rem;
 
       .button {
         text-shadow: 0;

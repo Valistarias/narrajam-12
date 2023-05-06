@@ -29,11 +29,11 @@ const TitleWindow = () => {
     >
       <div className="titleWindow__menu">
         <div className="titleWindow__menu__title">
-          <h1 className="titleWindow__menu__title__main">Title</h1>
-          <p className="titleWindow__menu__title__sub">The very best subtitle there is</p>
+          <h1 className="titleWindow__menu__title__main">Of Ashen Lands And Growing Flowers</h1>
+          <p className="titleWindow__menu__title__sub">A WA30 Project</p>
         </div>
         <div className="titleWindow__menu__text">
-          <p className="titleWindow__menu__text__content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae enim lacus. Integer blandit tellus vel ornare consectetur. Fusce sed ex nunc. Cras eget odio urna. Duis ullamcorper nunc vel commodo lacinia. Nullam finibus fringilla quam, sed maximus leo consequat vitae. Sed id est gravida, vehicula nisl interdum, viverra urna. Etiam posuere tortor a nibh pulvinar, eget convallis massa interdum. Integer sed finibus lectus. Fusce consectetur tincidunt erat vel vehicula.</p>
+          <p className="titleWindow__menu__text__content">The story of an unexpected discovery, a plagues village, and the Botanist between them.</p>
         </div>
         <div className="titleWindow__menu__buttons">
           <Button
