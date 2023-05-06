@@ -12,6 +12,8 @@ import Button from '../molecules/button';
 import { useMusic } from '../../providers/Music';
 
 const Gui = () => {
+  const { whoosh } = useMusic();
+
   const [timebarVisible, setTimebarVisible] = useState(false);
   const [ressourcesVisible, setRessourcesVisible] = useState(false);
   const [nextperiodVisible, setNextPeriodVisible] = useState(false);
@@ -212,6 +214,7 @@ const Gui = () => {
         `)}
         onClick={() => {
           goToNextBlock();
+          whoosh();
         }}
         disabled={!canGoNextPeriod || hybridationVisible}
       >

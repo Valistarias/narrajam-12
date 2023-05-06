@@ -15,7 +15,6 @@ import { curateAndDomifyText } from '../../../utils';
 
 import './miniDialogueWindow.scss';
 import { useGlobalVars } from '../../../providers/GlobalVars';
-import { useMusic } from '../../../providers/Music';
 
 const MiniDialogueWindow = () => {
   const [isOpen, setOpen] = useState(false);
@@ -32,8 +31,6 @@ const MiniDialogueWindow = () => {
   const scrollRef = useRef();
 
   const { Event } = useEvent();
-
-  const { popup } = useMusic();
 
   const {
     updateVar,
@@ -98,7 +95,6 @@ const MiniDialogueWindow = () => {
     Event.addEventListener('openMiniDialogue', ({ detail }) => {
       setText([]);
       setAnswers([]);
-      popup();
       setTimeout(() => {
         setOpen(true);
         updateVar({
@@ -120,7 +116,7 @@ const MiniDialogueWindow = () => {
       setvars(detail);
     });
     Event.dispatchEvent(new CustomEvent('sendGlobalvars'));
-  }, [Event, updateVar, popup]);
+  }, [Event, updateVar]);
 
   return (
     <div className={`mini-dialogue ${isOpen ? ' mini-dialogue--open' : ''}`}>

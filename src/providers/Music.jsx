@@ -13,7 +13,6 @@ import WhooshSound from '../assets/sound/woosh.mp3';
 import DaySound from '../assets/sound/day.mp3';
 import NightSound from '../assets/sound/night.mp3';
 import ClickSound from '../assets/sound/click.mp3';
-import PopupSound from '../assets/sound/popup.mp3';
 import TextSound from '../assets/sound/text.mp3';
 import UnlockDryadSound from '../assets/sound/unlockDryad.mp3';
 import UnlockTribeSound from '../assets/sound/unlockTribe.mp3';
@@ -40,6 +39,7 @@ export const MusicProvider = ({ children }) => {
 
   const whooshSound = useMemo(() => new Howl({
     src: [WhooshSound],
+    volume: 0.2,
   }), []);
 
   const daySound = useMemo(() => new Howl({
@@ -54,11 +54,6 @@ export const MusicProvider = ({ children }) => {
 
   const clickSound = useMemo(() => new Howl({
     src: [ClickSound],
-    volume: 0.4,
-  }), []);
-
-  const popupSound = useMemo(() => new Howl({
-    src: [PopupSound],
     volume: 0.4,
   }), []);
 
@@ -189,17 +184,13 @@ export const MusicProvider = ({ children }) => {
     clickSound.play();
   }, [clickSound]);
 
-  const popup = useCallback(() => {
-    popupSound.play();
-  }, [popupSound]);
-
   const text = useCallback(() => {
     if (timeoutPlayWrite.current) {
       textSound.play();
       timeoutPlayWrite.current = false;
       setTimeout(() => {
         timeoutPlayWrite.current = true;
-      }, 3000);
+      }, 1000);
     }
   }, [textSound]);
 
@@ -223,7 +214,6 @@ export const MusicProvider = ({ children }) => {
     day,
     night,
     click,
-    popup,
     text,
     unlockDryad,
     unlockTribe,
@@ -236,7 +226,6 @@ export const MusicProvider = ({ children }) => {
     day,
     night,
     click,
-    popup,
     text,
     unlockDryad,
     unlockTribe,
@@ -263,7 +252,6 @@ export const useMusic = () => {
     day,
     night,
     click,
-    popup,
     text,
     unlockDryad,
     unlockTribe,
@@ -278,7 +266,6 @@ export const useMusic = () => {
     day,
     night,
     click,
-    popup,
     text,
     unlockDryad,
     unlockTribe,

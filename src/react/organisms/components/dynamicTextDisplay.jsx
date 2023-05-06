@@ -29,9 +29,6 @@ const DynamicTextDisplay = ({
 
     // Treating the html to add
     const actualWord = wordsToDisplay.current[0];
-    if (actualWord.speaker !== 'player') {
-      soundText();
-    }
 
     const text = `${actualWord.text}${Array.isArray(wordsToDisplay.current) && wordsToDisplay.current.length > 0 ? ' ' : ''}`;
     let domToAdd = text;
@@ -57,6 +54,10 @@ const DynamicTextDisplay = ({
       // newBlock.appendChild(newTitle);
       dynamicDisplayDom.current.appendChild(newBlock);
       delayNewMessage = true;
+
+      if (actualWord.speaker !== 'player') {
+        soundText();
+      }
     }
 
     setTimeout(() => {
