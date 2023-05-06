@@ -44,13 +44,13 @@ const TitleWindow = () => {
           >
             Play
           </Button>
-          <Button
+          {/* <Button
             theme="title"
             onClick={() => {}}
             disabled
           >
             Settings
-          </Button>
+          </Button> */}
           <Button
             theme="title"
             onClick={onCreditClick}
