@@ -67,10 +67,12 @@ const TribeWindow = () => {
           <h2 className="tribeWindow__title__content">Tribe council</h2>
         </div>
         <p className="tribeWindow__title__text">
-          Here, you can distribute your Nectar reserves between each of the tribes living in Vedinor. 
-          Each unit of Nectar will keep the Ash Plague at bay for a small amount of people. 
-          Those infected who did not receive any are likely to die during the night. 
-          In exchange for Nectar, the tribes will give you Flowers, and might come to you during the day. 
+          Here, you can distribute your Nectar reserves between each of the tribes living in Vedinor.
+          Each unit of Nectar will keep the Ash Plague at bay for a small amount of people.
+          <br />
+          <br />
+          Those infected who did not receive any are likely to die during the night.
+          In exchange for Nectar, the tribes will give you Flowers, and might come to you during the day.
         </p>
       </div>
       <div className="tribeWindow__tribes">
