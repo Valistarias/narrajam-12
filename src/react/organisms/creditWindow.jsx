@@ -24,7 +24,7 @@ const CreditWindow = () => {
       <p className="creditWindow__sub">Proudly made with React</p>
       <ul className="creditWindow__list">
         <li className="creditWindow__list__main">
-          <span className="creditWindow__list__main__title">GD/Writing</span>
+          <span className="creditWindow__list__main__title">Game Design / Writing</span>
           <span className="creditWindow__list__main__name">Thomas De Mot</span>
         </li>
         <li className="creditWindow__list__main">
