@@ -12,6 +12,7 @@
 
   &__icon {
     z-index: 1;
+    z-index: 6;
   }
 
   &__icon,
@@ -27,12 +28,16 @@
   }
 
   &__flower {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
     height: 15rem;
     opacity: 0;
     position: relative;
     top: -5rem;
     transition: opacity .2s ease;
     width: 15rem;
+    z-index: 5;
   }
 
   &__base {
@@ -74,7 +79,7 @@
   }
 
   &--notUnlocked {
-    // pointer-events: none;
+    pointer-events: none;
 
     .hybridationNode__icon {
       opacity: .3;
@@ -83,5 +88,65 @@
         opacity: 0;
       }
     }
+  }
+
+  &--id-valerian .hybridationNode__flower {
+    background-image: url('../../assets/imgs/valerian.png');
+  }
+
+  &--id-belladonna .hybridationNode__flower {
+    background-image: url('../../assets/imgs/belladonna.png');
+  }
+
+  &--id-butterflyWeed .hybridationNode__flower {
+    background-image: url('../../assets/imgs/butterly.png');
+  }
+
+  &--id-borage .hybridationNode__flower {
+    background-image: url('../../assets/imgs/borage.png');
+  }
+
+  &--id-callaLily .hybridationNode__flower {
+    background-image: url('../../assets/imgs/callaLilly.png');
+  }
+
+  &--id-candytuft .hybridationNode__flower {
+    background-image: url('../../assets/imgs/candytuft.png');
+  }
+
+  &--id-chives .hybridationNode__flower {
+    background-image: url('../../assets/imgs/chives.png');
+  }
+
+  &--id-bluebell .hybridationNode__flower {
+    background-image: url('../../assets/imgs/cluebells.png');
+  }
+
+  &--id-coriander .hybridationNode__flower {
+    background-image: url('../../assets/imgs/coriander.png');
+  }
+
+  &--id-crocus .hybridationNode__flower {
+    background-image: url('../../assets/imgs/crocus.png');
+  }
+
+  &--id-edelweiss .hybridationNode__flower {
+    background-image: url('../../assets/imgs/edelweiss.png');
+  }
+
+  &--id-geranium .hybridationNode__flower {
+    background-image: url('../../assets/imgs/geranium.png');
+  }
+
+  &--id-holly .hybridationNode__flower {
+    background-image: url('../../assets/imgs/holly.png');
+  }
+
+  &--id-hyssop .hybridationNode__flower {
+    background-image: url('../../assets/imgs/hyssop.png');
+  }
+
+  &--id-sage .hybridationNode__flower {
+    background-image: url('../../assets/imgs/sage.png');
   }
 }

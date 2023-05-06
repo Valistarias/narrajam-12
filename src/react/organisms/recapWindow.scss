@@ -1,3 +1,4 @@
+/* stylelint-disable selector-class-pattern */
 .recapWindow {
   background-color: var(--black);
   background-size: cover;
@@ -82,9 +83,11 @@
 
     &__logo {
       background: var(--white);
+      background-image: url('../../assets/imgs/tribe-bg.jpg');
+    background-size: cover;
       flex-shrink: 0;
-      height: 2rem;
-      width: 2rem;
+      height: 8rem;
+      width: 8rem;
     }
 
     &__name {
@@ -131,6 +134,18 @@
 
     &:nth-child(3) {
       transition: opacity .5s ease .6s, transform .5s ease .6s;
+    }
+
+    &--trunk .recapWindow__tribe__logo {
+      background-image: url('../../assets/imgs/reportIconTrunk.jpg');
+    }
+
+    &--branches .recapWindow__tribe__logo {
+      background-image: url('../../assets/imgs/reportIconBranches.jpg');
+    }
+
+    &--leaves .recapWindow__tribe__logo {
+      background-image: url('../../assets/imgs/reportIconLeaves.jpg');
     }
   }
 

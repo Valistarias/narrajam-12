@@ -27,7 +27,13 @@ const RecapWindow = () => {
         newDeaths,
       } = tribes[tribeId];
       dom.push(
-        <div key={tribeId} className="recapWindow__tribe">
+        <div
+          key={tribeId}
+          className={classTrim(`
+            recapWindow__tribe
+            recapWindow__tribe--${tribeId}
+          `)}
+        >
           <div className="recapWindow__tribe__logo" />
           <p className="recapWindow__tribe__name">{name}</p>
           <div className="recapWindow__tribe__data">
