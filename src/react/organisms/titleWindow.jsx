@@ -33,7 +33,7 @@ const TitleWindow = () => {
           <p className="titleWindow__menu__title__sub">A WA30 Project</p>
         </div>
         <div className="titleWindow__menu__text">
-          <p className="titleWindow__menu__text__content">The story of an unexpected discovery, a plagued village, and the Botanist between them.</p>
+          <p className="titleWindow__menu__text__content">The story of an unexpected discovery, a plagued village, and the Botanist in between.</p>
         </div>
         <div className="titleWindow__menu__buttons">
           <Button
