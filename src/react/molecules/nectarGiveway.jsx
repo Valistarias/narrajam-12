@@ -100,7 +100,6 @@ const NectarGiveway = ({
         nectarGiveway
       `)}
     >
-      {healthIndicator}
       <div
         className={classTrim(`
           nectarGiveway__bonus
@@ -118,6 +117,7 @@ const NectarGiveway = ({
           />
         </div>
       </div>
+      {healthIndicator}
       <Button
         onClick={onGive}
         className="nectarGiveway__button"

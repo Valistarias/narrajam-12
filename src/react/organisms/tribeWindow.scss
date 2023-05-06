@@ -72,8 +72,10 @@
     cursor: pointer;
     display: flex;
     flex-direction: column;
+    gap: 5rem;
     height: 100%;
-    justify-content: space-evenly;
+    justify-content: flex-end;
+    padding-bottom: 15rem;
     position: relative;
     transition: background .4s ease;
     width: 25%;
