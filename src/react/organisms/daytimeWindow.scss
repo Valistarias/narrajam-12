@@ -1,6 +1,5 @@
 .daytimeWindow {
   background-color: var(--black);
-  background-image: url('../../assets/imgs/backgroundtemp3.jpg');
   background-size: cover;
   height: 100%;
   left: 0;
@@ -11,9 +10,83 @@
   transition: opacity 1s ease;
   width: 100%;
 
+  &__day {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    transition: opacity 1s;
+    background-size: cover;
+    top: 0;
+    left: 0;
+
+    &--morning {
+      background-image: url('../../assets/imgs/day-morning.jpg');
+      z-index: 2;
+    }
+
+    &--day {
+      background-image: url('../../assets/imgs/day-day.jpg');
+      z-index: 1;
+    }
+
+    &--evening {
+      background-image: url('../../assets/imgs/day-evening.jpg');
+      z-index: 0;
+    }
+  }
+
   &--visible {
     opacity: 1;
     pointer-events: all;
     transition: opacity 1s ease 1.1s;
+  }
+
+  &--morning {
+    .daytimeWindow__day {
+      &--morning {
+        opacity: 1;
+      }
+
+      &--day {
+        opacity: 1;
+      }
+
+      &--evening {
+        opacity: 1;
+      }
+    }
+  }
+
+  &--day {
+    .daytimeWindow__day {
+      &--morning {
+        opacity: 0;
+      }
+
+      &--day {
+        opacity: 1;
+      }
+
+      &--evening {
+        opacity: 1;
+      }
+    }
+  }
+
+  &--evening {
+    .daytimeWindow__day {
+      &--morning {
+        opacity: 0;
+      }
+
+      &--day {
+        opacity: 0;
+      }
+
+      &--evening {
+        opacity: 1;
+      }
+    }
   }
 }

@@ -1,5 +1,5 @@
 import React, {
-  useEffect, useState,
+  useEffect, useMemo, useState,
 } from 'react';
 
 import { useGlobalVars } from '../../providers/GlobalVars';
@@ -20,6 +20,16 @@ const DaytimeWindow = () => {
   } = useGlobalVars();
 
   const { Event } = useEvent();
+
+  const time = useMemo(() => {
+    if (!vars?.timeBlock) { return null; }
+
+    switch (vars.timeBlock) {
+      case 3: return 'morning';
+      case 2: return 'day';
+      default: return 'evening';
+    }
+  }, [vars?.timeBlock]);
 
   useEffect(() => {
     setVisible(displayedScreen === 'game' && isActualStep('main'));
@@ -62,9 +72,12 @@ const DaytimeWindow = () => {
     <div className={classTrim(`
       daytimeWindow
       ${visible ? ' daytimeWindow--visible' : ''}
+      daytimeWindow--${time}
     `)}
     >
-      {/* <p>Coucou</p> */}
+      <div className="daytimeWindow__day daytimeWindow__day--morning" />
+      <div className="daytimeWindow__day daytimeWindow__day--day" />
+      <div className="daytimeWindow__day daytimeWindow__day--evening" />
     </div>
   );
 };

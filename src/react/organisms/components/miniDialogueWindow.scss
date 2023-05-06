@@ -15,6 +15,8 @@
   transition: opacity .5s ease;
   width: 50rem;
   z-index: 1;
+  max-height: calc(100% - 20rem);
+  z-index: 4;
 
   &::after {
     border: .1rem solid var(--white-opaque);

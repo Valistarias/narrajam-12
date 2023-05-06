@@ -137,21 +137,21 @@
       }
 
       &__morning {
-        background-image: url('../../assets/imgs/morningtemp.jpg');
+        background-image: url('../../assets/imgs/day-morning-mini.jpg');
         background-position: center;
         background-size: cover;
         opacity: .1;
       }
 
       &__day {
-        background-image: url('../../assets/imgs/daytemp.jpg');
+        background-image: url('../../assets/imgs/day-day-mini.jpg');
         background-position: center;
         background-size: cover;
         opacity: .1;
       }
 
       &__evening {
-        background-image: url('../../assets/imgs/eveningtemp.jpg');
+        background-image: url('../../assets/imgs/day-evening-mini.jpg');
         background-position: center;
         background-size: cover;
         opacity: .1;
@@ -204,19 +204,20 @@
       }
 
       &__morning::after {
-        background-image: url('../../assets/imgs/morningtemp.jpg');
+        
+        background-image: url('../../assets/imgs/day-morning-mini.jpg');
         background-position: center;
         background-size: cover;
       }
 
       &__day::after {
-        background-image: url('../../assets/imgs/daytemp.jpg');
+        background-image: url('../../assets/imgs/day-day-mini.jpg');
         background-position: center;
         background-size: cover;
       }
 
       &__evening::after {
-        background-image: url('../../assets/imgs/eveningtemp.jpg');
+        background-image: url('../../assets/imgs/day-evening-mini.jpg');
         background-position: center;
         background-size: cover;
       }

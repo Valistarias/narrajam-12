@@ -1,6 +1,6 @@
 import React, {
   useCallback,
-  useEffect, useMemo, useState,
+  useEffect, useMemo, useRef, useState,
 } from 'react';
 
 import { useGlobalVars } from '../../providers/GlobalVars';
@@ -14,6 +14,8 @@ import DialogueWindow from './components/dialogueWindow';
 const DryadWindow = () => {
   const [visible, setVisible] = useState(false);
   const [selectedDialog, setSelectedDialog] = useState(null);
+
+  const ending = useRef();
 
   const { switchMusic, day, night } = useMusic();
 
@@ -45,14 +47,16 @@ const DryadWindow = () => {
       }
       case 4: {
         if (income._dryad >= income._tribe) {
+          ending.current = 'dryad';
           // Dialog dryad
           return 'FifthNightDryadDialog';
         }
+        ending.current = 'tribe';
         // Dialog tribe
         return 'FifthNightTribeDialog';
       }
       case 5: {
-        if (income._dryad >= income._tribe) {
+        if (ending.current === 'dryad') {
           // Dialog dryad
           return 'SixthNightDryadDialog';
         }
@@ -66,38 +70,38 @@ const DryadWindow = () => {
     }
   }, [vars?.day, isActualStep, income?._dryad, income?._tribe]);
 
-  const testDialogByDay = useMemo(() => {
-    if (!isActualStep('dryad')) { return null; }
-    switch (vars.day) {
-      case 0: {
-        return 'begining';
-      }
-      case 1: {
-        return 'begining';
-      }
-      case 2: {
-        if (income._dryad >= income._tribe) {
-          // Dialog dryad
-          return 'begining';
-        }
-        // Dialog tribe
-        return 'begining';
-      }
-      case 3: {
-        return 'begining';
-      }
-      case 4: {
-        return 'begining';
-      }
-      case 5: {
-        return 'begining';
-      }
-      default: {
-        console.error('NO DIALOG FOUND ON DAY', vars?.day);
-        return null;
-      }
-    }
-  }, [vars?.day, isActualStep, income?._dryad, income?._tribe]);
+  // const testDialogByDay = useMemo(() => {
+  //   if (!isActualStep('dryad')) { return null; }
+  //   switch (vars.day) {
+  //     case 0: {
+  //       return 'begining';
+  //     }
+  //     case 1: {
+  //       return 'begining';
+  //     }
+  //     case 2: {
+  //       if (income._dryad >= income._tribe) {
+  //         // Dialog dryad
+  //         return 'begining';
+  //       }
+  //       // Dialog tribe
+  //       return 'begining';
+  //     }
+  //     case 3: {
+  //       return 'begining';
+  //     }
+  //     case 4: {
+  //       return 'begining';
+  //     }
+  //     case 5: {
+  //       return 'begining';
+  //     }
+  //     default: {
+  //       console.error('NO DIALOG FOUND ON DAY', vars?.day);
+  //       return null;
+  //     }
+  //   }
+  // }, [vars?.day, isActualStep, income?._dryad, income?._tribe]);
 
   useEffect(() => {
     setVisible(displayedScreen === 'game' && isActualStep('dryad'));
