@@ -17,22 +17,22 @@
   &__icon,
   &__icon__backdrop {
     filter: blur(0);
-    height: 6rem;
+    height: 8rem;
     left: 50%;
     position: absolute;
     top: 50%;
     transform: translate3d(-50%, -50%, 0);
     transition: filter .1s ease, opacity .2s ease;
-    width: 6rem;
+    width: 8rem;
   }
 
   &__flower {
-    height: 10rem;
+    height: 15rem;
     opacity: 0;
     position: relative;
-    top: -3rem;
+    top: -5rem;
     transition: opacity .2s ease;
-    width: 10rem;
+    width: 15rem;
   }
 
   &__base {
@@ -41,15 +41,15 @@
     
 
     &--tribe {
-      left: 5rem;
-      top: 14rem;
-      width: 6rem;
+      left: 7.4rem;
+      top: 19rem;
+      width: 7rem;
     }
 
     &--dryad {
       left: 4rem;
-      top: 10rem;
-      width: 10rem;
+      top: 13rem;
+      width: 13rem;
     }
   }
 
@@ -74,7 +74,7 @@
   }
 
   &--notUnlocked {
-    pointer-events: none;
+    // pointer-events: none;
 
     .hybridationNode__icon {
       opacity: .3;

@@ -23,6 +23,8 @@ const HybridationWindow = () => {
 
   const scrollRef = useRef();
 
+  const treeRef = useRef();
+
   // const [lockInfo, setLockInfo] = useState(false);
 
   const [canResearch, setCanResearch] = useState(false);
@@ -77,7 +79,7 @@ const HybridationWindow = () => {
   useEffect(() => {
     if (visible && scrollRef.current) {
       scrollRef.current.getElement().scrollTo(
-        window.innerWidth / 2,
+        (treeRef.current.getBoundingClientRect().width / 2) - (window.innerWidth / 2),
         (window.innerHeight / 2) - 100,
       );
     }
@@ -94,7 +96,8 @@ const HybridationWindow = () => {
         ${visible ? ' hybridationWindow--visible' : ''}
       `)}
     >
-      <div className="hybridationWindow__tree">
+      <div className="hybridationWindow__tree" ref={treeRef}>
+        <div className="hybridationWindow__tree__fg" />
         <HybridationNode
           id="valerian"
           type="neutral"

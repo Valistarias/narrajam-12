@@ -1,6 +1,5 @@
 .hybridationWindow {
   background-color: var(--black);
-  background-size: cover;
   height: 100%;
   left: 0;
   opacity: 0;
@@ -18,100 +17,112 @@
   }
 
   &__tree {
-    height: 200vh;
+    background-image: url('../../assets/imgs/hybridation-bg.jpg');
+    background-position: center;
+    background-size: cover;
+    height: 60vh;
     position: relative;
-    width: 200vw;
+    top: 20vh;
+    width: 250rem;
+
+    &__fg {
+      background-image: url('../../assets/imgs/hybridation-fg.png');
+      background-position: center;
+      background-size: cover;
+      height: 100%;
+      width: 100%;
+    }
 
     .hybridationNode {
       &--id-valerian {
-        left: 50%;
-        top: 50%;
+        left: calc(50% - 5rem);
+        top: calc(50% + 30rem);
         transform: translate3d(-50%, -50%, 0);
       }
 
       // DRYAD UPGRADES
       &--id-crocus {
-        left: calc(50% + 10rem);
-        top: calc(50% - 5rem);
+        left: calc(50% + 62rem);
+        top: calc(50% - 24rem);
         transform: translate3d(-50%, -50%, 0);
       }
 
       &--id-sage {
-        left: calc(50% + 20rem);
+        left: calc(50% + 75rem);
         top: calc(50% - 15rem);
         transform: translate3d(-50%, -50%, 0);
       }
 
       &--id-callaLily {
-        left: calc(50% + 30rem);
-        top: calc(50% - 10rem);
-        transform: translate3d(-50%, -50%, 0);
-      }
-
-      &--id-edelweiss {
-        left: calc(50% + 40rem);
-        top: calc(50% - 20rem);
-        transform: translate3d(-50%, -50%, 0);
-      }
-
-      &--id-borage {
-        left: calc(50% + 50rem);
-        top: calc(50% - 25rem);
-        transform: translate3d(-50%, -50%, 0);
-      }
-
-      &--id-coriander {
-        left: calc(50% + 60rem);
-        top: calc(50% - 20rem);
-        transform: translate3d(-50%, -50%, 0);
-      }
-
-      &--id-butterflyWeed {
-        left: calc(50% + 70rem);
+        left: calc(50% + 84rem);
         top: calc(50% - 30rem);
         transform: translate3d(-50%, -50%, 0);
       }
 
-      // TRIBE UPGRADES
-      &--id-belladonna {
-        left: calc(50% - 10rem);
-        top: calc(50% - 5rem);
+      &--id-edelweiss {
+        left: calc(50% + 96rem);
+        top: calc(50% - 0rem);
         transform: translate3d(-50%, -50%, 0);
       }
 
-      &--id-bluebell {
-        left: calc(50% - 20rem);
+      &--id-borage {
+        left: calc(50% + 94rem);
         top: calc(50% - 15rem);
         transform: translate3d(-50%, -50%, 0);
       }
 
+      &--id-coriander {
+        left: calc(50% + 112rem);
+        top: calc(50% - -10rem);
+        transform: translate3d(-50%, -50%, 0);
+      }
+
+      &--id-butterflyWeed {
+        left: calc(50% + 108rem);
+        top: calc(50% - 31rem);
+        transform: translate3d(-50%, -50%, 0);  
+      }
+
+      // TRIBE UPGRADES
+      &--id-belladonna {
+        left: calc(50% - 54.3rem);
+        top: calc(50% - -14.9rem);
+        transform: translate3d(-50%, -50%, 0);
+      }
+
+      &--id-bluebell {
+        left: calc(50% - 68.7rem);
+        top: calc(50% - -10.5rem);
+        transform: translate3d(-50%, -50%, 0);
+      }
+
       &--id-chives {
-        left: calc(50% - 30rem);
-        top: calc(50% - 25rem);
+        left: calc(50% - 91rem);
+        top: calc(50% - -7rem);
         transform: translate3d(-50%, -50%, 0);
       }
 
       &--id-holly {
-        left: calc(50% - 40rem);
-        top: calc(50% - 35rem);
+        left: calc(50% - 107rem);
+        top: calc(50% + 3rem);
         transform: translate3d(-50%, -50%, 0);
       }
 
       &--id-geranium {
-        left: calc(50% - 50rem);
-        top: calc(50% - 45rem);
+        left: calc(50% - 60rem);
+        top: calc(50% - 8rem);
         transform: translate3d(-50%, -50%, 0);
       }
 
       &--id-candytuft {
-        left: calc(50% - 60rem);
-        top: calc(50% - 55rem);
+        left: calc(50% - 98rem);
+        top: calc(50% - 10rem);
         transform: translate3d(-50%, -50%, 0);
       }
 
       &--id-hyssop {
-        left: calc(50% - 70rem);
-        top: calc(50% - 65rem);
+        left: calc(50% - 102rem);
+        top: calc(50% - 37rem);
         transform: translate3d(-50%, -50%, 0);
       }
     }
