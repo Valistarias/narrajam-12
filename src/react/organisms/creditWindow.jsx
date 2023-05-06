@@ -24,8 +24,8 @@ const CreditWindow = () => {
       <p className="creditWindow__sub">Proudly made with React</p>
       <ul className="creditWindow__list">
         <li className="creditWindow__list__main">
-          <span className="creditWindow__list__main__title">Game Design</span>
-          <span className="creditWindow__list__main__name">Thomas de Mot</span>
+          <span className="creditWindow__list__main__title">GD/Writing</span>
+          <span className="creditWindow__list__main__name">Thomas De Mot</span>
         </li>
         <li className="creditWindow__list__main">
           <span className="creditWindow__list__main__title">Game Art</span>
@@ -42,9 +42,9 @@ const CreditWindow = () => {
       </ul>
       <h3 className="creditWindow__participants">Special Thanks To</h3>
       <ul className="creditWindow__list">
-        <li className="creditWindow__list__sub">Philippe Vandemoere</li>
+        <li className="creditWindow__list__sub">Philippe Vandermoere</li>
         <li className="creditWindow__list__sub">Helly Demekin</li>
-        <li className="creditWindow__list__sub">Gwendoline Bleu</li>
+        <li className="creditWindow__list__sub">Gwendolyn Bleu</li>
       </ul>
       <h3 className="creditWindow__participants">Production cats</h3>
       <ul className="creditWindow__list">
