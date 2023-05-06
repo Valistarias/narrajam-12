@@ -658,7 +658,7 @@ const FourthNightDialog = {
       },
       {
         text: 'This better not be a trick.',
-        goto: 'fourthhNightDialogStep4',
+        goto: 'fourthNightDialogStep4',
         actions: [],
       },
     ],
