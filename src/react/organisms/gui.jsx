@@ -128,7 +128,7 @@ const Gui = () => {
           In this screen, you can pick new hybridations for the Dryad. 
           By feeding her Flowers, you can increase the quantity of Nectar 
           and Flowers she'll produce at the start of each new day. 
-          Hybridations cost Flowers and take some time to finish. They impact 
+          Hybridations will take some time to finish. They impact 
           the Dryad in more than one way, be careful which one you pick...
         </p>
       </div>
