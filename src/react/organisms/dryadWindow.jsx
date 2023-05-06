@@ -77,43 +77,43 @@ const DryadWindow = () => {
     }
   }, [vars?.day, isActualStep, income?._dryad, income?._tribe]);
 
-  const testDialogByDay = useMemo(() => {
-    if (!isActualStep('dryad')) { return null; }
-    switch (vars.day) {
-      case 0: {
-        return 'begining';
-      }
-      case 1: {
-        return 'begining';
-      }
-      case 2: {
-        if (income._dryad >= income._tribe) {
-          // Dialog dryad
-          return 'begining';
-        }
-        // Dialog tribe
-        return 'begining';
-      }
-      case 3: {
-        return 'begining';
-      }
-      case 4: {
-        return 'begining';
-      }
-      case 5: {
-        return 'begining';
-      }
-      default: {
-        console.error('NO DIALOG FOUND ON DAY', vars?.day);
-        return null;
-      }
-    }
-  }, [vars?.day, isActualStep, income?._dryad, income?._tribe]);
+  // const testDialogByDay = useMemo(() => {
+  //   if (!isActualStep('dryad')) { return null; }
+  //   switch (vars.day) {
+  //     case 0: {
+  //       return 'begining';
+  //     }
+  //     case 1: {
+  //       return 'begining';
+  //     }
+  //     case 2: {
+  //       if (income._dryad >= income._tribe) {
+  //         // Dialog dryad
+  //         return 'begining';
+  //       }
+  //       // Dialog tribe
+  //       return 'begining';
+  //     }
+  //     case 3: {
+  //       return 'begining';
+  //     }
+  //     case 4: {
+  //       return 'begining';
+  //     }
+  //     case 5: {
+  //       return 'begining';
+  //     }
+  //     default: {
+  //       console.error('NO DIALOG FOUND ON DAY', vars?.day);
+  //       return null;
+  //     }
+  //   }
+  // }, [vars?.day, isActualStep, income?._dryad, income?._tribe]);
 
   useEffect(() => {
     setVisible(displayedScreen === 'game' && isActualStep('dryad'));
     if (displayedScreen === 'game' && isActualStep('dryad')) {
-      setSelectedDialog(testDialogByDay);
+      setSelectedDialog(dialogByDay);
       night();
       switchMusic('dryad');
     }
@@ -121,7 +121,7 @@ const DryadWindow = () => {
     vars?.stepCycle,
     displayedScreen,
     isActualStep,
-    testDialogByDay,
+    dialogByDay,
     Event,
     goToNextDay,
     switchMusic,
