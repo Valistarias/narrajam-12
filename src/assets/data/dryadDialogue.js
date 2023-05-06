@@ -894,7 +894,7 @@ const FifthNightDryadDialog = {
     speakerName: 'Botanist',
     answers: [
       {
-        text: 'Come one, sweetheart. You can do this.',
+        text: 'Come on, sweetheart. You can do this.',
         goto: 'fifthNightDryadDialogStep6',
         actions: [],
       },
