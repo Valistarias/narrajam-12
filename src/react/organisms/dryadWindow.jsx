@@ -3,13 +3,20 @@ import React, {
   useEffect, useMemo, useRef, useState,
 } from 'react';
 
+import { MouseParallaxContainer, MouseParallaxChild } from 'react-parallax-mouse';
+
+import { useEvent } from '../../providers/Event';
+import { useMusic } from '../../providers/Music';
 import { useGlobalVars } from '../../providers/GlobalVars';
 import { classTrim } from '../../utils';
 
-import './dryadWindow.scss';
-import { useEvent } from '../../providers/Event';
-import { useMusic } from '../../providers/Music';
+// import DryadBG from '../../assets/imgs/dryad-bg.jpg';
+import DryadFG from '../../assets/imgs/dryad-fg.png';
+import DryadTable from '../../assets/imgs/dryad-table.png';
+
 import DialogueWindow from './components/dialogueWindow';
+
+import './dryadWindow.scss';
 
 const DryadWindow = () => {
   const [visible, setVisible] = useState(false);
@@ -134,6 +141,18 @@ const DryadWindow = () => {
       ${visible ? ' dryadWindow--visible' : ''}
     `)}
     >
+      <MouseParallaxContainer className="dryadWindow__dryad" globalFactorX={0.1} globalFactorY={0.1}>
+        <MouseParallaxChild className="dryadWindow__dryad__bg" factorX={0.1} factorY={0.1}>
+          {/* <img height="100%" className="dryadWindow__dryad__bg__img" src={DryadBG} alt="" /> */}
+          <div className="dryadWindow__dryad__bg__img" />
+        </MouseParallaxChild>
+        <MouseParallaxChild className="dryadWindow__dryad__table" factorX={0.1} factorY={0.1}>
+          <img src={DryadTable} alt="" />
+        </MouseParallaxChild>
+        <MouseParallaxChild className="dryadWindow__dryad__fg" factorX={0.3} factorY={0.3}>
+          <img src={DryadFG} alt="" />
+        </MouseParallaxChild>
+      </MouseParallaxContainer>
       <DialogueWindow
         onCloseDialog={onCloseDialog}
         selectedDialog={selectedDialog}
