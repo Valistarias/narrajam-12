@@ -211,7 +211,7 @@ const FirstNightDialog = {
 const SecondNightDialog = {
   SecondNightDialog: {
     title: 'The Second Night',
-    text: '“Aï, Aye, ih, HI, hi. Hi!” The Dryad plays with the words and laughs. She beams at failures and successes alike and revels in the exploration of each syllable. Were she picked up said words, you’re not sure. Some she clearly picked up from you, when the day grows lonely and you mumble to yourself, some are from somewhere else. Wherever that is, you’re not sure you approve. ',
+    text: '“Aï, Aye, ih, HI, hi. Hi!” The Dryad plays with the words and laughs. She beams at failures and successes alike and revels in the exploration of each syllable. Were she picked up said words, you’re not sure. Some she clearly learned up from you, when the day grows lonely and you mumble to yourself, some are from somewhere else. Wherever that is, you’re not sure you approve. ',
     speaker: 'Botanist',
     speakerName: 'Botanist',
     answers: [
